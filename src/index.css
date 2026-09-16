@@ -120,4 +120,4 @@
 .ticker-track { animation: ticker 22s linear infinite; }
 @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
 @media (max-width: 639px) { main h1 { font-size: clamp(1.625rem, 8.2vw, 2.25rem); overflow-wrap: normal; } }
-@media (max-width: 639px) { #hero dt { font-family: var(--font-mono); font-size: clamp(.875rem, 4.2vw, 1.5rem); } }
+@media (max-width: 639px) { #hero dt { font-family: var(--font-mono); font-size: clamp(.7rem, 3.5vw, 1.25rem); } }

@@ -11,6 +11,7 @@ export function About() {
     <section id="about" className="section-shell bg-muted">
       <div className="site-container">
         <SectionHeading label={site.about.eyebrow}>{site.about.title}</SectionHeading>
+        <p className="mb-8 max-w-3xl text-lg leading-relaxed text-muted-foreground">{site.about.description}</p>
         <div className="grid gap-6 md:grid-cols-3">{principles.map((principle) => {
           const Icon = icons[principle.icon]
           return <article key={principle.number} className={`flex min-w-0 flex-col justify-between border-2 border-border bg-card p-6 ${shadows[principle.accent]}`}>

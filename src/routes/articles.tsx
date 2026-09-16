@@ -8,19 +8,18 @@ import { site } from '@/content/site'
 export default function Articles() {
   return (
     <>
-      <PageMeta title={`Catatan Frontend & Desain | ${site.name}`} description="Kumpulan artikel contoh tentang React, arsitektur frontend, dan desain. Konten demo, bukan publikasi pribadi." />
+      <PageMeta title={`Catatan Pengembangan Software | ${site.brand}`} description="Catatan prasadev tentang komponen, struktur kode, dan pengembangan aplikasi." />
       <section className="section-shell">
         <div className="site-container">
           <span className="tag mb-6 bg-neo-cyan text-black">Artikel</span>
-          <h1 className="max-w-4xl font-display text-4xl leading-tight font-extrabold sm:text-5xl lg:text-6xl">Catatan Frontend &amp; Desain</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">Ruang untuk membahas komponen, kode, dan pengalaman digital. Artikel di sini adalah konten contoh untuk mendemonstrasikan portofolio, bukan publikasi pribadi.</p>
+          <h1 className="max-w-4xl font-display text-4xl leading-tight font-extrabold sm:text-5xl lg:text-6xl">Catatan Pengembangan Software</h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">Pembahasan tentang komponen, struktur kode, dan hal-hal yang perlu diperhatikan saat mengembangkan aplikasi.</p>
           {articles.length > 0 ? (
             <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {articles.map((article) => (
                 <article key={article.slug} className="flex min-w-0 flex-col border-2 border-border bg-card shadow-neo-cyan">
                   <div className="flex items-center justify-between gap-4 border-b-2 border-border bg-muted p-6">
                     <BookOpen className="size-8 text-neo-cyan" aria-hidden="true" />
-                    {article.isDemo && <span className="tag bg-neo-yellow text-black">Artikel contoh</span>}
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <div className="mb-5 flex flex-wrap gap-2">{article.tags.map((tag) => <span key={tag} className="tag">{tag}</span>)}</div>

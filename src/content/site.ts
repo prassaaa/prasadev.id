@@ -1,183 +1,101 @@
-// All persona, claims, testimonials, contacts, and external images are Stitch demo data.
-// External demo assets retain their original URLs; no ownership or license is implied.
 export const site = {
-  isDemo: true,
-  demoNotice: 'Data demo dari template Stitch — akan diganti dengan data pribadi.',
-  name: 'Raditya Pratama',
-  initials: 'RP',
-  role: 'PRINCIPAL FRONTEND ARCHITECT & CREATIVE DEV',
-  headline: 'Membangun Produk Digital yang Cepat, Skalabel, & Tak Terlupakan.',
-  summary: 'Saya memadukan rekayasa perangkat lunak modern (React, Next.js, WebGL) dengan estetika UI/UX berani. Mengubah sistem kompleks menjadi pengalaman web interaktif yang konvertif dan menyenangkan pengguna.',
-  location: 'Jakarta Selatan, DKI Jakarta, ID',
+  brand: 'prasadev',
+  publicationReady: false,
+  name: 'Prasetyo Ari Wibowo',
+  initials: 'PA',
+  role: 'Software Engineer',
+  headline: 'Membangun Aplikasi untuk Kebutuhan Kerja Sehari-hari.',
+  summary: 'Saya Prasetyo Ari Wibowo, software engineer yang mengembangkan website, sistem operasional, dan aplikasi mobile dengan Laravel, React, dan Flutter. Saya membantu menerjemahkan kebutuhan kerja Anda menjadi aplikasi yang saling terhubung.',
+  location: 'Kediri',
   timezone: 'WIB (GMT+7)',
-  availability: 'Available for Hire',
-  quote: 'Desain yang baik bukan sekadar kosmetik, melainkan bagaimana logika kode mengeksekusinya tanpa hambatan latensi.',
-  stats: [
-    { value: '9+', label: 'Tahun Pengalaman' },
-    { value: '48+', label: 'Proyek Sukses' },
-    { value: '99.8%', label: 'Skor Lighthouse' },
+  availability: 'Mari Berdiskusi',
+  capabilities: [
+    { title: 'Web', label: 'Laravel & React' },
+    { title: 'Mobile', label: 'Flutter' },
+    { title: 'Integrasi', label: 'REST API' },
   ],
-  stack: ['TypeScript', 'Next.js 15', 'Tailwind CSS', 'Three.js', 'Figma Tokens', 'GraphQL'],
-  portrait: {
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC6S3PPqM_eu8G3qc71OHYnvLt0jgBlCj8mSgmDV7OKmsWZTKetXfnpEba5pnJDXMh112mPAbuH9egZ_VpMaHmW2SVWukYSoJA6d4FsQbGxBnGrMIMcKdJi6vcshiV8Q-8-DoMZ5KaVgFkh7gb18TDlhjCAg6yTjBaLIu3D84BnczAnikj_Gke_SAGKSOL2lCQ81DbcdLkM0GbayH8edT2Mf9vEieEKd_-SvNKI0ldSy6UBb_OXIMdbzg',
-    alt: 'Raditya Pratama portrait',
-  },
-  terminal: { prompt: 'raditya@terminal:~$', status: 'ONLINE', location: 'LOCATION: JAKARTA (WIB)', stackLabel: 'Tech Stack Utama:' },
-  email: { href: 'mailto:raditya@pratama.dev', value: 'raditya@pratama.dev', label: 'Email — kontak contoh', icon: 'mail' },
-  whatsapp: { href: 'https://wa.me/6281234567890', value: '+62 812-3456-7890', label: 'WhatsApp — kontak contoh', icon: 'phone-call' },
-  socials: [
-    { name: 'GitHub', label: 'GitHub — akun contoh', href: 'https://github.com', icon: 'github' },
-    { name: 'LinkedIn', label: 'LinkedIn — akun contoh', href: 'https://linkedin.com', icon: 'linkedin' },
-    { name: 'Twitter', label: 'Twitter — akun contoh', href: 'https://twitter.com', icon: 'twitter' },
-    { name: 'Dribbble', label: 'Dribbble — akun contoh', href: 'https://dribbble.com', icon: 'dribbble' },
-  ],
+  stack: ['Laravel', 'React', 'Flutter', 'PHP', 'Dart', 'REST API'],
+  portrait: { src: '/assets/portrait.jpg', alt: 'Ilustrasi portrait sementara, bukan foto Prasetyo Ari Wibowo' },
+  portraitCaption: 'Ilustrasi sementara — bukan foto pribadi.',
+  terminal: { prompt: 'prasadev@terminal:~$', status: 'WEB + MOBILE', location: 'BERBASIS DI KEDIRI', stackLabel: 'Teknologi yang Saya Gunakan:' },
+  email: { href: 'mailto:pras.ari69@gmail.com', value: 'pras.ari69@gmail.com', label: 'Email', icon: 'mail' },
+  whatsapp: { href: 'https://wa.me/6289696673806', value: '+62 896-9667-3806', label: 'WhatsApp', icon: 'phone-call' },
+  socials: [{ name: 'LinkedIn', label: 'LinkedIn Prasetyo Ari Wibowo', href: 'https://www.linkedin.com/in/prastyarw/', icon: 'linkedin' }],
   ticker: [
-    { text: 'TERBUKA UNTUK PROJECT ARCHITECTURE & DESIGN SYSTEM Q3/Q4', icon: 'sparkles' },
-    { text: 'BERBASIS DI JAKARTA, INDONESIA', icon: 'map-pin' },
-    { text: '100% PRODUCTION READY & ACCESSIBLE', icon: 'zap' },
-    { text: '9+ TAHUN MEMBANGUN SKALABILITAS DIGITAL', icon: 'award' },
+    { text: 'LARAVEL · REACT · FLUTTER', icon: 'sparkles' },
+    { text: 'BERBASIS DI KEDIRI', icon: 'map-pin' },
+    { text: 'WEBSITE · SISTEM OPERASIONAL · APLIKASI MOBILE', icon: 'zap' },
+    { text: 'PRASETYO ARI WIBOWO — SOFTWARE ENGINEER', icon: 'award' },
   ],
-  about: { eyebrow: 'FILOSOFI & PENDEKATAN', title: 'Bukan Hanya Menulis Kode, Saya Membangun Aset Bisnis Digital.' },
-  services: { eyebrow: 'KEAHLIAN & SOLUSI', title: 'Layanan Spesialisasi untuk Brand & Korporasi Skala Tinggi.', cta: 'Diskusikan Kebutuhan Spesifik' },
-  portfolio: { eyebrow: 'KARYA PILIHAN', title: 'Showcase Proyek Berdampak Nyata.' },
-  experience: { eyebrow: 'REKAM JEJAK PROFESIONAL', title: 'Perjalanan Memimpin Inovasi Frontend.' },
-  testimonials: { eyebrow: 'REPUTASI & KEPERCAYAAN', title: 'Apa Kata Para Pemimpin Produk & Teknologi?' },
-  faq: { eyebrow: 'PERTANYAAN UMUM', title: 'Kerap Ditanyakan Sebelum Memulai.' },
-  contact: {
-    eyebrow: 'HUBUNGI SAYA',
-    title: 'Mari Bangun Sesuatu yang Spektakuler Bersama.',
-    description: 'Punya ide produk baru, kebutuhan audit performa, atau ingin memperkuat tim frontend Anda? Kirim pesan atau hubungi langsung via WhatsApp.',
-    locationLabel: 'LOKASI STUDI & RESIDENSI',
-    panelTitle: 'Mari Diskusikan Proyek Anda',
-    panelDescription: 'Gunakan WhatsApp atau email untuk membahas kebutuhan proyek. Kedua kanal di bawah adalah kontak contoh dari template Stitch.',
-    coordinates: 'KOORDINAT: -6.2088, 106.8456',
-    mapLabel: 'STUDIO RADITYA (JAKARTA)',
-    map: {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAwXKCCIfkJfyuxs-8nw8xaH9JmDxTjCMH5ZEBVgH8tQmhcahpkcmPlidwuALnCHlFFDGfDAiSWrop5-SNZSOZTPHBq53KJWO_kGXKkoO9nu0agQJVewvYoSWhdXu8ZVREE3EEJAxPWxDozJpR_EmaubLKFy9VwXiSeBnRPo83-r_q-HGO46xUpiUlhCv1GwFF-Q-77VUJVEbbi8cIjnbhjxYoDaQ0MVpyBM30oPat43QeAGC_pn8pFlg',
-      alt: 'Jakarta City Map view',
-    },
+  about: {
+    eyebrow: 'PROFIL & PENDEKATAN', title: 'Berangkat dari Kebutuhan Orang yang Menggunakan Aplikasi.',
+    description: 'Saya lulusan Sistem Informasi Universitas Nusantara PGRI Kediri. Pengalaman saya mencakup pengembangan aplikasi di sektor kesehatan, manufaktur, pemerintahan, layanan sosial, dan usaha desa. Saat ini saya bekerja sebagai Software Developer di Rumah Sakit Bhayangkara Kediri.',
   },
-  articleBanner: { title: 'Catatan tentang Frontend & Desain', description: 'Artikel demo tentang konten, komponen, dan state pada portofolio React.', cta: 'Baca Artikel' },
+  services: { eyebrow: 'KEAHLIAN & LAYANAN', title: 'Dari Website hingga Sistem Kerja yang Terhubung.', cta: 'Diskusikan Kebutuhan Anda' },
+  portfolio: { eyebrow: 'PROYEK PILIHAN', title: 'Aplikasi untuk Beragam Kebutuhan Operasional.' },
+  experience: { eyebrow: 'PENGALAMAN KERJA', title: 'Membangun Aplikasi di Berbagai Sektor.' },
+  education: { eyebrow: 'PENDIDIKAN & KONTRIBUSI', title: 'Belajar, Berbagi, dan Berorganisasi.' },
+  faq: { eyebrow: 'PERTANYAAN UMUM', title: 'Sebelum Memulai Diskusi.' },
+  contact: {
+    eyebrow: 'HUBUNGI SAYA', title: 'Mari Bahas Kebutuhan Anda Terlebih Dahulu.',
+    description: 'Anda sedang merencanakan aplikasi, ingin mengembangkan sistem yang sudah ada, atau mencari software engineer untuk tim? Ceritakan kebutuhan Anda melalui WhatsApp, email, atau LinkedIn.',
+    locationLabel: 'BERBASIS DI', panelTitle: 'Mulai dari Diskusi',
+    panelDescription: 'Sampaikan tujuan aplikasi, alur kerja yang ingin didukung, dan kondisi sistem saat ini. Kita dapat membahas ruang lingkup dan langkah berikutnya sebelum menentukan waktu serta biaya pengerjaan.',
+  },
   footer: {
-    description: 'Principal Frontend Architect & Creative Technologist. Didedikasikan untuk membangun produk digital berstandar global dengan kecepatan ekstrem dan integritas arsitektural tinggi.',
-    navigationTitle: 'Navigasi Halaman',
+    description: 'prasadev adalah portofolio Prasetyo Ari Wibowo, Software Engineer di Kediri. Mengembangkan website, sistem operasional, dan aplikasi mobile menggunakan Laravel, React, dan Flutter.',
+    navigationTitle: 'Jelajahi Portofolio',
     navigation: [
-      { label: 'Beranda Utama', href: '/#hero' },
-      { label: 'Profil & Filosofi', href: '/#about' },
-      { label: 'Layanan Unggulan', href: '/#services' },
-      { label: 'Portofolio Karya', href: '/#portfolio' },
-      { label: 'Riwayat Pengalaman', href: '/#experience' },
+      { label: 'Beranda', href: '/#hero' }, { label: 'Profil', href: '/#about' },
+      { label: 'Layanan', href: '/#services' }, { label: 'Proyek', href: '/#portfolio' },
+      { label: 'Pengalaman', href: '/#experience' }, { label: 'Pendidikan', href: '/#education' },
     ],
-    technologyTitle: 'Teknologi Inti',
-    technologies: ['Next.js 14/15 App Router', 'TypeScript Architecture', 'Tailwind CSS & Styling', 'Three.js & Creative WebGL', 'Core Web Vitals Tuning'],
-    contactTitle: 'Akses Langsung',
-    contactDescription: 'Kirim penawaran kerja sama langsung ke email atau pesan instan WhatsApp:',
-    copyright: '© 2025 Raditya Pratama. Hak cipta dilindungi undang-undang.',
-    status: '100% PRODUCTION READY',
+    technologyTitle: 'Teknologi', technologies: ['Laravel & PHP', 'React & JavaScript', 'Flutter & Dart', 'MySQL & PostgreSQL', 'REST API'],
+    contactTitle: 'Mari Berdiskusi', contactDescription: 'Hubungi saya untuk membahas kebutuhan aplikasi atau peluang kerja.',
+    copyright: '© 2026 prasadev — Prasetyo Ari Wibowo.', status: 'KEDIRI · WEB & MOBILE',
   },
 } as const
 
 export const principles = [
-  {
-    number: '01', title: 'Performa Ekstrem',
-    description: 'Optimasi bundel JavaScript, asset streaming cerdas, dan Core Web Vitals hijau. Setiap milidetik yang dipangkas meningkatkan retensi pengguna Anda.',
-    detail: 'Core Web Vitals 100/100', icon: 'gauge', accent: 'yellow',
-  },
-  {
-    number: '02', title: 'Design System Kokoh',
-    description: 'Jembatan sempurna antara Figma dan kode produksi. Memastikan konsistensi komponen, token warna, tipografi, dan dokumentasi Storybook yang mudah dipahami tim.',
-    detail: 'Tokenized & Accessible (WCAG AA)', icon: 'component', accent: 'pink',
-  },
-  {
-    number: '03', title: 'Arsitektur Modular',
-    description: 'Struktur micro-frontend dan monorepo teruji untuk aplikasi skala jutaan pengguna tanpa kekacauan teknis (*technical debt*) yang menyulitkan ekspansi.',
-    detail: 'Clean Architecture & CI/CD', icon: 'git-fork', accent: 'lime',
-  },
+  { number: '01', title: 'Kebutuhan Operasional', description: 'Saya memulai dari alur kerja pengguna: data yang dicatat, transaksi yang diproses, dan laporan yang dibutuhkan. Kebutuhan tersebut menjadi dasar fitur aplikasi.', detail: 'Alur kerja sebelum fitur', icon: 'gauge', accent: 'yellow' },
+  { number: '02', title: 'Tanggung Jawab Modular', description: 'Saya memisahkan fungsi aplikasi ke dalam modul dengan tanggung jawab yang jelas, agar perubahan pada satu bagian tidak mencampur kebutuhan bagian lain.', detail: 'Modul dengan fungsi yang jelas', icon: 'component', accent: 'pink' },
+  { number: '03', title: 'Integrasi Web & Mobile', description: 'Saya menghubungkan aplikasi web dan mobile melalui API agar proses dan data dapat digunakan dari perangkat yang sesuai dengan kebutuhan pengguna.', detail: 'Laravel API & Flutter', icon: 'git-fork', accent: 'lime' },
 ] as const
 
 export const services = [
-  {
-    title: 'Arsitektur Web & Frontend', icon: 'code-2', accent: 'yellow',
-    description: 'Pembangunan web aplikasi modern menggunakan Next.js, React Server Components, TypeScript, dan state-management efisien.',
-    features: ['Next.js 14/15 App Router', 'Full TypeScript Safety', 'Server-Side Rendering (SSR)'], estimate: 'EST. 3-6 MINGGU',
-  },
-  {
-    title: 'Enterprise Design Systems', icon: 'palette', accent: 'pink',
-    description: 'Standardisasi komponen antarmuka dari token desain di Figma hingga paket NPM siap konsumsi oleh developer.',
-    features: ['Tailwind CSS & Radix UI', 'Storybook Documentation', 'Automated Visual Regression'], estimate: 'EST. 4-8 MINGGU',
-  },
-  {
-    title: 'Audit Performa & Core Web Vitals', icon: 'activity', accent: 'cyan',
-    description: 'Diagnostik mendalam kode website Anda untuk melipatgandakan kecepatan muat, efisiensi render, dan ranking SEO Google.',
-    features: ['Profiling Memory Leak', 'Reduksi TBT & LCP < 1.2s', 'Laporan Audit Rekomendatif'], estimate: 'EST. 1-2 MINGGU',
-  },
-  {
-    title: 'Creative Dev & WebGL 3D', icon: 'sparkles', accent: 'lime',
-    description: 'Menghidupkan kampanye brand melalui mikro-interaksi imersif, efek shader kustom, visual kanvas 3D, dan animasi responsif.',
-    features: ['Three.js / React Three Fiber', 'GSAP ScrollTrigger Effects', '60fps Smooth Animation'], estimate: 'EST. 3-5 MINGGU',
-  },
+  { title: 'Website & Aplikasi Web', icon: 'code-2', accent: 'yellow', description: 'Pengembangan website profil dan aplikasi web untuk menyajikan informasi maupun menjalankan layanan Anda.', features: ['Laravel & React', 'Antarmuka responsif', 'Pengelolaan konten'] },
+  { title: 'Sistem Operasional', icon: 'palette', accent: 'pink', description: 'Aplikasi untuk mendukung pencatatan dan proses kerja, dari persediaan barang hingga transaksi dan pelaporan.', features: ['Inventaris & kasir', 'Administrasi & transaksi', 'Dashboard & laporan'] },
+  { title: 'Aplikasi Mobile Flutter', icon: 'activity', accent: 'cyan', description: 'Pengembangan aplikasi mobile Flutter yang terhubung ke backend untuk menyediakan akses layanan melalui ponsel.', features: ['Flutter & Dart', 'Integrasi backend', 'Aplikasi Android'] },
+  { title: 'API & Integrasi', icon: 'sparkles', accent: 'lime', description: 'Pengembangan REST API dan integrasi layanan untuk menghubungkan fungsi aplikasi yang Anda gunakan.', features: ['REST API Laravel', 'Autentikasi & validasi data', 'Integrasi payment gateway'] },
 ] as const
 
 export const experience = [
-  {
-    period: '2022 — SEKARANG', location: 'JAKARTA & REMOTE', title: 'Principal Frontend Architect', company: 'FinTech Global Unicorn', accent: 'yellow',
-    description: 'Memimpin standar arsitektur frontend untuk 42+ insinyur perangkat lunak lintas 5 negara. Mengurangi waktu muat rata-rata aplikasi portal utama sebesar 44% dan mengimplementasikan pipeline testing end-to-end terotomasi tanpa downtime.',
-    tags: ['Architecture Strategy', 'Micro-Frontend', 'Team Mentorship'],
-  },
-  {
-    period: '2019 — 2022', location: 'SINGAPURA & JAKARTA', title: 'Lead Design Technologist & UI Engineer', company: 'Digital Experience Lab', accent: 'pink',
-    description: 'Membangun jembatan langsung antara divisi UX Research dan Engineering. Menginisiasi pembuatan library komponen internal yang menghemat lebih dari 1.200 jam kerja pengembang per kuartal.',
-    tags: ['Design Tokens', 'React Native', 'Web Accessibility'],
-  },
-  {
-    period: '2016 — 2019', location: 'BANDUNG & JAKARTA', title: 'Senior Creative Developer', company: 'Omnichannel Agency', accent: 'cyan',
-    description: 'Merancang dan meluncurkan lebih dari 30 website interaktif untuk brand FMCG, otomotif, dan perbankan nasional yang memenangkan berbagai penghargaan desain web regional.',
-    tags: ['Interactive Web', 'GSAP Animation', 'SVG Manipulation'],
-  },
+  { period: 'Dec 2025 - Present', location: 'Kediri', title: 'Software Developer', company: 'Rumah Sakit Bhayangkara', accent: 'yellow', description: 'Mengembangkan SIMRS berbasis web untuk data pasien, rekam medis, dan administrasi. Mengerjakan input data, validasi stok, kontrol transaksi, serta modul sesuai kebutuhan divisi. Mengembangkan aplikasi Android yang dipublikasikan di Google Play Store dan mengintegrasikannya dengan backend API.', tags: ['SIMRS', 'Aplikasi Android', 'Integrasi API'] },
+  { period: 'Sep 2025 - Apr 2026', location: 'Cikarang Selatan', title: 'Website Developer', company: 'PT. Trimitra Indoplast Mandiri', accent: 'pink', description: 'Mengimplementasikan aplikasi full-stack Laravel–React untuk kebutuhan operasional manufaktur. Mengembangkan dashboard analitik dan pelaporan, input data, validasi stok, serta kontrol transaksi dengan pembagian sistem secara modular.', tags: ['Laravel', 'React', 'Sistem Operasional'] },
+  { period: 'Oct 2025 - Dec 2025', location: 'Kabupaten Tangerang', title: 'FullStack Developer', company: 'Dinas Koperasi dan Usaha Mikro', accent: 'cyan', description: 'Mengembangkan sistem Koperasi Merah Putih menggunakan Laravel, mencakup manajemen anggota, transaksi simpan pinjam, dan laporan keuangan. Membangun REST API serta aplikasi Flutter untuk akses layanan anggota, termasuk autentikasi dan validasi data.', tags: ['Laravel', 'Flutter', 'REST API'] },
+  { period: 'May 2025 - Aug 2025', location: 'Bandung', title: 'Website Developer', company: 'Yayasan Wahdah Inisiatif Kebaikan', accent: 'yellow', description: 'Membangun sistem pemesanan dan penjadwalan ambulans beserta API dan antarmuka pengguna serta admin. Mengembangkan sistem kampanye donasi dan mengintegrasikan payment gateway untuk donasi online.', tags: ['Pemesanan Ambulans', 'Donasi', 'Payment Gateway'] },
+  { period: 'Apr 2025 - Jul 2025', location: 'Batam', title: 'Website Developer', company: 'PT. ASM Tunas Muda', accent: 'pink', description: 'Mengembangkan website profil perusahaan, aplikasi chatting real-time, sistem inventaris, dan kasir berbasis web. Mengerjakan fungsi pencatatan transaksi, laporan, riwayat percakapan, serta sinkronisasi stok antara kasir dan inventaris.', tags: ['Website Profil', 'Chat Real-time', 'Inventaris & Kasir'] },
+  { period: 'Feb 2025 - Apr 2025', location: 'Kabupaten Kediri', title: 'Website Developer', company: 'Dinas Pariwisata dan Kebudayaan', accent: 'cyan', description: 'Mengembangkan dan memelihara website resmi untuk informasi destinasi wisata dan kegiatan kebudayaan. Mengerjakan kalender event, galeri multimedia, reservasi tur, dan formulir layanan publik bersama tim desain dan konten.', tags: ['Website Pemerintahan', 'Informasi Wisata', 'Layanan Publik'] },
+  { period: 'Oct 2024 - Dec 2024', location: 'Wonorejo, Kabupaten Kediri', title: 'Website Developer', company: 'Badan Usaha Milik Desa Wonorejo', accent: 'yellow', description: 'Membangun website BUMDes dengan berita desa, profil usaha, laporan kegiatan, dan kontak layanan. Mengembangkan pengelolaan produk UMKM serta pemesanan sederhana bersama pengurus BUMDes dan perangkat desa.', tags: ['BUMDes', 'Produk UMKM', 'Pemesanan'] },
 ] as const
 
-export const testimonials = [
-  {
-    name: 'Budi Santoso', role: 'Chief Technology Officer, FinFlow Asia', rating: 5, accent: 'cyan',
-    quote: 'Raditya berhasil menyelamatkan peluncuran fintech kami. Aplikasi yang sebelumnya lemot berhasil ia rekonstruksi menjadi sangat mulus dalam hitungan minggu. Kode bersih, terstruktur, dan mudah dirawat.',
-    avatar: {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCKYvBDtz9tcJLvS_iC8IQiYudQwLU2gsF9jy28IfTpqJMG1e3QUvPT6BUFiTK_aBaiDIPoCJiYyAOHqBxuL2Z4kQFRln60WO12G68x2_Gufpu4gu3h7oGUkp9uc0aasbjQ6x79Cjjyh3OZOZgMjphkEJT1UIwNRWj-GpTXTIE4QantjCx2fzceHw_0M2A0uFqqy_PBGw8QKEJfAbgOLCuQXlwA0LMB_RJqpJ7HaT78zGJ00lGk_DFUuQ',
-      alt: 'Budi Santoso',
-    },
-  },
-  {
-    name: 'Sarah Widjaja', role: 'VP of Product Design, Nusantara Corp', rating: 5, accent: 'pink',
-    quote: 'Jarang sekali menemukan engineer yang memiliki kepekaan rasa desain sekuat Raditya. Kolaborasi dengan tim desainer kami berjalan tanpa hambatan sama sekali. Hasil akhirnya melampaui ekspektasi.',
-    avatar: {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDg1iXqH5Q6YVyRwj1oEhFPrYvviX2bI-WElY1aA5vY15WIICCHaeDcGEvEfKTGvnI5EWnGaaG5p4xiZ0u7hU2HibbYwWeiokjjuMtdHj9QV5Ilgl-4IF08ecEvH_7Xj6Pn8H7-fT5t7BYdY2173Hq8fjaI7Q_nekQOHbPOVgyFSH9CXfUTVQ1OscDkdpqe-wgBNMH-nKvVLsPWDfIhdbzl2eDJAA98UVItRJDcrocYIMoAeyUqyBKg4w',
-      alt: 'Sarah Widjaja',
-    },
-  },
-  {
-    name: 'Hendra Wijaya', role: 'Managing Director, KargoLogistix', rating: 5, accent: 'lime',
-    quote: 'Audit performa dan rekomendasi yang diberikan sangat praktis dan presisi. Skor SEO dan Web Vitals kami melesat ke angka 99, langsung berdampak pada konversi penjualan berulang.',
-    avatar: {
-      src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCWwkW_PUZvwxMD3q9ybTVJPoCpj2YlLd9TMCcycSR7mZ2js0UnR2onT4ULV0Vy365mAhLrOflphYaTDVG0JxBLHBlP6OHeHu1lWOuwuwxc9CRnshAT88LScqGwBPJGShuwe0Hn-3-8KyixZNUaPUmSdUzrsn61Uqp5Te4eNJCjWTUbCC0y2RqkjWGxBJaSeHqXKjsH7aTxcQHRULA-Mbb_4WzZtk7ZJJGKKmu0KbkNoLHLMCvu_e6V_A',
-      alt: 'Hendra Wijaya',
-    },
-  },
-] as const
+export const education = {
+  institution: 'Universitas Nusantara PGRI Kediri', degree: 'Sarjana Sistem Informasi', period: '2021–2025', gpa: 'IPK 3,52 / 4,00',
+  contributions: [
+    { title: 'Asisten Dosen Pemrograman Web', description: 'Membantu penyampaian materi, membimbing praktikum, dan mengevaluasi tugas mahasiswa.' },
+    { title: 'Pemateri Workshop Website', description: 'Berbagi materi pembuatan website, dasar WordPress, dan penggunaan framework modern untuk mahasiswa serta pelajar umum.' },
+    { title: 'Aplikasi Flutter Bersertifikat HAKI', description: 'Mengembangkan aplikasi mobile berbasis Flutter yang memperoleh sertifikat Hak Kekayaan Intelektual.' },
+  ],
+  organizations: [
+    { name: 'BEM Universitas Nusantara PGRI Kediri', role: 'Direktur Jenderal Hubungan Organisasi, Kementrian Luar Negeri', period: 'May 2023 - Jun 2024' },
+    { name: 'Ikatan Mahasiswa Sistem Informasi Indonesia, Korwil 7', role: 'Wakil Ketua Hubungan Eksternal', period: 'Mar 2022 - Jul 2025' },
+    { name: 'HIROSI — Universitas Nusantara PGRI Kediri', role: 'Kepala Divisi Hubungan Eksternal', period: 'Sep 2021 - Aug 2024' },
+  ],
+} as const
 
 export const faqs = [
-  {
-    question: 'Model kerja sama apa saja yang Anda tawarkan?',
-    answer: 'Saya menyediakan tiga model kerja sama fleksibel: (1) Project-based Fixed Scope untuk pembangunan aplikasi/website baru dari awal, (2) Monthly Dedicated Architecture Advisory untuk mentoring tim engineering & review kode rutin, dan (3) Sprint-based Acceleration untuk optimasi performa darurat dan migrasi stack teknologi.',
-  },
-  {
-    question: 'Apakah Anda juga mengerjakan sisi backend & API?',
-    answer: 'Fokus utama keunggulan saya adalah pada Frontend Architecture & UI/UX Engineering. Namun, untuk integrasi menyeluruh, saya terbiasa membangun API route Node.js/Serverless, integrasi GraphQL, database Postgres via Prisma/Supabase, serta arsitektur backend-for-frontend (BFF).',
-  },
-  {
-    question: 'Berapa estimasi waktu pengerjaan untuk satu proyek web aplikasi?',
-    answer: 'Bergantung pada kompleksitas. Landing page interaktif berkisar 1-2 minggu. Pembangunan sistem web aplikasi MVP SaaS biasanya memakan waktu 4-8 minggu termasuk arsitektur sistem, integrasi API, dan testing otomatis.',
-  },
-  {
-    question: 'Bagaimana tahapan alur kerja sama proyek dimulai?',
-    answer: 'Alur dimulai dari: (1) Sesi Discovery & Briefing via Google Meet/WhatsApp, (2) Pengiriman Proposal Teknis & Milestone, (3) Kickoff & Prototyping interaktif, (4) Development iteratif dengan demo mingguan, dan (5) Deployment, serah terima dokumentasi lengkap, serta garansi stabilitas pasca-peluncuran.',
-  },
+  { question: 'Kebutuhan aplikasi seperti apa yang bisa kita bahas?', answer: 'Anda dapat menghubungi saya untuk website profil, aplikasi web, sistem operasional, aplikasi mobile Flutter, atau integrasi API. Ceritakan pengguna, alur kerja, dan fitur yang Anda perlukan agar kita dapat menentukan ruang lingkupnya.' },
+  { question: 'Bagaimana jika saya sudah memiliki aplikasi?', answer: 'Kita mulai dengan meninjau kondisi aplikasi, teknologi yang digunakan, kendala pengguna, dan perubahan yang Anda inginkan. Dari penilaian awal tersebut, kita dapat membahas bagian yang perlu diperbaiki atau dikembangkan.' },
+  { question: 'Bagaimana menentukan waktu dan biaya pengerjaan?', answer: 'Waktu dan biaya dibahas setelah kebutuhan serta ruang lingkup cukup jelas, termasuk fitur, integrasi, kondisi sistem yang ada, dan prioritas Anda. Saya tidak menetapkan estimasi yang sama untuk semua aplikasi.' },
+  { question: 'Informasi apa yang dapat saya kirim sebagai recruiter?', answer: 'Silakan kirim deskripsi posisi, tanggung jawab, teknologi yang digunakan, lokasi atau pola kerja, dan tahapan rekrutmen melalui email atau LinkedIn. Saya lulusan Sistem Informasi dan saat ini bekerja sebagai Software Developer di Rumah Sakit Bhayangkara Kediri.' },
 ] as const

@@ -9,7 +9,7 @@ import { site } from '@/content/site'
 export function ArticleLayout({ article, children }: { article: Article; children: ReactNode }) {
   return (
     <>
-      <PageMeta title={`${article.title} | ${site.name}`} description={`${article.isDemo ? 'Artikel contoh — bukan publikasi pribadi. ' : ''}${article.description}`} />
+      <PageMeta title={`${article.title} | ${site.brand}`} description={article.description} />
       <article className="section-shell">
         <div className="site-container">
           <nav aria-label="Breadcrumb" className="mb-10 font-mono text-xs text-muted-foreground">
@@ -22,7 +22,6 @@ export function ArticleLayout({ article, children }: { article: Article; childre
             </ol>
           </nav>
           <header className="max-w-4xl">
-            {article.isDemo && <p className="mb-6 inline-block border-2 border-border bg-neo-yellow px-3 py-2 font-mono text-xs font-bold text-black">Artikel contoh — bukan publikasi pribadi</p>}
             <h1 className="break-words font-display text-4xl leading-tight font-extrabold sm:text-5xl lg:text-6xl">{article.title}</h1>
             <p className="mt-6 max-w-[72ch] text-lg leading-relaxed text-muted-foreground">{article.description}</p>
             <div className="mt-6 flex flex-wrap gap-2">{article.tags.map((tag) => <span key={tag} className="tag">{tag}</span>)}</div>
@@ -34,7 +33,7 @@ export function ArticleLayout({ article, children }: { article: Article; childre
             <Button asChild variant="outline"><Link to="/artikel"><ArrowLeft aria-hidden="true" /> Kembali ke artikel</Link></Button>
             <div className="border-2 border-border bg-card p-6 shadow-neo-cyan sm:p-8">
               <h2 className="font-display text-2xl font-bold">Mari diskusikan proyek Anda.</h2>
-              <p className="mt-3 mb-6 leading-relaxed text-muted-foreground">Temukan kanal kontak di halaman utama{site.isDemo ? '. Tautan kontak yang tersedia masih berupa contoh' : ''}.</p>
+              <p className="mt-3 mb-6 leading-relaxed text-muted-foreground">Ceritakan kebutuhan aplikasi atau peluang kerja yang ingin Anda diskusikan.</p>
               <Button asChild className="h-auto whitespace-normal py-3"><Link to="/#contact">Lihat kanal kontak <ArrowUpRight aria-hidden="true" /></Link></Button>
             </div>
           </footer>

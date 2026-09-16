@@ -5,7 +5,7 @@ import { Menu, Moon, Sun, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { site } from '@/content/site'
 
-const navigation = [['Profil', '/#about'], ['Layanan', '/#services'], ['Karya', '/#portfolio'], ['Pengalaman', '/#experience'], ['Testimoni', '/#testimonials'], ['FAQ', '/#faq'], ['Artikel', '/artikel']]
+const navigation = [['Tentang', '/#about'], ['Keahlian', '/#services'], ['Proyek', '/#portfolio'], ['Pengalaman', '/#experience'], ['Pendidikan', '/#education'], ['Kontak', '/#contact']]
 
 export function SiteHeader({ theme, onToggleTheme }: { theme: 'dark' | 'light'; onToggleTheme: () => void }) {
   const [open, setOpen] = useState(false)
@@ -18,14 +18,14 @@ export function SiteHeader({ theme, onToggleTheme }: { theme: 'dark' | 'light'; 
     <div className="relative overflow-hidden border-b-2 bg-neo-yellow py-2.5 pr-12 text-black"><div className="ticker-track flex w-max text-sm font-bold" data-ticker style={{ animationPlayState: paused || reducedMotion ? 'paused' : 'running' }}>{[false, true].map((duplicate) => <div key={String(duplicate)} aria-hidden={duplicate || undefined} className="flex shrink-0 gap-8 pr-8">{site.ticker.map((item) => <span key={item.text}>{item.text}<span aria-hidden="true" className="ml-8">✦</span></span>)}</div>)}</div><button className="absolute inset-y-0 right-0 border-l-2 border-black bg-neo-yellow px-3 font-mono font-bold" aria-label={paused ? 'Lanjutkan teks berjalan' : 'Jeda teks berjalan'} aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? '▶' : 'Ⅱ'}</button></div>
     <header className="sticky top-0 z-50 border-b-2 bg-background" onKeyDown={(event) => { if (event.key === 'Escape' && open) { setOpen(false); menuButton.current?.focus() } }}>
       <div className="site-container flex min-h-20 items-center justify-between gap-3 py-3">
-        <Link to="/#hero" onClick={() => setOpen(false)} className="flex min-w-0 items-center gap-3" aria-label={`${site.name} — beranda`}>
-          <span className="flex size-11 shrink-0 items-center justify-center border-2 bg-neo-cyan font-display text-xl font-extrabold text-black shadow-neo">{site.initials}.</span>
-          <span className="min-w-0 leading-tight"><span className="block font-display text-sm font-extrabold uppercase sm:text-lg">{site.name}</span><span className="text-[10px] font-mono font-bold sm:text-xs">● {site.availability}</span></span>
+        <Link to="/#hero" onClick={() => setOpen(false)} className="flex min-w-0 items-center gap-3" aria-label={`${site.brand} — beranda`}>
+          <span className="flex size-11 shrink-0 items-center justify-center border-2 bg-neo-cyan font-mono text-xl font-extrabold text-black shadow-neo" aria-hidden="true">&gt;_</span>
+          <span className="min-w-0 leading-tight"><span className="block font-display text-lg font-extrabold sm:text-xl">{site.brand}</span><span className="text-[10px] font-mono font-bold sm:text-xs">Software Engineer</span></span>
         </Link>
         <nav aria-label="Navigasi utama" className="hidden items-center gap-4 text-sm font-bold xl:flex">{navigation.map(([label, href]) => <Link className="hover:underline decoration-2 underline-offset-4" key={href} to={href}>{label}</Link>)}</nav>
         <div className="flex shrink-0 items-center gap-2">
           <Button variant="outline" size="icon" onClick={onToggleTheme} aria-label={theme === 'dark' ? 'Aktifkan tema terang' : 'Aktifkan tema gelap'}><ThemeIcon aria-hidden="true" /></Button>
-          <Button asChild className="hidden xl:inline-flex"><Link to="/#contact">Diskusi Proyek</Link></Button>
+          <Button asChild className="hidden xl:inline-flex"><Link to="/#contact">Diskusikan Kebutuhan</Link></Button>
           <Button ref={menuButton} size="icon" className="xl:hidden" aria-label={open ? 'Tutup menu' : 'Buka menu'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}</Button>
         </div>
       </div>

@@ -8,9 +8,7 @@ import { ProjectCard } from '@/features/projects/project-card'
 
 const filters: { value: 'all' | Project['category']; label: string }[] = [
   { value: 'all', label: 'Semua' },
-  { value: 'saas', label: 'SaaS & Fintech' },
-  { value: 'design-system', label: 'Design System' },
-  { value: 'creative', label: 'Creative & 3D' },
+  ...Array.from(new Map(projects.map((project) => [project.category, project.categoryLabel])), ([value, label]) => ({ value, label })),
 ]
 
 export function ProjectShowcase() {

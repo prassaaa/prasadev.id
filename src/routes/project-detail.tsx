@@ -24,8 +24,8 @@ export default function ProjectDetail({ loaderData }: Route.ComponentProps) {
   return (
     <>
       <PageMeta
-        title={`${project.title} | ${site.name}`}
-        description={`${site.isDemo ? 'Proyek demo dari template Stitch. ' : ''}${project.description}`}
+        title={`${project.title} | ${site.brand}`}
+        description={project.description}
       />
       <section className="section-shell">
         <div className="site-container">
@@ -40,33 +40,42 @@ export default function ProjectDetail({ loaderData }: Route.ComponentProps) {
           </nav>
           <div className="mb-6 flex flex-wrap gap-3">
             <span className="tag bg-neo-yellow text-black">{project.categoryLabel}</span>
-            <span className="tag">{project.status}{site.isDemo ? ' · demo' : ''}</span>
           </div>
           <h1 className="max-w-5xl break-words font-display text-4xl leading-tight font-extrabold sm:text-5xl lg:text-6xl">{project.title}</h1>
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-12">
             <div className="min-w-0 space-y-8 lg:col-span-8">
               <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">{project.description}</p>
-              <SiteImage {...project.image} className="aspect-video border-2 border-border shadow-neo" loading="eager" />
-              {site.isDemo && (
-                <p className="border-l-4 border-neo-yellow pl-4 text-sm leading-relaxed text-muted-foreground">
-                  Ringkasan, status, klien, dan teknologi ini berasal dari template Stitch. Halaman ini menampilkan proyek contoh, bukan dokumentasi pekerjaan pribadi yang terverifikasi.
-                </p>
-              )}
+              <figure className="space-y-3">
+                <SiteImage {...project.image} className="aspect-video border-2 border-border shadow-neo" loading="eager" />
+                <figcaption className="text-sm text-muted-foreground">Ilustrasi sementara; bukan tampilan proyek.</figcaption>
+              </figure>
+              <section aria-labelledby="project-context-heading" className="space-y-4">
+                <h2 id="project-context-heading" className="font-display text-2xl font-bold">Konteks pekerjaan</h2>
+                <p className="leading-relaxed text-muted-foreground">{project.context}</p>
+              </section>
+              <section aria-labelledby="project-contributions-heading" className="space-y-4">
+                <h2 id="project-contributions-heading" className="font-display text-2xl font-bold">Kontribusi saya</h2>
+                <ul className="list-disc space-y-3 pl-5 leading-relaxed text-muted-foreground">{project.contributions.map((contribution) => <li key={contribution}>{contribution}</li>)}</ul>
+              </section>
+              <section aria-labelledby="project-features-heading" className="space-y-4">
+                <h2 id="project-features-heading" className="font-display text-2xl font-bold">Cakupan fitur</h2>
+                <ul className="list-disc space-y-3 pl-5 leading-relaxed text-muted-foreground">{project.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+              </section>
             </div>
             <aside aria-label="Informasi proyek" className="min-w-0 border-2 border-border bg-card p-6 shadow-neo-cyan lg:col-span-4">
               <h2 className="mb-6 font-display text-2xl font-bold">Detail proyek</h2>
               <dl className="space-y-6">
                 <div>
-                  <dt className="mb-2 font-mono text-xs text-muted-foreground">Klien{site.isDemo ? ' contoh' : ''}</dt>
+                  <dt className="mb-2 font-mono text-xs text-muted-foreground">Organisasi</dt>
                   <dd className="break-words font-bold">{project.client}</dd>
                 </div>
                 <div>
-                  <dt className="mb-2 font-mono text-xs text-muted-foreground">Periode</dt>
+                  <dt className="mb-2 font-mono text-xs text-muted-foreground">Periode keterlibatan</dt>
                   <dd>{project.period}</dd>
                 </div>
                 <div>
                   <dt className="mb-3 font-mono text-xs text-muted-foreground">Teknologi</dt>
-                  <dd className="flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="tag">{tag}</span>)}</dd>
+                  <dd>{project.tags.length > 0 ? <div className="flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="tag">{tag}</span>)}</div> : <span className="text-sm text-muted-foreground">Stack spesifik tidak dicantumkan dalam CV.</span>}</dd>
                 </div>
               </dl>
               <div className="mt-8 border-t-2 border-border pt-6">

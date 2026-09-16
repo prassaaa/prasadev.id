@@ -1,3 +1,9 @@
+# Memisahkan Konten, Komponen, dan State pada Portofolio React
+
+Status: draf untuk ditinjau, belum diterbitkan.
+
+Menambah satu proyek seharusnya tidak membuat Anda mengedit beberapa halaman sekaligus. Pada portofolio React, pemisahan konten dan tampilan membantu menjaga daftar karya, halaman detail, dan tautannya tetap konsisten.
+
 ## Menentukan batas komponen
 
 Portofolio biasanya dimulai dari satu halaman: perkenalan, daftar karya, pengalaman, dan kontak. Ketika kontennya bertambah, perubahan kecil dapat menyentuh banyak bagian sekaligus. Memecah halaman menjadi komponen membantu jika batasnya mengikuti tanggung jawab yang jelas, bukan sekadar panjang berkas. Tujuannya bukan menghasilkan sebanyak mungkin komponen, melainkan membuat perubahan mudah dipahami.
@@ -10,12 +16,12 @@ Perhatikan juga alasan sebuah bagian berubah. Mengganti isi proyek berbeda denga
 
 Simpan informasi proyek sebagai data biasa: identitas, judul, ringkasan, kategori, dan teknologi. Komponen menerima data itu lalu menentukan tampilannya. Dengan demikian, daftar karya dan halaman detail dapat menggunakan sumber yang sama. Penggantian nama proyek tidak perlu dilakukan pada beberapa potongan JSX yang mudah terlewat.
 
-Contoh berikut sengaja ringkas. Data hanya memuat informasi yang diperlukan untuk sebuah daftar tautan, sedangkan komponen mengurus struktur HTML. Nama proyek di dalamnya merupakan contoh, bukan klaim pekerjaan pribadi.
+Contoh berikut sengaja ringkas. Data hanya memuat informasi yang diperlukan untuk sebuah daftar tautan, sedangkan komponen mengurus struktur HTML. Daftar ini hanya memperlihatkan struktur data untuk tautan proyek.
 
 ```tsx
 const projects = [
-  { slug: 'finflow', title: 'FinFlow' },
-  { slug: 'nusantara-ui', title: 'Nusantara UI' },
+  { slug: 'sistem-operasional-innapack', title: 'Sistem Operasional Innapack' },
+  { slug: 'bumdes-wonorejo', title: 'Website BUMDes Wonorejo' },
 ]
 
 function ProjectList() {
@@ -33,7 +39,7 @@ function ProjectList() {
 
 Gunakan identitas yang stabil dan unik sebagai `key`, bukan posisi dalam array. Ketika daftar difilter atau diurutkan ulang, identitas membantu React mencocokkan item yang sama. Slug cocok selama nilainya unik dan tidak berubah hanya karena urutan tampilan berubah. Jangan membuat nilai acak setiap kali komponen dirender.
 
-Tipe data juga membantu memperjelas kontrak, tetapi tidak menggantikan pemeriksaan isi. Tautan harus menuju halaman yang tersedia, deskripsi harus sesuai sumber, dan konten demo harus ditandai. Pemisahan data bukan alasan menambah kolom yang belum memiliki informasi nyata.
+Tipe data juga membantu memperjelas kontrak, tetapi tidak menggantikan pemeriksaan isi. Tautan harus menuju halaman yang tersedia, deskripsi harus sesuai sumber, dan konten yang belum disetujui tidak boleh diterbitkan. Pemisahan data bukan alasan menambah kolom yang belum memiliki informasi nyata.
 
 ## Menjaga state tetap lokal
 

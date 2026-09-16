@@ -19,7 +19,6 @@ export function Services() {
             <div className={`mb-4 flex size-14 items-center justify-center border-2 border-border text-black shadow-neo ${colors[service.accent]}`}><Icon className="size-7" aria-hidden="true" /></div>
             <h3 className="font-display text-xl font-bold">{service.title}</h3><p className="my-4 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
             <ul className="space-y-1.5 border-t-2 border-border/20 pt-3 font-mono text-xs font-bold text-muted-foreground">{service.features.map((feature) => <li className="flex items-start gap-1.5" key={feature}><Check className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />{feature}</li>)}</ul>
-            <div className="mt-auto pt-6"><span className="tag">{service.estimate}</span></div>
           </article>
         })}</div>
       </div>
