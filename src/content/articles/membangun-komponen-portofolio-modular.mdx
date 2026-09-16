@@ -1,0 +1,52 @@
+## Menentukan batas komponen
+
+Portofolio biasanya dimulai dari satu halaman: perkenalan, daftar karya, pengalaman, dan kontak. Ketika kontennya bertambah, perubahan kecil dapat menyentuh banyak bagian sekaligus. Memecah halaman menjadi komponen membantu jika batasnya mengikuti tanggung jawab yang jelas, bukan sekadar panjang berkas. Tujuannya bukan menghasilkan sebanyak mungkin komponen, melainkan membuat perubahan mudah dipahami.
+
+Mulailah dari bagian yang memiliki tujuan sendiri. Bagian perkenalan menjelaskan identitas, daftar karya membantu pengunjung memilih proyek, dan kontak menyediakan langkah berikutnya. Masing-masing dapat menjadi komponen bagian. Kartu proyek layak dipisahkan ketika bentuk yang sama juga muncul pada halaman detail sebagai rekomendasi karya lain. Sebaliknya, satu pembungkus judul yang hanya dipakai sekali belum tentu memerlukan berkas tersendiri.
+
+Perhatikan juga alasan sebuah bagian berubah. Mengganti isi proyek berbeda dengan mengubah navigasi situs. Jika keduanya selalu berada dalam satu komponen besar, pembaca kode perlu menyaring informasi yang tidak berkaitan. Batas yang baik membuat hubungan tersebut terlihat tanpa memaksa setiap elemen kecil memiliki abstraksi baru.
+
+## Memisahkan data dari tampilan
+
+Simpan informasi proyek sebagai data biasa: identitas, judul, ringkasan, kategori, dan teknologi. Komponen menerima data itu lalu menentukan tampilannya. Dengan demikian, daftar karya dan halaman detail dapat menggunakan sumber yang sama. Penggantian nama proyek tidak perlu dilakukan pada beberapa potongan JSX yang mudah terlewat.
+
+Contoh berikut sengaja ringkas. Data hanya memuat informasi yang diperlukan untuk sebuah daftar tautan, sedangkan komponen mengurus struktur HTML. Nama proyek di dalamnya merupakan contoh, bukan klaim pekerjaan pribadi.
+
+```tsx
+const projects = [
+  { slug: 'finflow', title: 'FinFlow' },
+  { slug: 'nusantara-ui', title: 'Nusantara UI' },
+]
+
+function ProjectList() {
+  return (
+    <ul>
+      {projects.map((project) => (
+        <li key={project.slug}>
+          <a href={`/proyek/${project.slug}`}>{project.title}</a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+Gunakan identitas yang stabil dan unik sebagai `key`, bukan posisi dalam array. Ketika daftar difilter atau diurutkan ulang, identitas membantu React mencocokkan item yang sama. Slug cocok selama nilainya unik dan tidak berubah hanya karena urutan tampilan berubah. Jangan membuat nilai acak setiap kali komponen dirender.
+
+Tipe data juga membantu memperjelas kontrak, tetapi tidak menggantikan pemeriksaan isi. Tautan harus menuju halaman yang tersedia, deskripsi harus sesuai sumber, dan konten demo harus ditandai. Pemisahan data bukan alasan menambah kolom yang belum memiliki informasi nyata.
+
+## Menjaga state tetap lokal
+
+Filter kategori cukup dimiliki oleh bagian daftar karya selama bagian lain tidak membutuhkannya. Simpan kategori terpilih sebagai state, lalu hitung proyek yang terlihat dari data dan kategori tersebut. Tidak perlu menyimpan salinan daftar hasil filter sebagai state kedua karena keduanya dapat berbeda ketika salah satunya diperbarui.
+
+Naikkan state ke induk bersama hanya saat beberapa komponen perlu membaca atau mengubah nilai yang sama. Tema situs, misalnya, mungkin digunakan oleh header dan kerangka halaman. Pilihan filter tidak otomatis memiliki jangkauan yang sama. Bedakan kebutuhan berbagi state dengan sekadar keinginan menaruh seluruh logika di satu tempat.
+
+Tentukan pula perilaku saat hasil kosong. Tampilkan penjelasan singkat dan cara kembali melihat semua karya. Untuk portofolio sederhana, perilaku yang jelas lebih berguna daripada menambahkan pencarian, penyimpanan preferensi, atau pengelolaan state global yang belum dibutuhkan.
+
+## Memeriksa aksesibilitas dan perubahan
+
+Setelah struktur komponen rapi, periksa halaman melalui interaksi nyata. Gunakan tautan untuk berpindah halaman dan tombol untuk mengubah filter. Pastikan fokus keyboard terlihat, urutan Tab masuk akal, serta status filter dapat dikenali tanpa mengandalkan warna saja. Coba judul panjang dan layar sempit agar tata letak tidak hanya cocok dengan satu contoh konten.
+
+Periksa juga gambar yang gagal dimuat, navigasi kembali, serta preferensi pengurangan gerakan. Informasi utama sebaiknya tetap tersedia tanpa menunggu animasi. Jika halaman menghasilkan HTML saat build, buka hasilnya tanpa JavaScript untuk memastikan judul, ringkasan, dan tautan karya tetap terbaca.
+
+Terakhir, lakukan satu perubahan konten kecil dan amati dampaknya. Apakah daftar dan detail tetap konsisten? Apakah tautan masih tepat? Gunakan jawaban tersebut untuk menilai batas komponen. Struktur yang mudah dirawat bukan struktur yang paling berlapis, melainkan struktur yang membuat perubahan wajar tetap jelas dan dapat diperiksa.
