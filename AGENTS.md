@@ -22,7 +22,7 @@ Snapshot saat dokumen dibuat; periksa ulang sumber berikut jika dependency berub
 | ESLint | `^10.10.0` | `10.10.0` | `10.10.0` |
 | `@vitejs/plugin-react` | `^6.1.1` | `6.1.1` | `6.1.1` |
 
-- ESM (`type: module`); `vite.config.ts` hanya mengaktifkan plugin React. Ini bukan Next.js; jangan menerapkan API Next.js/Server Components ke aplikasi ini.
+- ESM (`type: module`); `vite.config.ts` mengaktifkan plugin React dan Tailwind v4 serta alias `@` ke `src`. Alias TypeScript dicatat di `tsconfig.json` dan `tsconfig.app.json` tanpa `baseUrl`. Ini bukan Next.js; jangan menerapkan API Next.js/Server Components ke aplikasi ini.
 - `tsconfig.json` mereferensikan konfigurasi aplikasi dan tooling. `tsconfig.app.json` mencakup `src`, JSX `react-jsx`, resolusi `bundler`, target ES2023, `noEmit`, serta pemeriksaan unused/fallthrough. Jangan mengklaim mode `strict` aktif; tidak didefinisikan. `tsconfig.node.json` mencakup `vite.config.ts`.
 - `eslint.config.js` memakai rekomendasi JS, TypeScript, React Hooks, dan React Refresh untuk TS/TSX; `dist` diabaikan. Belum ada konfigurasi formatter tersendiri.
 - Lockfile pnpm berformat `9.0`; versi pnpm dan Node proyek tidak dipatok melalui `packageManager`/`engines`. `@types/node` bukan versi runtime. Lockfile mencatat kebutuhan Node Vite `^20.19.0 || >=22.12.0` dan ESLint `^20.19.0 || ^22.13.0 || >=24`; pilih runtime yang memenuhi keduanya, bukan mengganti stack.
@@ -32,11 +32,12 @@ Snapshot saat dokumen dibuat; periksa ulang sumber berikut jika dependency berub
 - `index.html` menyediakan `#root` dan memuat `src/main.tsx`.
 - `src/main.tsx` mengimpor `src/index.css`, lalu merender `App` dengan `createRoot` di dalam `StrictMode`.
 - `src/App.tsx` merender starter dan tautan dokumentasi/komunitas. State `count` lokal dimulai dari nol dan bertambah satu per klik melalui functional state update; tidak disimpan lintas reload.
-- `src/App.css` mengatur tampilan komponen; `src/index.css` mengatur token/global styles, light/dark berbasis preferensi sistem, dan layout root. Gunakan pola CSS biasa yang ada, termasuk nesting dan media query; belum ada Tailwind dalam dependency aplikasi.
+- `src/App.css` masih mengatur starter; `src/index.css` memuat Tailwind 4.3.3, styles shadcn, token tema, dan CSS starter. Untuk komponen baru gunakan Tailwind dengan token bersama. Tema shadcn netral adalah baseline setup, belum adaptasi desain Stitch; token starter dan tema shadcn perlu diselaraskan saat implementasi visual yang diminta.
 - `src/assets/` berisi aset yang diimpor; `public/` berisi SVG statis yang dirujuk lewat URL root. Pertahankan perbedaan keduanya ketika menambah aset.
 - Pada aplikasi aktif belum ada router, autentikasi/otorisasi, role/tenant, validasi bisnis, API, database, persistensi, job, atau integrasi backend. Jangan menciptakan lapisan tersebut hanya dari nama proyek atau isi template.
 - Template HTML terpisah menggunakan CDN Tailwind/Lucide, Google Fonts, gambar eksternal, dan tautan kontak. Form kontak hanya mensimulasikan sukses dengan timer lalu reset; newsletter menampilkan alert. Ini bukan bukti pengiriman pesan, penyimpanan, maupun langganan sungguhan. Jangan memindahkan simulasi menjadi klaim sukses produksi.
-- Gunakan komponen fungsi, state dekat pemiliknya, impor relatif, dan pola kode yang sudah ada. Tidak ada kebutuhan terbukti untuk global store, service layer, alias, atau struktur feature kompleks. Starter boleh diganti dalam tugas implementasi yang disetujui; bukan invariant bisnis.
+- Gunakan komponen fungsi dan state dekat pemiliknya; alias `@/` tersedia untuk impor dari `src`. shadcn 4.21.0 dikonfigurasi melalui `components.json` dengan basis Radix, preset `radix-nova`, dan Lucide. Source Button berada di `src/components/ui/button.tsx`; gunakan komponen selektif, bukan seluruh katalog. `cn` menangani komposisi class; `src/lib/utils.ts` adalah entry utility hasil CLI. Pertahankan ekspor file komponen yang kompatibel dengan React Refresh. Belum ada kebutuhan global store atau service layer.
+- Keputusan pengguna: halaman utama + detail proyek + artikel MDX, React Router Framework Mode dengan prerender, Tailwind, Motion, kontak WhatsApp/email, dan konten melalui kode/Git. Routing/prerender, MDX, dan Motion belum diimplementasikan. Lenis 1.3.26 sudah terpasang tetapi belum diaktifkan. shadcn selektif menjadi fondasi UI; section/kartu portofolio tetap custom sesuai Stitch.
 
 ### Acuan portofolio dan modularitas yang diminta
 
@@ -68,7 +69,7 @@ Jalankan dari root proyek. Gunakan pnpm sesuai lockfile; jangan membuat lockfile
 | Lint | `pnpm lint` | Script `eslint .` |
 | Preview build | `pnpm preview` | Script `vite preview`; memerlukan hasil build, bukan deployment |
 
-Belum ada script `test` atau `typecheck` terpisah maupun suite tes dalam struktur yang diperiksa. Jangan mengarang `pnpm test`/`pnpm typecheck` atau memasang framework tes sebagai ritual. Saat penyusunan dokumen, manifest, lockfile, metadata paket terpasang, konfigurasi, dan source diperiksa; setup, dev, build, lint, preview, serta runtime Node/pnpm **belum dijalankan/diverifikasi**. Metadata terpasang tidak membuktikan aplikasi berhasil berjalan.
+Belum ada script `test` atau `typecheck` terpisah maupun suite tes dalam struktur yang diperiksa. Jangan mengarang `pnpm test`/`pnpm typecheck` atau memasang framework tes sebagai ritual. Setelah setup shadcn, `pnpm build` (termasuk TypeScript) dan `pnpm lint` berhasil. Dev server dan Button asli diverifikasi melalui halaman smoke sementara: styling Tailwind, klik, Enter, disabled, dan rendering anchor `asChild`; halaman smoke kemudian dihapus. Preview produksi dan desain portofolio belum diverifikasi.
 
 ## Pemilihan skill dan routing tool
 
