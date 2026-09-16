@@ -1,72 +1,50 @@
-# prasadev.id — portofolio demo Stitch
+# prasadev
 
-Portofolio React + TypeScript dengan React Router Framework Mode, prerender statis,
-Tailwind, komponen shadcn selektif, Motion, dan Lenis. Bukan aplikasi backend;
-tidak ada form pengiriman, newsletter, atau layanan eksternal saat build konten.
+Portofolio Prasetyo Ari Wibowo — Software Engineer untuk pengembangan web dan mobile.
+Konten profil, pengalaman, pendidikan, dan tujuh proyek bersumber dari CV yang disetujui pemilik.
 
-## Menjalankan
+## Pengembangan
 
-Gunakan Node >=22.22.0 dan pnpm. Diverifikasi dengan Node 24.19.0/pnpm 10.33.0.
+Node >=22.22.0, pnpm. Stack: React, TypeScript, React Router Framework Mode,
+Tailwind, shadcn selektif, Motion, Lenis, dan MDX.
 
 ```sh
 pnpm install --frozen-lockfile
 pnpm dev
-pnpm typecheck
 pnpm build
 pnpm lint
 pnpm preview
 ```
 
-`build` menjalankan typegen, TypeScript, lalu prerender. Output statis berada di
-`build/client`. Preview tersedia pada port 4173 tanpa SPA fallback; setelah
-build ulang, restart preview agar inventaris file sirv diperbarui.
+Build menjalankan typegen dan TypeScript sebelum prerender. Output `build/client`;
+preview port 4173 tanpa SPA fallback. Restart preview setelah build ulang.
 
-## Halaman dan konten
+## Konten
 
-- `/`: delapan section beranda, filter proyek, FAQ, tema, dan kontak.
-- `/proyek/<slug>`: enam detail proyek dari `src/content/projects.ts`.
-- `/artikel`: daftar dari `src/content/articles.ts`.
-- `/artikel/membangun-komponen-portofolio-modular`: artikel MDX contoh.
-- `/404`: halaman tidak ditemukan; wildcard menangani navigasi client.
+- `src/content/site.ts`: identitas, kontak, layanan, pengalaman, pendidikan, FAQ.
+- `src/content/projects.ts`: tujuh proyek beserta kontribusi dan fitur berdasarkan CV.
+- `src/content/drafts/komponen-portofolio.mdx`: draf editorial, tidak dibundel atau dipublikasikan.
+- `src/content/articles.ts`: manifest publikasi; kosong sampai artikel disetujui.
 
-Identitas, kontak, layanan, pengalaman, dan testimoni ada di
-`src/content/site.ts`. Proyek dan artikel memiliki manifest TypeScript murni
-untuk pemakaian bersama oleh halaman, route config, dan prerender.
-Untuk artikel baru, tambahkan MDX tepercaya, module route yang mengimpor MDX,
-dan entri manifest dengan `routeFile` yang sesuai. Jangan menerima MDX dari
-pengunjung atau sumber tidak tepercaya.
+Halaman aktif: `/`, tujuh `/proyek/<slug>`, dan `/404`. Artikel tidak memiliki route
+publik atau tautan navigasi selama manifest publikasi kosong.
 
-`src/root.tsx` memiliki document/shell dan state tema; `src/routes` menyusun
-halaman. Section beranda berada di `src/features/home`; ProjectCard digunakan
-bersama oleh showcase dan detail. Token dan tipografi global ada di
-`src/index.css`. Font Latin disajikan lokal melalui package Fontsource.
+## Aset dan kesiapan publikasi
 
-## Batas demo dan publikasi
+Gambar lama telah diunduh sebagai JPEG ke `public/assets/`, agar manifest yang
+digunakan config Node tetap berupa TypeScript murni tanpa import binary.
+`portrait.jpg` dan `project-1.jpg` sampai `project-6.jpg` masih gambar sementara,
+bukan foto pemilik atau dokumentasi proyek. Ganti file tersebut dengan gambar asli;
+dua proyek terakhir sementara memakai `project-6.jpg`. Perbarui alt/caption setelah
+penggantian. `previous-avatar-1.jpg` sampai `previous-avatar-3.jpg` dan
+`previous-map.jpg` disimpan tetapi tidak digunakan; testimoni fiktif dan peta Jakarta
+sudah tidak tampil. Asal gambar tidak memberikan klaim kepemilikan atau lisensi.
 
-Seluruh persona, metrik, proyek, testimoni, kontak, dan gambar merupakan contoh
-Stitch, bukan data pribadi yang terverifikasi. `site.isDemo` menampilkan banner
-dan `robots: noindex, nofollow`. Label artikel contoh dikontrol oleh
-`article.isDemo`. Ganti dan verifikasi konten sebelum mengubah flag tersebut.
-Domain, canonical, sitemap, structured data, dan deployment belum ditetapkan.
+URL yang disepakati: https://prasadev.id; domain belum dibeli. `publicationReady`
+masih false sehingga `noindex, nofollow` tetap berlaku sebagai kontrol publikasi.
+Tidak ada canonical, sitemap, deployment, atau pengiriman pesan otomatis.
+Alamat rumah dan PDF CV tidak disajikan sebagai aset publik.
 
-Sebelas gambar tetap menggunakan URL eksternal template; tidak ada klaim
-kepemilikan/lisensi. Kegagalan gambar menampilkan fallback berlabel dengan rasio
-tetap, termasuk ketika request gagal sebelum hydration. Kontak WhatsApp/email
-dan sosial berlabel contoh; jangan mengirim pesan untuk pengujian.
-
-Preview mengembalikan HTTP 404 untuk URL yang tidak dibangun. React Router juga
-menghasilkan `__spa-fallback.html`, tetapi preview tidak memakainya untuk
-menutupi URL tidak dikenal. Aturan HTTP 404 pada hosting perlu ditentukan
-sesuai host; tidak ada deployment yang dilakukan.
-
-## Interaksi dan pemeriksaan
-
-Tema awal gelap; toggle bertahan lintas navigasi client dan reset saat reload.
-Motion menghormati reduced motion; ticker memiliki kontrol jeda. Lenis dipasang
-setelah hydration, dilepas ketika reduced motion aktif, dan tidak mengambil
-alih anchor maupun ScrollRestoration. Touch tetap native.
-
-Verifikasi mencakup build/lint, sepuluh URL prerender, metadata HTML, pembacaan
-tanpa JavaScript, viewport desktop/tablet/mobile, filter dan FAQ keyboard,
-menu/fokus, Back/hash, reduced motion, serta fallback gambar. Tidak ada framework
-tes UI permanen. Source referensi dalam `templates/` tidak dimodifikasi.
+Tema gelap/terang, filter kategori, menu keyboard, FAQ, dan reduced motion tetap
+tersedia. Lenis tidak mengambil alih hash/ScrollRestoration; touch tetap native.
+Referensi desain di `templates/` dipertahankan sebagai sumber historis, bukan konten situs.
