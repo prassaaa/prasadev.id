@@ -104,7 +104,7 @@ export function WhatsAppWidget() {
               <span aria-hidden="true" className="size-2.5 shrink-0 bg-neo-lime" />
               <span className="font-mono text-[11px] font-extrabold whitespace-nowrap sm:text-xs">
                 <span className="sm:hidden">Chat di sini</span>
-                <span className="hidden sm:inline">Butuh koordinasi? Chat di sini</span>
+                <span className="hidden sm:inline">Butuh koordinasi?</span>
               </span>
             </motion.button>
           )}
