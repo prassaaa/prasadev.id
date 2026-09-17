@@ -171,7 +171,6 @@ export const services = [
 
 export const experience = [
   {
-    period: 'Dec 2025 - Present',
     location: 'Kediri',
     title: 'Software Developer',
     company: 'Rumah Sakit Bhayangkara',
@@ -181,7 +180,6 @@ export const experience = [
     tags: ['SIMRS', 'Aplikasi Android', 'Integrasi API'],
   },
   {
-    period: 'Sep 2025 - Apr 2026',
     location: 'Cikarang Selatan',
     title: 'Website Developer',
     company: 'PT. Trimitra Indoplast Mandiri',
@@ -191,7 +189,6 @@ export const experience = [
     tags: ['Laravel', 'React', 'Sistem Operasional'],
   },
   {
-    period: 'Oct 2025 - Dec 2025',
     location: 'Kabupaten Tangerang',
     title: 'FullStack Developer',
     company: 'Dinas Koperasi dan Usaha Mikro',
@@ -201,7 +198,6 @@ export const experience = [
     tags: ['Laravel', 'Flutter', 'REST API'],
   },
   {
-    period: 'May 2025 - Aug 2025',
     location: 'Bandung',
     title: 'Website Developer',
     company: 'Yayasan Wahdah Inisiatif Kebaikan',
@@ -211,7 +207,6 @@ export const experience = [
     tags: ['Pemesanan Ambulans', 'Donasi', 'Payment Gateway'],
   },
   {
-    period: 'Apr 2025 - Jul 2025',
     location: 'Batam',
     title: 'Website Developer',
     company: 'PT. ASM Tunas Muda',
@@ -221,7 +216,6 @@ export const experience = [
     tags: ['Website Profil', 'Chat Real-time', 'Inventaris & Kasir'],
   },
   {
-    period: 'Feb 2025 - Apr 2025',
     location: 'Kabupaten Kediri',
     title: 'Website Developer',
     company: 'Dinas Pariwisata dan Kebudayaan',
@@ -231,7 +225,6 @@ export const experience = [
     tags: ['Website Pemerintahan', 'Informasi Wisata', 'Layanan Publik'],
   },
   {
-    period: 'Oct 2024 - Dec 2024',
     location: 'Wonorejo, Kabupaten Kediri',
     title: 'Website Developer',
     company: 'Badan Usaha Milik Desa Wonorejo',

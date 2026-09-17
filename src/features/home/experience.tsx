@@ -1,7 +1,6 @@
 import { SectionHeading } from '@/components/ui/section-heading'
 import { experience, site } from '@/content/site'
 
-const colors = { yellow: 'bg-neo-yellow', pink: 'bg-neo-pink', cyan: 'bg-neo-cyan' }
 const shadows = { yellow: 'shadow-neo-cyan', pink: 'shadow-neo-pink', cyan: 'shadow-neo-lime' }
 
 export function Experience() {
@@ -14,16 +13,10 @@ export function Experience() {
         <ol className="space-y-6">
           {experience.map((item) => (
             <li
-              key={item.period}
+              key={item.title}
               className={`grid gap-6 border-2 border-border bg-card p-6 sm:p-8 md:grid-cols-12 ${shadows[item.accent]}`}>
               <div className="min-w-0 md:col-span-3">
-                <span
-                  className={`inline-block border border-border px-3 py-1 font-mono text-xs font-bold text-black ${colors[item.accent]}`}>
-                  {item.period}
-                </span>
-                <p className="mt-2 font-mono text-xs font-bold text-muted-foreground">
-                  {item.location}
-                </p>
+                <p className="font-mono text-xs font-bold text-muted-foreground">{item.location}</p>
               </div>
               <div className="min-w-0 space-y-3 md:col-span-9">
                 <div className="flex flex-col items-start gap-2">

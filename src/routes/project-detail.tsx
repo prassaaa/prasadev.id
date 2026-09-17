@@ -103,12 +103,6 @@ export default function ProjectDetail({ loaderData }: Route.ComponentProps) {
                   <dd className="font-bold wrap-break-word">{project.client}</dd>
                 </div>
                 <div>
-                  <dt className="mb-2 font-mono text-xs text-muted-foreground">
-                    Periode keterlibatan
-                  </dt>
-                  <dd>{project.period}</dd>
-                </div>
-                <div>
                   <dt className="mb-3 font-mono text-xs text-muted-foreground">Teknologi</dt>
                   <dd>
                     {project.tags.length > 0 ? (

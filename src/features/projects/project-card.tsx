@@ -44,7 +44,6 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex flex-wrap justify-between gap-2 font-mono text-xs text-muted-foreground">
           <span>ORGANISASI: {project.client}</span>
-          <span>{project.period}</span>
         </div>
         <h3 className="font-display text-2xl leading-tight font-bold">
           <Link to={href} className="underline-offset-4 hover:underline">

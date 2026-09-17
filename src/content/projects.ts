@@ -4,7 +4,6 @@ export type Project = {
   category: 'web' | 'systems' | 'mobile'
   categoryLabel: string
   client: string
-  period: string
   description: string
   context: string
   contributions: string[]
@@ -20,7 +19,6 @@ export const projects: Project[] = [
     category: 'systems',
     categoryLabel: 'Sistem Operasional',
     client: 'Rumah Sakit Bhayangkara Kediri',
-    period: 'Desember 2025 – sekarang',
     description:
       'Saya mengembangkan SIMRS berbasis web untuk data pasien, rekam medis, dan administrasi, serta aplikasi Android yang terhubung dengan backend API.',
     context:
@@ -49,7 +47,6 @@ export const projects: Project[] = [
     category: 'systems',
     categoryLabel: 'Sistem Operasional',
     client: 'PT. Trimitra Indoplast Mandiri (Innapack)',
-    period: 'September 2025 – April 2026',
     description:
       'Saya mengembangkan sistem Laravel–React dengan dashboard analitik, pelaporan real-time, validasi stok, dan kontrol transaksi untuk kebutuhan operasional Innapack.',
     context:
@@ -73,7 +70,6 @@ export const projects: Project[] = [
     category: 'mobile',
     categoryLabel: 'Aplikasi Mobile',
     client: 'Dinas Koperasi dan Usaha Mikro Kabupaten Tangerang',
-    period: 'Oktober 2025 – Desember 2025',
     description:
       'Saya mengembangkan sistem koperasi berbasis Laravel dan aplikasi Flutter untuk layanan anggota, transaksi simpan pinjam, serta laporan keuangan.',
     context:
@@ -103,7 +99,6 @@ export const projects: Project[] = [
     category: 'web',
     categoryLabel: 'Website',
     client: 'Yayasan Wahdah Inisiatif Kebaikan',
-    period: 'Mei 2025 – Agustus 2025',
     description:
       'Saya membangun sistem pemesanan ambulans dan kampanye donasi dari awal, termasuk API penjadwalan serta integrasi payment gateway nasional.',
     context:
@@ -132,7 +127,6 @@ export const projects: Project[] = [
     category: 'systems',
     categoryLabel: 'Sistem Operasional',
     client: 'PT. ASM Tunas Muda',
-    period: 'April 2025 – Juli 2025',
     description:
       'Saya mengembangkan website profil perusahaan, chatting internal real-time, manajemen inventaris, dan sistem kasir web yang terintegrasi dengan stok.',
     context:
@@ -162,7 +156,6 @@ export const projects: Project[] = [
     category: 'web',
     categoryLabel: 'Website',
     client: 'Dinas Pariwisata dan Kebudayaan Kabupaten Kediri',
-    period: 'Februari 2025 – April 2025',
     description:
       'Saya mengembangkan dan memelihara website resmi dinas untuk informasi destinasi wisata dan kegiatan kebudayaan, dengan kalender event, galeri, serta layanan publik.',
     context:
@@ -190,7 +183,6 @@ export const projects: Project[] = [
     category: 'web',
     categoryLabel: 'Website',
     client: 'Badan Usaha Milik Desa Wonorejo, Kabupaten Kediri',
-    period: 'Oktober 2024 – Desember 2024',
     description:
       'Saya membangun website BUMDes Wonorejo dengan informasi usaha dan kegiatan desa, manajemen produk UMKM, serta sistem pemesanan sederhana.',
     context:
