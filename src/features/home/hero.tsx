@@ -1,4 +1,11 @@
-import { motion, useReducedMotion } from 'motion/react'
+import {
+  cubicBezier,
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from 'motion/react'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { WordsPullUp } from '@/components/ui/words-pull-up'
@@ -6,15 +13,37 @@ import { WordsPullUp } from '@/components/ui/words-pull-up'
 export function Hero() {
   const reducedMotion = useReducedMotion()
   const videoRef = useRef<HTMLVideoElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end end'],
+  })
+  const exitEase = cubicBezier(0.22, 1, 0.36, 1)
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.65], { ease: exitEase })
+  const contentScale = useTransform(scrollYProgress, [0, 0.55], [1, 1.12], { ease: exitEase })
+  const contentY = useTransform(scrollYProgress, [0, 0.55], ['0%', '-65%'], { ease: exitEase })
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.08, 0.55], [1, 1, 0])
+  const contentBlur = useTransform(scrollYProgress, [0.08, 0.55], ['blur(0px)', 'blur(10px)'])
+  const backdropOpacity = useTransform(scrollYProgress, [0.6, 1], [0, 0.5])
+
+  useMotionValueEvent(scrollYProgress, 'change', (progress) => {
+    if (!contentRef.current || reducedMotion) return
+    contentRef.current.inert = progress >= 0.55
+    contentRef.current.style.visibility = progress >= 0.55 ? 'hidden' : 'visible'
+  })
 
   useEffect(() => {
     if (reducedMotion) videoRef.current?.pause()
   }, [reducedMotion])
 
   return (
-    <section id="hero" className="-mt-[calc(5rem+2px)] h-dvh w-full">
-      <div className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
-        <video
+    <section
+      ref={sectionRef}
+      id="hero"
+      className="-mt-[calc(5rem+2px)] h-[180svh] w-full motion-reduce:h-dvh">
+      <div className="sticky top-0 h-dvh w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
+        <motion.video
           ref={videoRef}
           autoPlay={!reducedMotion}
           loop
@@ -22,11 +51,25 @@ export function Hero() {
           playsInline
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
+          style={{ scale: reducedMotion ? 1 : videoScale }}
           src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4"
         />
         <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
-        <div className="absolute right-0 bottom-0 left-0 px-4 pb-2 sm:px-6 md:px-10">
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-muted"
+          style={{ opacity: reducedMotion ? 0 : backdropOpacity }}
+        />
+        <motion.div
+          ref={contentRef}
+          style={{
+            scale: reducedMotion ? 1 : contentScale,
+            y: reducedMotion ? 0 : contentY,
+            opacity: reducedMotion ? 1 : contentOpacity,
+            filter: reducedMotion ? 'none' : contentBlur,
+          }}
+          className="absolute right-0 bottom-0 left-0 origin-bottom-left px-4 pb-2 sm:px-6 md:px-10">
           <div className="grid grid-cols-12 items-end gap-4">
             <div className="col-span-12 lg:col-span-8">
               <h1
@@ -49,7 +92,7 @@ export function Hero() {
               </motion.a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
