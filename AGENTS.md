@@ -55,6 +55,7 @@ secara otomatis. gh untuk GitHub bila diminta; commit/push perlu izin tersendiri
 ## Commands dan verifikasi
 
 Node >=22.22.0; diperiksa dengan Node24.19.0 dan pnpm10.33.0.
+
 - `pnpm install --frozen-lockfile`: setup, bukan otomatis untuk pembacaan.
 - `pnpm dev`: React Router dev.
 - `pnpm typecheck`: typegen lalu tsc -b.

@@ -12,7 +12,10 @@ import { Contact } from '@/features/home/contact'
 export default function Home() {
   return (
     <>
-      <PageMeta title={`${site.brand} — ${site.name} | Software Engineer`} description="Portofolio Prasetyo Ari Wibowo, Software Engineer di Kediri. Pengembangan website, sistem operasional, dan aplikasi mobile dengan Laravel, React, dan Flutter." />
+      <PageMeta
+        title={`${site.brand} — ${site.name} | Software Engineer`}
+        description="Portofolio Prasetyo Ari Wibowo, Software Engineer di Kediri. Pengembangan website, sistem operasional, dan aplikasi mobile dengan Laravel, React, dan Flutter."
+      />
       <Hero />
       <About />
       <Services />

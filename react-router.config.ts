@@ -5,5 +5,11 @@ import { articles } from './src/content/articles.ts'
 export default {
   appDirectory: 'src',
   ssr: false,
-  prerender: ['/', ...(articles.length ? ['/artikel'] : []), ...projects.map(({ slug }) => `/proyek/${slug}`), ...articles.map(({ slug }) => `/artikel/${slug}`), '/404'],
+  prerender: [
+    '/',
+    ...(articles.length ? ['/artikel'] : []),
+    ...projects.map(({ slug }) => `/proyek/${slug}`),
+    ...articles.map(({ slug }) => `/artikel/${slug}`),
+    '/404',
+  ],
 } satisfies Config

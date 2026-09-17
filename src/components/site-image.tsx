@@ -8,11 +8,27 @@ export function SiteImage({ src, alt, className, onError, ...props }: Props) {
   return (
     <div className={cn('relative overflow-hidden bg-muted', className)}>
       {failedSource === src ? (
-        <div role="img" aria-label={alt} className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-3 text-center text-xs text-muted-foreground">
-          <span>Gambar tidak tersedia</span><span>{alt}</span>
+        <div
+          role="img"
+          aria-label={alt}
+          className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-3 text-center text-xs text-muted-foreground">
+          <span>Gambar tidak tersedia</span>
+          <span>{alt}</span>
         </div>
       ) : (
-        <img {...props} ref={(image) => { if (image?.complete && image.naturalWidth === 0) setFailedSource(src) }} src={src} alt={alt} className="absolute inset-0 size-full object-cover" onError={(event) => { setFailedSource(src); onError?.(event) }} />
+        <img
+          {...props}
+          ref={(image) => {
+            if (image?.complete && image.naturalWidth === 0) setFailedSource(src)
+          }}
+          src={src}
+          alt={alt}
+          className="absolute inset-0 size-full object-cover"
+          onError={(event) => {
+            setFailedSource(src)
+            onError?.(event)
+          }}
+        />
       )}
     </div>
   )
