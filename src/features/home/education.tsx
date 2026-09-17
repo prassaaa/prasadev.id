@@ -1,5 +1,5 @@
-import { GraduationCap } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
+import { SiteImage } from '@/components/site-image'
 import { education, site } from '@/content/site'
 
 const shadows = ['shadow-neo-cyan', 'shadow-neo-pink', 'shadow-neo-lime']
@@ -10,9 +10,11 @@ export function Education() {
       <div className="site-container">
         <SectionHeading label={site.education.eyebrow}>{site.education.title}</SectionHeading>
         <div className="mb-8 flex flex-col gap-4 border-2 border-border bg-card p-6 shadow-neo-cyan sm:flex-row sm:items-center sm:p-8">
-          <GraduationCap
-            className="size-14 shrink-0 border-2 border-border bg-neo-yellow p-3 text-black"
-            aria-hidden="true"
+          <SiteImage
+            src="/assets/images/unp.webp"
+            alt="Logo Universitas Nusantara PGRI Kediri"
+            natural
+            className="size-16 shrink-0 border-2 border-border bg-background p-1.5"
           />
           <div className="min-w-0">
             <p className="font-mono text-sm font-bold text-muted-foreground">
