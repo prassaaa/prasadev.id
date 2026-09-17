@@ -7,7 +7,8 @@ export function SiteFooter() {
       <div className="site-container">
         <div className="grid gap-10 border-b-2 border-border/30 pb-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link to="/" className="font-display text-3xl font-extrabold">
+            <Link to="/" className="flex items-center gap-3 font-display text-3xl font-extrabold">
+              <img src="/icons.svg" alt="" className="size-10 shrink-0 object-contain" />
               {site.brand}
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">

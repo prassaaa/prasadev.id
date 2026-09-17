@@ -120,12 +120,7 @@ export function Hero() {
                 <span className="bg-neo-lime px-2 py-0.5 text-black">{site.terminal.status} ●</span>
               </div>
               <div className="relative border-2 border-border">
-                <SiteImage
-                  {...site.portrait}
-                  natural
-                  loading="eager"
-                  fetchPriority="high"
-                />
+                <SiteImage {...site.portrait} natural loading="eager" fetchPriority="high" />
                 <div className="absolute bottom-2 left-2 flex max-w-[calc(100%-1rem)] items-center gap-1.5 border border-neo-yellow bg-black px-2 py-1 font-mono text-[10px] font-bold text-neo-yellow">
                   <MapPin className="size-3 shrink-0" aria-hidden="true" />
                   {site.terminal.location}

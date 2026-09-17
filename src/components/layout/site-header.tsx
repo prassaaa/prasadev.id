@@ -77,9 +77,9 @@ export function SiteHeader({
             className="flex min-w-0 items-center gap-3"
             aria-label={`${site.brand} — beranda`}>
             <span
-              className="flex size-11 shrink-0 items-center justify-center border-2 bg-neo-cyan font-mono text-xl font-extrabold text-black shadow-neo"
+              className="flex size-11 shrink-0 items-center justify-center border-2 bg-background p-1 shadow-neo"
               aria-hidden="true">
-              &gt;_
+              <img src="/icons.svg" alt="" className="size-full object-contain" />
             </span>
             <span className="min-w-0 leading-tight">
               <span className="block font-display text-lg font-extrabold sm:text-xl">

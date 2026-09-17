@@ -10,6 +10,7 @@ export default function NotFound() {
       <PageMeta
         title={`Halaman tidak ditemukan | ${site.brand}`}
         description="Halaman yang Anda cari tidak tersedia. Kembali ke beranda untuk melihat profil dan proyek saya."
+        noindex
       />
       <section className="section-shell">
         <div className="site-container">

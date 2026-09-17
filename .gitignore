@@ -26,5 +26,8 @@ build
 *.sln
 *.sw?
 
+# Generated sitemap
+public/sitemap.xml
+
 # Templates Files
 /templates

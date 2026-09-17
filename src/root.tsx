@@ -19,6 +19,31 @@ import { SmoothScroll } from '@/components/smooth-scroll'
 import { WhatsAppWidget } from '@/components/layout/whatsapp-widget'
 import './index.css'
 
+const structuredData = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      name: site.name,
+      jobTitle: site.role,
+      url: `${site.url}/`,
+      image: `${site.url}${site.portrait.src}`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: site.location,
+        addressCountry: 'ID',
+      },
+      sameAs: site.socials.map((social) => social.href),
+    },
+    {
+      '@type': 'WebSite',
+      name: site.brand,
+      url: `${site.url}/`,
+      inLanguage: 'id-ID',
+    },
+  ],
+})
+
 export function Layout({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
   return (
@@ -26,8 +51,10 @@ export function Layout({ children }: { children: ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content={theme === 'dark' ? '#0a0a0e' : '#fffdf5'} />
         {!site.publicationReady && <meta name="robots" content="noindex, nofollow" />}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
         <Meta />
         <Links />
       </head>

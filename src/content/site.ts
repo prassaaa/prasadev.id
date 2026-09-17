@@ -1,5 +1,7 @@
 export const site = {
   brand: 'prasadev',
+  url: 'https://prasadev.id',
+  ogImage: '/og.png',
   publicationReady: false,
   name: 'Prasetyo Ari Wibowo',
   initials: 'PA',

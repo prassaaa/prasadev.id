@@ -32,9 +32,7 @@ export function SiteImage({ src, alt, className, natural = false, onError, ...pr
           src={src}
           alt={alt}
           className={
-            natural
-              ? 'block h-auto w-full object-cover'
-              : 'absolute inset-0 size-full object-cover'
+            natural ? 'block h-auto w-full object-cover' : 'absolute inset-0 size-full object-cover'
           }
           onError={(event) => {
             setFailedSource(src)

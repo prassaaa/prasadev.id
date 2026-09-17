@@ -33,7 +33,9 @@ publik atau tautan navigasi selama manifest publikasi kosong.
 
 Gambar lama telah diunduh sebagai JPEG ke `public/assets/`, agar manifest yang
 digunakan config Node tetap berupa TypeScript murni tanpa import binary.
-`pras.webp` adalah foto pemilik (Prasetyo Ari Wibowo). `project-1.jpg` sampai
+`pras.webp` adalah foto pemilik (Prasetyo Ari Wibowo). `favicon.svg`/`icons.svg`
+adalah logo situs (favicon tab dan logo header/footer), `og.png` dipakai sebagai
+gambar Open Graph. `project-1.jpg` sampai
 `project-6.jpg` masih gambar sementara, bukan dokumentasi proyek; ganti file
 tersebut dengan tangkapan layar asli dan perbarui alt di `src/content/projects.ts`;
 dua proyek terakhir sementara memakai `project-6.jpg`. `previous-avatar-1.jpg`
@@ -42,7 +44,10 @@ digunakan. Asal gambar tidak memberikan klaim kepemilikan atau lisensi.
 
 URL yang disepakati: https://prasadev.id; domain belum dibeli. `publicationReady`
 masih false sehingga `noindex, nofollow` tetap berlaku sebagai kontrol publikasi.
-Tidak ada canonical, sitemap, deployment, atau pengiriman pesan otomatis.
+Metadata SEO (canonical, Open Graph, Twitter, JSON-LD) memakai `site.url`;
+`public/sitemap.xml` digenerate dari manifest konten saat build, dan
+`public/robots.txt` menunjuk sitemap tersebut. Belum ada deployment atau
+pengiriman pesan otomatis.
 Alamat rumah dan PDF CV tidak disajikan sebagai aset publik.
 
 Tema gelap/terang, filter kategori, menu keyboard, FAQ, dan reduced motion tetap

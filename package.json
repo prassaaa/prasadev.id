@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "react-router dev",
     "typecheck": "react-router typegen && tsc -b",
-    "build": "pnpm typecheck && react-router build",
+    "build": "pnpm typecheck && node scripts/generate-sitemap.mjs && react-router build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
