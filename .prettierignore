@@ -1,0 +1,8 @@
+node_modules
+dist
+build
+.react-router
+templates
+public/assets
+pnpm-lock.yaml
+CV Pras 010426.pdf

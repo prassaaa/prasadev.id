@@ -7,6 +7,8 @@
     "dev": "react-router dev",
     "typecheck": "react-router typegen && tsc -b",
     "build": "pnpm typecheck && react-router build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
     "preview": "sirv build/client --port 4173"
   },
