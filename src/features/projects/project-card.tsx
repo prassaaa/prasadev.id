@@ -37,13 +37,12 @@ export function ProjectCard({ project }: { project: Project }) {
             {project.categoryLabel}
           </span>
         </div>
-        <figcaption className="px-3 py-2 text-xs text-muted-foreground">
-          Ilustrasi sementara; bukan tampilan proyek.
-        </figcaption>
       </figure>
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <div className="flex flex-wrap justify-between gap-2 font-mono text-xs text-muted-foreground">
-          <span>ORGANISASI: {project.client}</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="max-w-full border border-border bg-neo-cyan px-2.5 py-0.5 font-mono text-xs font-bold text-black">
+            {project.client}
+          </span>
         </div>
         <h3 className="font-display text-2xl leading-tight font-bold">
           <Link to={href} className="underline-offset-4 hover:underline">

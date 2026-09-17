@@ -62,9 +62,6 @@ export default function ProjectDetail({ loaderData }: Route.ComponentProps) {
                   className="aspect-video border-2 border-border shadow-neo"
                   loading="eager"
                 />
-                <figcaption className="text-sm text-muted-foreground">
-                  Ilustrasi sementara; bukan tampilan proyek.
-                </figcaption>
               </figure>
               <section aria-labelledby="project-context-heading" className="space-y-4">
                 <h2 id="project-context-heading" className="font-display text-2xl font-bold">
