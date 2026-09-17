@@ -33,12 +33,12 @@ publik atau tautan navigasi selama manifest publikasi kosong.
 
 Gambar lama telah diunduh sebagai JPEG ke `public/assets/`, agar manifest yang
 digunakan config Node tetap berupa TypeScript murni tanpa import binary.
-`portrait.jpg` dan `project-1.jpg` sampai `project-6.jpg` masih gambar sementara,
-bukan foto pemilik atau dokumentasi proyek. Ganti file tersebut dengan gambar asli;
-dua proyek terakhir sementara memakai `project-6.jpg`. Perbarui alt/caption setelah
-penggantian. `previous-avatar-1.jpg` sampai `previous-avatar-3.jpg` dan
-`previous-map.jpg` disimpan tetapi tidak digunakan; testimoni fiktif dan peta Jakarta
-sudah tidak tampil. Asal gambar tidak memberikan klaim kepemilikan atau lisensi.
+`pras.webp` adalah foto pemilik (Prasetyo Ari Wibowo). `project-1.jpg` sampai
+`project-6.jpg` masih gambar sementara, bukan dokumentasi proyek; ganti file
+tersebut dengan tangkapan layar asli dan perbarui alt di `src/content/projects.ts`;
+dua proyek terakhir sementara memakai `project-6.jpg`. `previous-avatar-1.jpg`
+sampai `previous-avatar-3.jpg` dan `previous-map.jpg` disimpan tetapi tidak
+digunakan. Asal gambar tidak memberikan klaim kepemilikan atau lisensi.
 
 URL yang disepakati: https://prasadev.id; domain belum dibeli. `publicationReady`
 masih false sehingga `noindex, nofollow` tetap berlaku sebagai kontrol publikasi.

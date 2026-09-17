@@ -17,8 +17,8 @@ export const site = {
   ],
   stack: ['Laravel', 'React', 'Flutter', 'PHP', 'Dart', 'REST API'],
   portrait: {
-    src: '/assets/portrait.jpg',
-    alt: 'Ilustrasi portrait sementara, bukan foto Prasetyo Ari Wibowo',
+    src: '/assets/images/pras.webp',
+    alt: 'prasadev',
   },
   terminal: {
     prompt: 'prasadev@terminal:~$',
