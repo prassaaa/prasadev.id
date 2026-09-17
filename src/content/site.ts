@@ -58,7 +58,14 @@ export const site = {
     eyebrow: 'PROFIL & PENDEKATAN',
     title: 'Berangkat dari Kebutuhan Orang yang Menggunakan Aplikasi.',
     description:
-      'Saya lulusan Sistem Informasi Universitas Nusantara PGRI Kediri. Pengalaman saya mencakup pengembangan aplikasi di sektor kesehatan, manufaktur, pemerintahan, layanan sosial, dan usaha desa. Saat ini saya bekerja sebagai Software Developer di Rumah Sakit Bhayangkara Kediri.',
+      'Saya lulusan Sistem Informasi Universitas Nusantara PGRI Kediri yang berfokus pada pengembangan website, sistem operasional, dan aplikasi mobile. Pengalaman saya mencakup berbagai sektor riil seperti kesehatan, manufaktur, pemerintahan, layanan sosial, dan usaha desa. Saat ini saya bekerja sebagai Software Developer di Rumah Sakit Bhayangkara Kediri.',
+    sectors: [
+      { name: 'Kesehatan', label: 'SIMRS & Rekam Medis', icon: 'activity' },
+      { name: 'Manufaktur', label: 'Operasional & Produksi', icon: 'factory' },
+      { name: 'Pemerintahan', label: 'Pariwisata Daerah', icon: 'building-2' },
+      { name: 'Layanan Sosial', label: 'Ambulans & Donasi', icon: 'users' },
+      { name: 'Koperasi & Desa', label: 'Kasir & Pengelolaan Usaha', icon: 'store' },
+    ],
   },
   services: {
     eyebrow: 'KEAHLIAN & LAYANAN',
@@ -121,8 +128,8 @@ export const principles = [
     title: 'Tanggung Jawab Modular',
     description:
       'Saya memisahkan fungsi aplikasi ke dalam modul dengan tanggung jawab yang jelas, agar perubahan pada satu bagian tidak mencampur kebutuhan bagian lain.',
-    detail: 'Modul dengan fungsi yang jelas',
-    icon: 'component',
+    detail: 'Modul dengan batas jelas',
+    icon: 'boxes',
     accent: 'pink',
   },
   {
@@ -133,6 +140,15 @@ export const principles = [
     detail: 'Laravel API & Flutter',
     icon: 'git-fork',
     accent: 'lime',
+  },
+  {
+    number: '04',
+    title: 'Keandalan & Integritas Data',
+    description:
+      'Saya memastikan validasi data yang ketat, konsistensi transaksi, dan struktur database yang solid agar sistem andal dalam jangka panjang.',
+    detail: 'Validasi ketat & data konsisten',
+    icon: 'shield-check',
+    accent: 'cyan',
   },
 ] as const
 
