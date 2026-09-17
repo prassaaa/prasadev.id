@@ -40,7 +40,7 @@ export function Experience() {
   })
 
   return (
-    <section id="experience" className="section-shell bg-background">
+    <section id="experience" className="section-shell overflow-hidden bg-background">
       <div className="site-container">
         <div className="mb-10 max-w-3xl">
           <SectionHeading label={site.experience.eyebrow} accent="purple">

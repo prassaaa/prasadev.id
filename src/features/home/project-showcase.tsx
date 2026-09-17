@@ -27,7 +27,7 @@ export function ProjectShowcase() {
     category === 'all' ? projects : projects.filter((project) => project.category === category)
 
   return (
-    <section id="portfolio" className="section-shell bg-muted">
+    <section id="portfolio" className="section-shell overflow-hidden bg-muted">
       <div className="site-container">
         {/* Section Header & Cyber Filter Controls */}
         <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
