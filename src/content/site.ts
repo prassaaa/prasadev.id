@@ -146,24 +146,24 @@ export const services = [
     features: ['Laravel & React', 'Antarmuka responsif', 'Pengelolaan konten'],
   },
   {
-    title: 'Sistem Operasional',
-    icon: 'palette',
-    accent: 'pink',
-    description:
-      'Aplikasi untuk mendukung pencatatan dan proses kerja, dari persediaan barang hingga transaksi dan pelaporan.',
-    features: ['Inventaris & kasir', 'Administrasi & transaksi', 'Dashboard & laporan'],
-  },
-  {
     title: 'Aplikasi Mobile Flutter',
-    icon: 'activity',
+    icon: 'smartphone',
     accent: 'cyan',
     description:
       'Pengembangan aplikasi mobile Flutter yang terhubung ke backend untuk menyediakan akses layanan melalui ponsel.',
     features: ['Flutter & Dart', 'Integrasi backend', 'Aplikasi Android'],
   },
   {
+    title: 'Sistem Operasional',
+    icon: 'layers',
+    accent: 'pink',
+    description:
+      'Aplikasi untuk mendukung pencatatan dan proses kerja, dari persediaan barang hingga transaksi dan pelaporan.',
+    features: ['Inventaris & kasir', 'Administrasi & transaksi', 'Dashboard & laporan'],
+  },
+  {
     title: 'API & Integrasi',
-    icon: 'sparkles',
+    icon: 'network',
     accent: 'lime',
     description:
       'Pengembangan REST API dan integrasi layanan untuk menghubungkan fungsi aplikasi yang Anda gunakan.',
