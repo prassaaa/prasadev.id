@@ -42,12 +42,6 @@ export const site = {
       icon: 'linkedin',
     },
   ],
-  ticker: [
-    { text: 'LARAVEL · REACT · FLUTTER', icon: 'sparkles' },
-    { text: 'BERBASIS DI KEDIRI', icon: 'map-pin' },
-    { text: 'WEBSITE · SISTEM OPERASIONAL · APLIKASI MOBILE', icon: 'zap' },
-    { text: 'PRASETYO ARI WIBOWO — SOFTWARE ENGINEER', icon: 'award' },
-  ],
   about: {
     eyebrow: 'PROFIL & PENDEKATAN',
     title: 'Berangkat dari Kebutuhan Orang yang Menggunakan Aplikasi.',

@@ -22,7 +22,6 @@ export function SiteHeader({
   onToggleTheme: () => void
 }) {
   const [open, setOpen] = useState(false)
-  const [paused, setPaused] = useState(false)
   const reducedMotion = useReducedMotion()
   const menuButton = useRef<HTMLButtonElement>(null)
   const ThemeIcon = theme === 'dark' ? Sun : Moon
@@ -33,35 +32,6 @@ export function SiteHeader({
         className="fixed top-2 left-2 z-100 -translate-y-24 bg-primary px-4 py-3 font-bold text-black focus:translate-y-0">
         Lewati ke konten utama
       </a>
-      <div className="relative overflow-hidden border-b-2 bg-neo-yellow py-2.5 pr-12 text-black">
-        <div
-          className="ticker-track flex w-max text-sm font-bold"
-          data-ticker
-          style={{ animationPlayState: paused || reducedMotion ? 'paused' : 'running' }}>
-          {[false, true].map((duplicate) => (
-            <div
-              key={String(duplicate)}
-              aria-hidden={duplicate || undefined}
-              className="flex shrink-0 gap-8 pr-8">
-              {site.ticker.map((item) => (
-                <span key={item.text}>
-                  {item.text}
-                  <span aria-hidden="true" className="ml-8">
-                    ✦
-                  </span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-        <button
-          className="absolute inset-y-0 right-0 border-l-2 border-black bg-neo-yellow px-3 font-mono font-bold"
-          aria-label={paused ? 'Lanjutkan teks berjalan' : 'Jeda teks berjalan'}
-          aria-pressed={paused}
-          onClick={() => setPaused(!paused)}>
-          {paused ? '▶' : 'Ⅱ'}
-        </button>
-      </div>
       <header
         className="sticky top-0 z-50 border-b-2 bg-background"
         onKeyDown={(event) => {

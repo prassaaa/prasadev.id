@@ -2,7 +2,6 @@ import { motion, useReducedMotion } from 'motion/react'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { WordsPullUp } from '@/components/ui/words-pull-up'
-import { site } from '@/content/site'
 
 export function Hero() {
   const reducedMotion = useReducedMotion()
@@ -13,7 +12,7 @@ export function Hero() {
   }, [reducedMotion])
 
   return (
-    <section id="hero" className="h-screen w-full">
+    <section id="hero" className="h-[calc(100dvh-5rem-2px)] w-full">
       <div className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
         <video
           ref={videoRef}
@@ -37,14 +36,6 @@ export function Hero() {
               </h1>
             </div>
             <div className="col-span-12 flex flex-col gap-5 pb-6 lg:col-span-4 lg:pb-10">
-              <motion.p
-                initial={reducedMotion ? false : { y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="text-xs text-primary/70 sm:text-sm md:text-base"
-                style={{ lineHeight: 1.2 }}>
-                Saya {site.name}, Software Engineer di Kediri. {site.summary}
-              </motion.p>
               <motion.a
                 href="#portfolio"
                 initial={reducedMotion ? false : { y: 20, opacity: 0 }}
