@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button'
 import { site } from '@/content/site'
 import { MotionProvider } from '@/components/motion-provider'
 import { SmoothScroll } from '@/components/smooth-scroll'
+import { WhatsAppWidget } from '@/components/layout/whatsapp-widget'
 import './index.css'
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -41,6 +42,7 @@ export function Layout({ children }: { children: ReactNode }) {
             {children}
           </main>
           <SiteFooter />
+          <WhatsAppWidget />
         </MotionProvider>
         <ScrollRestoration />
         <Scripts />
