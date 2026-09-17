@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useSyncExternalStore } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
-import { Link } from 'react-router'
+import { Link, useLocation } from 'react-router'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { site } from '@/content/site'
@@ -14,6 +14,14 @@ const navigation = [
   ['Kontak', '/#contact'],
 ]
 
+function subscribeToScroll(onChange: () => void) {
+  window.addEventListener('scroll', onChange, { passive: true })
+  return () => window.removeEventListener('scroll', onChange)
+}
+
+const getScrolledSnapshot = () => window.scrollY > 32
+const getServerScrolledSnapshot = () => false
+
 export function SiteHeader({
   theme,
   onToggleTheme,
@@ -22,6 +30,13 @@ export function SiteHeader({
   onToggleTheme: () => void
 }) {
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  const scrolled = useSyncExternalStore(
+    subscribeToScroll,
+    getScrolledSnapshot,
+    getServerScrolledSnapshot,
+  )
+  const transparent = pathname === '/' && !scrolled && !open
   const reducedMotion = useReducedMotion()
   const menuButton = useRef<HTMLButtonElement>(null)
   const ThemeIcon = theme === 'dark' ? Sun : Moon
@@ -33,7 +48,7 @@ export function SiteHeader({
         Lewati ke konten utama
       </a>
       <header
-        className="sticky top-0 z-50 border-b-2 bg-background"
+        className={`sticky top-0 z-50 border-b-2 transition-colors duration-200 ${transparent ? 'border-border/20 bg-background/50 backdrop-blur-sm' : 'bg-background'}`}
         onKeyDown={(event) => {
           if (event.key === 'Escape' && open) {
             setOpen(false)

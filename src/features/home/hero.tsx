@@ -12,7 +12,7 @@ export function Hero() {
   }, [reducedMotion])
 
   return (
-    <section id="hero" className="h-[calc(100dvh-5rem-2px)] w-full">
+    <section id="hero" className="-mt-[calc(5rem+2px)] h-dvh w-full">
       <div className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
         <video
           ref={videoRef}
