@@ -20,7 +20,6 @@ export const site = {
     src: '/assets/portrait.jpg',
     alt: 'Ilustrasi portrait sementara, bukan foto Prasetyo Ari Wibowo',
   },
-  portraitCaption: 'Ilustrasi sementara — bukan foto pribadi.',
   terminal: {
     prompt: 'prasadev@terminal:~$',
     status: 'WEB + MOBILE',

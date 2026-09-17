@@ -145,9 +145,6 @@ export function Hero() {
                   ))}
                 </ul>
               </div>
-              <p className="border-2 border-border/60 bg-muted p-3 font-mono text-xs leading-relaxed text-muted-foreground">
-                {site.portraitCaption}
-              </p>
             </div>
           </div>
         </div>
