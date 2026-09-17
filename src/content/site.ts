@@ -8,7 +8,7 @@ export const site = {
   role: 'Software Engineer',
   headline: 'Membangun Aplikasi untuk Kebutuhan Kerja Sehari-hari.',
   summary:
-    'Saya Prasetyo Ari Wibowo, software engineer yang mengembangkan website, sistem operasional, dan aplikasi mobile dengan Laravel, React, dan Flutter. Saya membantu menerjemahkan kebutuhan kerja Anda menjadi aplikasi yang saling terhubung.',
+    'Fokus bikin software operasional: web dashboard, backend API, sampai aplikasi mobile yang siap dipakai kerja.',
   location: 'Kediri',
   timezone: 'WIB (GMT+7)',
   availability: 'Mari Berdiskusi',
@@ -21,12 +21,6 @@ export const site = {
   portrait: {
     src: '/assets/images/pras.webp',
     alt: 'prasadev',
-  },
-  terminal: {
-    prompt: 'prasadev@terminal:~$',
-    status: 'WEB + MOBILE',
-    location: 'BERBASIS DI KEDIRI',
-    stackLabel: 'Teknologi yang Saya Gunakan:',
   },
   email: {
     href: 'mailto:pras.ari69@gmail.com',

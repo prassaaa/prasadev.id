@@ -14,8 +14,8 @@ import {
 } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
 import { SectionHeading } from '@/components/ui/section-heading'
+import { SiteImage } from '@/components/site-image'
 import { principles, site } from '@/content/site'
-
 const principleIcons = {
   gauge: Gauge,
   boxes: Boxes,
@@ -74,18 +74,36 @@ export function About() {
                 </span>
               </div>
 
-              {/* Bio Summary */}
-              <div className="space-y-2">
-                <h3 className="font-display text-2xl leading-tight font-bold sm:text-3xl">
-                  {site.name}
-                </h3>
-                <p className="font-mono text-xs font-bold text-muted-foreground">
-                  {site.role} · Web & Mobile Integration
-                </p>
-                <p className="pt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {site.about.description}
-                </p>
+              {/* Bio Summary with Portrait ID Badge */}
+              <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                <div className="relative shrink-0 border-2 border-border bg-background p-1 shadow-neo">
+                  <SiteImage
+                    {...site.portrait}
+                    natural
+                    className="size-20 border border-border object-cover sm:size-24"
+                    loading="lazy"
+                  />
+                  <div className="absolute -right-2 -bottom-2 border border-border bg-neo-lime px-1.5 py-0.5 font-mono text-[9px] font-black text-black">
+                    PA · DEV
+                  </div>
+                </div>
+                <div className="min-w-0 flex-1 space-y-1">
+                  <h3 className="font-display text-2xl leading-tight font-bold sm:text-3xl">
+                    {site.name}
+                  </h3>
+                  <p className="font-mono text-xs font-bold text-muted-foreground">
+                    {site.role} · Web & Mobile Integration
+                  </p>
+                  <div className="flex items-center gap-1.5 pt-0.5 font-mono text-xs text-muted-foreground">
+                    <span className="size-2 rounded-full bg-neo-lime" aria-hidden="true" />
+                    <span className="font-bold text-foreground">Kediri, Jawa Timur</span>
+                  </div>
+                </div>
               </div>
+
+              <p className="pt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                {site.about.description}
+              </p>
 
               {/* Quick Facts Box */}
               <div className="my-5 space-y-2.5 border-2 border-border bg-muted/60 p-3.5 font-mono text-xs">
