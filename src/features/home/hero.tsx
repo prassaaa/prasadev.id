@@ -124,7 +124,7 @@ export function Hero() {
                   {...site.portrait}
                   loading="eager"
                   fetchPriority="high"
-                  className="aspect-[4/3] [&_img]:contrast-125 [&_img]:grayscale"
+                  className="aspect-4/3 [&_img]:contrast-125 [&_img]:grayscale"
                 />
                 <div className="absolute bottom-2 left-2 flex max-w-[calc(100%-1rem)] items-center gap-1.5 border border-neo-yellow bg-black px-2 py-1 font-mono text-[10px] font-bold text-neo-yellow">
                   <MapPin className="size-3 shrink-0" aria-hidden="true" />

@@ -40,7 +40,7 @@ export default function ProjectDetail({ loaderData }: Route.ComponentProps) {
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li className="min-w-0 break-words text-foreground" aria-current="page">
+              <li className="min-w-0 wrap-break-word text-foreground" aria-current="page">
                 {project.title}
               </li>
             </ol>
@@ -48,7 +48,7 @@ export default function ProjectDetail({ loaderData }: Route.ComponentProps) {
           <div className="mb-6 flex flex-wrap gap-3">
             <span className="tag bg-neo-yellow text-black">{project.categoryLabel}</span>
           </div>
-          <h1 className="max-w-5xl font-display text-4xl leading-tight font-extrabold break-words sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-5xl font-display text-4xl leading-tight font-extrabold wrap-break-word sm:text-5xl lg:text-6xl">
             {project.title}
           </h1>
           <div className="mt-10 grid items-start gap-8 lg:grid-cols-12">
@@ -100,7 +100,7 @@ export default function ProjectDetail({ loaderData }: Route.ComponentProps) {
               <dl className="space-y-6">
                 <div>
                   <dt className="mb-2 font-mono text-xs text-muted-foreground">Organisasi</dt>
-                  <dd className="font-bold break-words">{project.client}</dd>
+                  <dd className="font-bold wrap-break-word">{project.client}</dd>
                 </div>
                 <div>
                   <dt className="mb-2 font-mono text-xs text-muted-foreground">

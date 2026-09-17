@@ -26,13 +26,13 @@ export function ArticleLayout({ article, children }: { article: Article; childre
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li className="min-w-0 break-words text-foreground" aria-current="page">
+              <li className="min-w-0 wrap-break-word text-foreground" aria-current="page">
                 {article.title}
               </li>
             </ol>
           </nav>
           <header className="max-w-4xl">
-            <h1 className="font-display text-4xl leading-tight font-extrabold break-words sm:text-5xl lg:text-6xl">
+            <h1 className="font-display text-4xl leading-tight font-extrabold wrap-break-word sm:text-5xl lg:text-6xl">
               {article.title}
             </h1>
             <p className="mt-6 max-w-[72ch] text-lg leading-relaxed text-muted-foreground">

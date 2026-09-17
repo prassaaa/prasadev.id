@@ -32,7 +32,7 @@ export function Contact() {
                     <span className="block font-mono text-xs font-bold text-muted-foreground">
                       {contact.label}
                     </span>
-                    <span className="block font-display text-base font-bold break-words sm:text-lg">
+                    <span className="block font-display text-base font-bold wrap-break-word sm:text-lg">
                       {contact.value}
                     </span>
                   </span>

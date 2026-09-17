@@ -30,7 +30,7 @@ export function SiteHeader({
     <>
       <a
         href="#main-content"
-        className="fixed top-2 left-2 z-[100] -translate-y-24 bg-primary px-4 py-3 font-bold text-black focus:translate-y-0">
+        className="fixed top-2 left-2 z-100 -translate-y-24 bg-primary px-4 py-3 font-bold text-black focus:translate-y-0">
         Lewati ke konten utama
       </a>
       <div className="relative overflow-hidden border-b-2 bg-neo-yellow py-2.5 pr-12 text-black">
