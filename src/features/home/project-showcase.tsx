@@ -30,7 +30,12 @@ export function ProjectShowcase() {
     <section id="portfolio" className="section-shell bg-muted">
       <div className="site-container">
         {/* Section Header & Cyber Filter Controls */}
-        <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading label={site.portfolio.eyebrow} accent="lime" className="mb-0 max-w-lg">
             {site.portfolio.title}
           </SectionHeading>
@@ -72,10 +77,15 @@ export function ProjectShowcase() {
               )
             })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Status Strip */}
-        <div className="mb-8 flex items-center justify-between border-b-2 border-border/30 pb-3 font-mono text-xs text-muted-foreground">
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3, margin: '200px 0px 0px 0px' }}
+          transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8 flex items-center justify-between border-b-2 border-border/30 pb-3 font-mono text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
             <span className="size-2 animate-pulse rounded-full bg-neo-lime" aria-hidden="true" />
             <span>{visibleProjects.length} sistem & aplikasi terverifikasi produksi</span>
@@ -83,7 +93,7 @@ export function ProjectShowcase() {
           <span className="hidden text-[11px] font-bold tracking-wider text-muted-foreground uppercase sm:inline">
             LARAVEL · REACT · FLUTTER · ANDROID
           </span>
-        </div>
+        </motion.div>
 
         <p className="sr-only" role="status">
           {visibleProjects.length} proyek ditampilkan
