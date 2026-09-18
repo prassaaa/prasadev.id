@@ -44,16 +44,24 @@ export function About() {
   return (
     <section id="about" className="section-shell bg-muted">
       <div className="site-container">
-        <SectionHeading label={site.about.eyebrow} accent="yellow" className="max-w-3xl">
-          {site.about.title}
-        </SectionHeading>
-
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+          <SectionHeading label={site.about.eyebrow} accent="yellow" className="max-w-3xl">
+            {site.about.title}
+          </SectionHeading>
+        </motion.div>
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12">
           {/* Left Column: Profile & Credentials Bento Card */}
           <motion.article
-            initial={false}
+            initial={reducedMotion ? false : { opacity: 0, x: -45, y: 20 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             whileHover={
-              reducedMotion ? undefined : { x: -2, y: -2, transition: { duration: 0.15 } }
+              reducedMotion ? undefined : { x: -3, y: -3, transition: { duration: 0.15 } }
             }
             className="flex flex-col justify-between border-2 border-border bg-card p-5 shadow-neo-cyan sm:p-6 lg:col-span-5">
             <div>
@@ -69,9 +77,13 @@ export function About() {
                     PROFILE & CREDENTIALS
                   </span>
                 </div>
-                <span className="border border-border bg-neo-yellow px-2 py-0.5 font-mono text-[10px] font-extrabold text-black uppercase sm:text-xs">
-                  SOFTWARE ENGINEER
-                </span>
+                <div className="flex items-center gap-1.5 border border-border bg-neo-yellow px-2 py-0.5 font-mono text-[10px] font-extrabold text-black uppercase sm:text-xs">
+                  <span
+                    className="size-1.5 animate-pulse rounded-full bg-black"
+                    aria-hidden="true"
+                  />
+                  <span>SOFTWARE ENGINEER</span>
+                </div>
               </div>
 
               {/* Bio Summary with Portrait ID Badge */}
@@ -155,15 +167,18 @@ export function About() {
 
           {/* Right Column: 4 Core Principles 2x2 Bento Grid */}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7">
-            {principles.map((principle) => {
+            {principles.map((principle, idx) => {
               const Icon = principleIcons[principle.icon as keyof typeof principleIcons]
               const color = accents[principle.accent]
               return (
                 <motion.article
                   key={principle.number}
-                  initial={false}
+                  initial={reducedMotion ? false : { opacity: 0, x: 45, y: 20 }}
+                  whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={
-                    reducedMotion ? undefined : { x: -3, y: -3, transition: { duration: 0.15 } }
+                    reducedMotion ? undefined : { x: 3, y: -3, transition: { duration: 0.15 } }
                   }
                   className={`flex min-w-0 flex-col justify-between border-2 border-border bg-card p-5 sm:p-6 ${color.shadow}`}>
                   <div>
