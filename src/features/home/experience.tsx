@@ -80,7 +80,7 @@ export function Experience() {
                   <motion.div
                     initial={reducedMotion ? false : { scale: 0 }}
                     whileInView={reducedMotion ? undefined : { scale: 1 }}
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
                     transition={{ duration: 0.35, ease: 'backOut', delay: 0.05 }}
                     className="absolute top-5 -left-7 z-10 flex items-center justify-center sm:-left-10 md:top-6 md:left-1/2 md:-translate-x-1/2"
                     aria-hidden="true">
@@ -116,7 +116,7 @@ export function Experience() {
                             x: 0,
                           }
                     }
-                    viewport={{ once: true, amount: 0.2 }}
+                    viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className={`w-full md:w-[calc(50%-2.25rem)] ${
                       isEven ? 'md:mr-auto' : 'md:ml-auto'
