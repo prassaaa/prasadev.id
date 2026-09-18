@@ -116,8 +116,8 @@ export function GithubActivity() {
     async function autoSync() {
       try {
         const res = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${githubData.username}?y=last`,
-          { signal: controller.signal },
+          `https://github-contributions-api.jogruber.de/v4/${githubData.username}?y=last&_t=${Date.now()}`,
+          { signal: controller.signal, cache: 'no-store' },
         )
         if (!res.ok) return
         const json = await res.json()
@@ -125,11 +125,15 @@ export function GithubActivity() {
 
         const updatedWeeks = parseApiToWeeks(json.contributions)
         if (updatedWeeks.length > 0) {
-          setData((prev) => ({
-            ...prev,
-            totalContributions: json.total?.lastYear ?? prev.totalContributions,
-            weeks: updatedWeeks,
-          }))
+          const freshTotal = json.total?.lastYear ?? 0
+          setData((prev) => {
+            if (freshTotal < prev.totalContributions) return prev
+            return {
+              ...prev,
+              totalContributions: freshTotal || prev.totalContributions,
+              weeks: updatedWeeks,
+            }
+          })
           setIsLiveSynced(true)
         }
       } catch {
