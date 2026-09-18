@@ -2,6 +2,7 @@ import { PageMeta } from '@/components/page-meta'
 import { site } from '@/content/site'
 import { Hero } from '@/features/home/hero'
 import { About } from '@/features/home/about'
+import { GithubActivity } from '@/features/home/github-activity'
 import { Services } from '@/features/home/services'
 import { ProjectShowcase } from '@/features/home/project-showcase'
 import { Experience } from '@/features/home/experience'
@@ -18,6 +19,7 @@ export default function Home() {
       />
       <Hero />
       <About />
+      <GithubActivity />
       <Services />
       <ProjectShowcase />
       <Experience />

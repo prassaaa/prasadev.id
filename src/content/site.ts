@@ -41,6 +41,12 @@ export const site = {
       href: 'https://www.linkedin.com/in/prastyarw/',
       icon: 'linkedin',
     },
+    {
+      name: 'GitHub',
+      label: 'GitHub Prasetyo Ari Wibowo',
+      href: 'https://github.com/prassaaa',
+      icon: 'github',
+    },
   ],
   about: {
     eyebrow: 'PROFIL & PENDEKATAN',
@@ -54,6 +60,12 @@ export const site = {
       { name: 'Layanan Sosial', label: 'Ambulans & Donasi', icon: 'users' },
       { name: 'Koperasi & Desa', label: 'Kasir & Pengelolaan Usaha', icon: 'store' },
     ],
+  },
+  activity: {
+    eyebrow: 'AKTIVITAS KODE & KONTRIBUSI',
+    title: 'Konsistensi Pengerjaan & Jejak Komit GitHub.',
+    description:
+      'Aktivitas penulisan kode, pemeliharaan sistem, dan kontribusi tim pada berbagai repositori dalam 1 tahun terakhir.',
   },
   services: {
     eyebrow: 'KEAHLIAN & LAYANAN',
