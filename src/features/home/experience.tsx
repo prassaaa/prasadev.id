@@ -42,14 +42,19 @@ export function Experience() {
   return (
     <section id="experience" className="section-shell overflow-hidden bg-background">
       <div className="site-container">
-        <div className="mb-10 max-w-3xl">
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-10 max-w-3xl">
           <SectionHeading label={site.experience.eyebrow} accent="purple">
             {site.experience.title}
           </SectionHeading>
           <p className="font-mono text-xs font-bold tracking-wider text-muted-foreground uppercase">
             Jejak Pengembangan Perangkat Lunak & Sistem Operasional
           </p>
-        </div>
+        </motion.div>
 
         {/* Neon Circuit Timeline Container with Scroll Target */}
         <div ref={containerRef} className="relative pl-7 sm:pl-10 md:pl-0">
