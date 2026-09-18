@@ -27,14 +27,19 @@ export function Education() {
     <section id="education" className="section-shell overflow-hidden bg-muted">
       <div className="site-container">
         {/* Section Header */}
-        <div className="mb-10 max-w-3xl">
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-10 max-w-3xl">
           <SectionHeading label={site.education.eyebrow} accent="cyan">
             {site.education.title}
           </SectionHeading>
           <p className="font-mono text-xs font-bold tracking-wider text-muted-foreground uppercase">
             Pendidikan Formal, Kontribusi Akademik, dan Jejak Organisasi
           </p>
-        </div>
+        </motion.div>
 
         {/* 1. Academic Diploma & Degree Showcase */}
         <motion.div
