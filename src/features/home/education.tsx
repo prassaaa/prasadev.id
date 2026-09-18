@@ -38,10 +38,10 @@ export function Education() {
 
         {/* 1. Academic Diploma & Degree Showcase */}
         <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 35 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
+          initial={reducedMotion ? false : { opacity: 0, y: 40, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           whileHover={reducedMotion ? undefined : { x: -3, y: -3, transition: { duration: 0.15 } }}
           className="relative mb-10 border-2 border-border bg-card p-6 shadow-neo-cyan sm:p-8">
           {/* Window Header Bar */}
@@ -102,22 +102,29 @@ export function Education() {
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
           {/* Kiri (6 cols): Kontribusi Akademik & HAKI */}
           <div className="space-y-4 lg:col-span-6">
-            <div className="flex items-center gap-2.5 border-b-2 border-border/40 pb-3">
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, x: -20 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3, margin: '200px 0px 0px 0px' }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-2.5 border-b-2 border-border/40 pb-3">
               <Award className="size-5 text-neo-yellow" aria-hidden="true" />
               <h3 className="font-display text-xl font-bold sm:text-2xl">
                 Kontribusi Akademik & HAKI
               </h3>
-            </div>
+            </motion.div>
 
             <div className="space-y-4">
               {education.contributions.map((item, idx) => (
                 <motion.article
                   key={item.title}
-                  initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-                  whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.45, delay: idx * 0.1 }}
-                  whileHover={reducedMotion ? undefined : { x: 5, transition: { duration: 0.15 } }}
+                  initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
+                  whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={
+                    reducedMotion ? undefined : { x: 4, y: -2, transition: { duration: 0.15 } }
+                  }
                   className={`border-2 border-border bg-card p-5 sm:p-6 ${contributionShadows[idx]} transition-shadow`}>
                   <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
                     <h4 className="font-display text-lg leading-snug font-bold sm:text-xl">
@@ -138,20 +145,26 @@ export function Education() {
 
           {/* Kanan (6 cols): Pengalaman Organisasi & Kepemimpinan */}
           <div className="space-y-4 lg:col-span-6">
-            <div className="flex items-center gap-2.5 border-b-2 border-border/40 pb-3">
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, x: 20 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3, margin: '200px 0px 0px 0px' }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-2.5 border-b-2 border-border/40 pb-3">
               <Users className="size-5 text-neo-cyan" aria-hidden="true" />
               <h3 className="font-display text-xl font-bold sm:text-2xl">Pengalaman Organisasi</h3>
-            </div>
-
+            </motion.div>
             <div className="space-y-4">
               {education.organizations.map((item, idx) => (
                 <motion.article
                   key={item.name}
-                  initial={reducedMotion ? false : { opacity: 0, y: 24 }}
-                  whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.45, delay: idx * 0.1 }}
-                  whileHover={reducedMotion ? undefined : { x: -5, transition: { duration: 0.15 } }}
+                  initial={reducedMotion ? false : { opacity: 0, x: 35, y: 15 }}
+                  whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={
+                    reducedMotion ? undefined : { x: -4, y: -2, transition: { duration: 0.15 } }
+                  }
                   className={`border-2 border-border bg-card p-5 sm:p-6 ${orgShadows[idx]} transition-shadow`}>
                   <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
                     <span
