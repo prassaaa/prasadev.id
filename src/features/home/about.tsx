@@ -96,7 +96,7 @@ export function About() {
                     loading="lazy"
                   />
                   <div className="absolute -right-2 -bottom-2 border border-border bg-neo-lime px-1.5 py-0.5 font-mono text-[9px] font-black text-black">
-                    PA · DEV
+                    Prasadev
                   </div>
                 </div>
                 <div className="min-w-0 flex-1 space-y-1">
