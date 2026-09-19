@@ -4,18 +4,13 @@ import { SectionHeading } from '@/components/ui/section-heading'
 import { SiteImage } from '@/components/site-image'
 import { education, site } from '@/content/site'
 
-const contributionShadows = ['shadow-neo-yellow', 'shadow-neo-cyan', 'shadow-neo-lime']
-const contributionBadges = [
-  'bg-neo-yellow text-black',
-  'bg-neo-cyan text-black',
-  'bg-neo-lime text-black',
+const contributionStyles = [
+  { badge: 'bg-neo-yellow text-black', shadow: 'shadow-neo-yellow' },
+  { badge: 'bg-neo-cyan text-black', shadow: 'shadow-neo-cyan' },
+  { badge: 'bg-neo-lime text-black', shadow: 'shadow-neo-lime' },
+  { badge: 'bg-neo-pink text-black', shadow: 'shadow-neo-pink' },
+  { badge: 'bg-neo-yellow text-black', shadow: 'shadow-neo-cyan' },
 ]
-const contributionLabels = [
-  'AKADEMIK & PRAKTIKUM',
-  'WORKSHOP & KOMUNITAS',
-  'HAK KEKAYAAN INTELEKTUAL',
-]
-
 const orgShadows = ['shadow-neo-pink', 'shadow-neo-cyan', 'shadow-neo-yellow']
 const orgBadges = ['bg-neo-pink text-black', 'bg-neo-cyan text-black', 'bg-neo-yellow text-black']
 const orgScopes = ['BEM KAMPUS', 'KORWIL 7 (IMSII)', 'HIMPUNAN PRODI']
@@ -115,36 +110,46 @@ export function Education() {
               className="flex items-center gap-2.5 border-b-2 border-border/40 pb-3">
               <Award className="size-5 text-neo-yellow" aria-hidden="true" />
               <h3 className="font-display text-xl font-bold sm:text-2xl">
-                Kontribusi Akademik & HAKI
+                Kontribusi, Pelatihan & Kepakaran
               </h3>
             </motion.div>
 
             <div className="space-y-4">
-              {education.contributions.map((item, idx) => (
-                <motion.article
-                  key={item.title}
-                  initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
-                  whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
-                  viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
-                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={
-                    reducedMotion ? undefined : { x: 4, y: -2, transition: { duration: 0.15 } }
-                  }
-                  className={`border-2 border-border bg-card p-5 sm:p-6 ${contributionShadows[idx]} transition-shadow`}>
-                  <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
-                    <h4 className="font-display text-lg leading-snug font-bold sm:text-xl">
-                      {item.title}
-                    </h4>
-                    <span
-                      className={`border border-border px-2 py-0.5 font-mono text-[10px] font-black uppercase shadow-sm ${contributionBadges[idx]}`}>
-                      {contributionLabels[idx]}
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                    {item.description}
-                  </p>
-                </motion.article>
-              ))}
+              {education.contributions.map((item, idx) => {
+                const style = contributionStyles[idx % contributionStyles.length]
+                return (
+                  <motion.article
+                    key={item.title}
+                    initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
+                    whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                    transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                    whileHover={
+                      reducedMotion ? undefined : { x: 4, y: -2, transition: { duration: 0.15 } }
+                    }
+                    className={`border-2 border-border bg-card p-5 sm:p-6 ${style.shadow} transition-shadow`}>
+                    <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
+                      <h4 className="font-display text-lg leading-snug font-bold sm:text-xl">
+                        {item.title}
+                      </h4>
+                      <div className="flex items-center gap-2">
+                        {'period' in item && Boolean(item.period) && (
+                          <span className="font-mono text-xs font-bold text-muted-foreground">
+                            {item.period}
+                          </span>
+                        )}
+                        <span
+                          className={`border border-border px-2 py-0.5 font-mono text-[10px] font-black uppercase shadow-sm ${style.badge}`}>
+                          {('category' in item && item.category) || 'KONTRIBUSI'}
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      {item.description}
+                    </p>
+                  </motion.article>
+                )
+              })}
             </div>
           </div>
 

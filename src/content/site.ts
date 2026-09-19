@@ -287,13 +287,13 @@ export const experience = [
   },
   {
     location: 'Kabupaten Kediri',
-    title: 'Website Developer',
+    title: 'Website Developer & Pemateri',
     company: 'Dinas Pariwisata dan Kebudayaan',
     logo: '/assets/logos/kab-kediri.svg',
     accent: 'yellow',
     description:
-      'Mengembangkan dan memelihara website resmi untuk informasi destinasi wisata dan kegiatan kebudayaan. Mengerjakan kalender event, galeri multimedia, reservasi tur, dan formulir layanan publik bersama tim desain dan konten.',
-    tags: ['Website Pemerintahan', 'Informasi Wisata', 'Layanan Publik'],
+      'Mengembangkan dan memelihara website resmi untuk informasi destinasi wisata dan kegiatan kebudayaan (2025). Dipercaya berkelanjutan sebagai pemateri pelatihan digital website bagi jajaran pengelola dinas (2026) serta juri Lomba Lawatan Budaya SMA/SMK se-Kabupaten Kediri (2025).',
+    tags: ['Website Pemkab', 'Pemateri Digital', 'Juri Lawatan Budaya'],
   },
   {
     location: 'Wonorejo, Kabupaten Kediri',
@@ -355,19 +355,39 @@ export const education = {
   gpa: 'IPK 3,52 / 4,00',
   contributions: [
     {
-      title: 'Asisten Dosen Pemrograman Web',
+      title: 'Pemateri Pelatihan Digital Website Disparbud (2026)',
+      category: 'PELATIHAN RESMI DINAS',
+      period: '2026',
       description:
-        'Membantu penyampaian materi, membimbing praktikum, dan mengevaluasi tugas mahasiswa.',
+        'Dipercaya oleh Dinas Pariwisata dan Kebudayaan Kabupaten Kediri sebagai pemateri teknis operasional, optimasi konten, dan pemeliharaan website resmi bagi jajaran staf pengelola.',
     },
     {
-      title: 'Pemateri Workshop Website',
+      title: 'Juri Lomba Lawatan Budaya Kabupaten Kediri (2025)',
+      category: 'DEWAN JURI TINGKAT KABUPATEN',
+      period: '2025',
       description:
-        'Berbagi materi pembuatan website, dasar WordPress, dan penggunaan framework modern untuk mahasiswa serta pelajar umum.',
+        'Ditunjuk resmi sebagai dewan juri evaluasi kompetisi Lawatan Budaya tingkat SMA/SMK se-Kabupaten Kediri yang diselenggarakan oleh Dinas Pariwisata dan Kebudayaan.',
     },
     {
       title: 'Aplikasi Flutter Bersertifikat HAKI',
+      category: 'HAK KEKAYAAN INTELEKTUAL',
+      period: '2024',
       description:
-        'Mengembangkan aplikasi mobile berbasis Flutter yang memperoleh sertifikat Hak Kekayaan Intelektual.',
+        'Mengembangkan aplikasi mobile berbasis Flutter yang memperoleh sertifikat Hak Kekayaan Intelektual resmi.',
+    },
+    {
+      title: 'Asisten Dosen Pemrograman Web',
+      category: 'AKADEMIK & PRAKTIKUM',
+      period: '2023–2024',
+      description:
+        'Membantu penyampaian materi perkuliahan, membimbing praktikum, dan mengevaluasi tugas pemrograman mahasiswa.',
+    },
+    {
+      title: 'Pemateri Workshop Website',
+      category: 'WORKSHOP & KOMUNITAS',
+      period: '2023',
+      description:
+        'Berbagi materi pembuatan website, dasar WordPress, dan penggunaan framework modern untuk mahasiswa serta pelajar umum.',
     },
   ],
   organizations: [
