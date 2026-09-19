@@ -20,9 +20,9 @@ export default function Home() {
       />
       <Hero />
       <About />
-      <GithubActivity />
       <Services />
       <ProjectShowcase />
+      <GithubActivity />
       <Experience />
       <TechnicalRoots />
       <Education />

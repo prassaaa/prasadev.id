@@ -46,7 +46,7 @@ export function Experience() {
   })
 
   return (
-    <section id="experience" className="section-shell overflow-hidden bg-background">
+    <section id="experience" className="section-shell overflow-hidden bg-muted">
       <div className="site-container">
         <motion.div
           initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
