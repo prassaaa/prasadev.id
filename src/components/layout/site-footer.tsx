@@ -2,6 +2,7 @@ import { ArrowUpRight, Mail, PhoneCall } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router'
 import { site } from '@/content/site'
+import { SocialIcon } from '@/components/ui/social-icons'
 
 export function SiteFooter() {
   const reducedMotion = useReducedMotion()
@@ -52,17 +53,24 @@ export function SiteFooter() {
                 <ArrowUpRight className="size-3" />
               </a>
 
-              {site.socials.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 border border-border bg-card px-3 py-1.5 font-mono text-xs font-bold transition-colors hover:bg-neo-pink hover:text-black">
-                  <span>{social.name}</span>
-                  <ArrowUpRight className="size-3" />
-                </a>
-              ))}
+              {site.socials.map((social) => {
+                const hoverClass =
+                  social.name === 'GitHub'
+                    ? 'hover:bg-neo-yellow hover:text-black'
+                    : 'hover:bg-neo-pink hover:text-black'
+                return (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-1.5 border border-border bg-card px-3 py-1.5 font-mono text-xs font-bold transition-colors ${hoverClass}`}>
+                    <SocialIcon name={social.icon} className="size-3.5" />
+                    <span>{social.name}</span>
+                    <ArrowUpRight className="size-3" />
+                  </a>
+                )
+              })}
             </div>
           </div>
 

@@ -15,6 +15,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { site } from '@/content/site'
+import { SocialIcon } from '@/components/ui/social-icons'
 
 const consultationSteps = [
   {
@@ -345,17 +346,24 @@ export function Contact() {
                 {/* Social Connect Link */}
                 <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
                   <span className="text-muted-foreground">Profil Profesional:</span>
-                  {site.socials.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 border border-border bg-background px-2.5 py-1 font-bold text-foreground shadow-sm transition-all hover:bg-neo-pink hover:text-black hover:shadow-neo-pink">
-                      <span>{social.label}</span>
-                      <ArrowUpRight className="size-3" aria-hidden="true" />
-                    </a>
-                  ))}
+                  {site.socials.map((social) => {
+                    const hoverClass =
+                      social.name === 'GitHub'
+                        ? 'hover:bg-neo-yellow hover:text-black hover:shadow-neo-yellow'
+                        : 'hover:bg-neo-pink hover:text-black hover:shadow-neo-pink'
+                    return (
+                      <a
+                        key={social.name}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-1.5 border border-border bg-background px-2.5 py-1 font-bold text-foreground shadow-sm transition-all ${hoverClass}`}>
+                        <SocialIcon name={social.icon} className="size-3.5" />
+                        <span>{social.label}</span>
+                        <ArrowUpRight className="size-3" aria-hidden="true" />
+                      </a>
+                    )
+                  })}
                 </div>
               </div>
 
