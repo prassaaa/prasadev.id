@@ -114,7 +114,18 @@ export function About() {
               </div>
 
               <p className="pt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {site.about.description}
+                Saya lulusan Sistem Informasi Universitas Nusantara PGRI Kediri yang berfokus pada
+                pengembangan website, sistem operasional, dan aplikasi mobile. Pengalaman saya
+                mencakup berbagai sektor riil seperti kesehatan, manufaktur, pemerintahan, layanan
+                sosial, dan usaha desa. Saat ini saya bekerja sebagai Software Developer di{' '}
+                <a
+                  href="https://www.instagram.com/rs_bhayangkarakediri/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-foreground underline decoration-neo-yellow decoration-2 underline-offset-3 hover:text-neo-yellow">
+                  Rumah Sakit Bhayangkara Kediri ↗
+                </a>
+                .
               </p>
 
               {/* Quick Facts Box */}
@@ -123,7 +134,14 @@ export function About() {
                   <Briefcase className="size-4 shrink-0 text-neo-pink" aria-hidden="true" />
                   <span className="text-muted-foreground">Peran:</span>
                   <span className="font-bold text-foreground">
-                    Software Developer @ RS Bhayangkara
+                    Software Developer @{' '}
+                    <a
+                      href="https://www.instagram.com/rs_bhayangkarakediri/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-neo-pink decoration-2 underline-offset-3 transition-colors hover:text-neo-pink">
+                      RS Bhayangkara Kediri ↗
+                    </a>
                   </span>
                 </div>
                 <div className="flex items-center gap-2.5">
