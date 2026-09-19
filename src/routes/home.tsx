@@ -6,6 +6,7 @@ import { GithubActivity } from '@/features/home/github-activity'
 import { Services } from '@/features/home/services'
 import { ProjectShowcase } from '@/features/home/project-showcase'
 import { Experience } from '@/features/home/experience'
+import { TechnicalRoots } from '@/features/home/technical-roots'
 import { Education } from '@/features/home/education'
 import { Faq } from '@/features/home/faq'
 import { Contact } from '@/features/home/contact'
@@ -23,6 +24,7 @@ export default function Home() {
       <Services />
       <ProjectShowcase />
       <Experience />
+      <TechnicalRoots />
       <Education />
       <Faq />
       <Contact />

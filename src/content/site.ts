@@ -74,6 +74,12 @@ export const site = {
   },
   portfolio: { eyebrow: 'PROYEK PILIHAN', title: 'Aplikasi untuk Beragam Kebutuhan Operasional.' },
   experience: { eyebrow: 'PENGALAMAN KERJA', title: 'Membangun Aplikasi di Berbagai Sektor.' },
+  roots: {
+    eyebrow: 'PONDASI SISTEM & RISET TEKNIS',
+    title: 'Eksplorasi Kernel Android & Rekayasa Biner ARM64.',
+    description:
+      'Rekam jejak 8 tahun di level sistem berkinerja tinggi: dari kompilasi Linux Kernel Android (pediatutorialku) hingga riset reverse engineering biner dan proteksi memori (nusantarahax).',
+  },
   education: { eyebrow: 'PENDIDIKAN & KONTRIBUSI', title: 'Belajar, Berbagi, dan Berorganisasi.' },
   faq: { eyebrow: 'PERTANYAAN UMUM', title: 'Sebelum Memulai Diskusi.' },
   contact: {
@@ -287,6 +293,48 @@ export const experience = [
     description:
       'Membangun website BUMDes dengan berita desa, profil usaha, laporan kegiatan, dan kontak layanan. Mengembangkan pengelolaan produk UMKM serta pemesanan sederhana bersama pengurus BUMDes dan perangkat desa.',
     tags: ['BUMDes', 'Produk UMKM', 'Pemesanan'],
+  },
+] as const
+export const technicalRoots = [
+  {
+    period: '2016 — 2019',
+    brand: 'pediatutorialku',
+    category: 'SISTEM OPERASI & KERNEL LINUX',
+    title: 'Android OS Porting & Kernel Engineering',
+    image: '/assets/images/pediatutorialku.jpg',
+    url: 'https://www.facebook.com/pediatutorialku/',
+    urlDisplay: 'facebook.com/pediatutorialku',
+    platform: 'Facebook Page',
+    accent: 'cyan',
+    summary:
+      'Membangun dan mem-porting custom ROM berbasis Android Open Source Project (AOSP) dan LineageOS lintas vendor/chipset. Mengerjakan penyesuaian device trees, kompilasi kernel Linux Android dari source code, integrasi proprietary vendor blobs, serta optimalisasi stabilitas hardware level rendah.',
+    capabilities: [
+      'Kompilasi Linux Kernel Android dari Source',
+      'Porting Custom ROM (AOSP & LineageOS)',
+      'Modifikasi Device Tree & Vendor Blobs',
+      'Root, TWRP Recovery & Fastboot Tooling',
+    ],
+    stack: ['C', 'Linux Kernel', 'AOSP', 'Bash', 'Makefile', 'Git'],
+  },
+  {
+    period: '2019 — 2024',
+    brand: 'nusantarahax',
+    category: 'REVERSE ENGINEERING & KEAMANAN BINER',
+    title: 'ARM64 Binary Analysis & Runtime Memory Hooking',
+    image: '/assets/images/nusantarahax.jpg',
+    url: 'https://t.me/NusantaraHAX',
+    urlDisplay: 't.me/NusantaraHAX',
+    platform: 'Telegram Channel',
+    accent: 'pink',
+    summary:
+      'Melakukan riset rekayasa balik (reverse engineering) pada aplikasi dan game engine Android kompleks (Unreal Engine & Unity). Menganalisis instruksi biner ARM/ARM64, dekompilasi native shared library (.so) via IDA Pro & Ghidra, runtime memory inspection, function hooking, serta membedah mekanisme proteksi anti-tamper dan verifikasi integritas memori.',
+    capabilities: [
+      'Static & Dynamic Binary Disassembly',
+      'Instruksi ARM & ARM64 Assembly',
+      'Runtime Memory Hooking & Function Patching',
+      'Analisis Anti-Tamper & Integritas Memori',
+    ],
+    stack: ['C/C++', 'ARM64 Assembly', 'IDA Pro', 'Ghidra', 'Frida', 'Linux Memory Inspection'],
   },
 ] as const
 export const education = {
