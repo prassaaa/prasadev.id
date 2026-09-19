@@ -126,7 +126,7 @@ export function Experience() {
           {!reducedMotion && (
             <motion.div
               style={{ scaleY, originY: 0 }}
-              className="absolute top-6 bottom-6 left-3 w-1 -translate-x-[1px] bg-gradient-to-b from-neo-lime via-neo-cyan to-neo-pink shadow-[0_0_12px_#00f0ff] sm:left-4 md:left-1/2 md:-translate-x-1/2"
+              className="absolute top-6 bottom-6 left-3 w-1 -translate-x-px bg-linear-to-b from-neo-lime via-neo-cyan to-neo-pink shadow-[0_0_12px_#00f0ff] sm:left-4 md:left-1/2 md:-translate-x-1/2"
               aria-hidden="true"
             />
           )}

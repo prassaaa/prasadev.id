@@ -178,7 +178,7 @@ export function ProjectCard({
             {project.categoryLabel}
           </span>
         </div>
-        <span className="max-w-[160px] truncate border border-border bg-background px-1.5 py-0.5 text-[10px] font-bold text-foreground">
+        <span className="max-w-40 truncate border border-border bg-background px-1.5 py-0.5 text-[10px] font-bold text-foreground">
           {project.client}
         </span>
       </div>
