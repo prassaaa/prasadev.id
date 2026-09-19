@@ -14,6 +14,28 @@ const contributionStyles = [
 const orgShadows = ['shadow-neo-pink', 'shadow-neo-cyan', 'shadow-neo-yellow']
 const orgBadges = ['bg-neo-pink text-black', 'bg-neo-cyan text-black', 'bg-neo-yellow text-black']
 const orgScopes = ['BEM KAMPUS', 'KORWIL 7 (IMSII)', 'HIMPUNAN PRODI']
+const contributionEvidenceMap: Record<string, { href: string; label: string }> = {
+  'Pemateri Workshop Kebudayaan Digital Pusakakediri.com (2026)': {
+    href: '#evidence-dokumentasi-disparbud',
+    label: 'Lihat Foto Dokumentasi ↘',
+  },
+  'Juri Lomba Lawatan Budaya SMA/SMK se-Kabupaten Kediri': {
+    href: '#evidence-juri-lawatan',
+    label: 'Lihat Sertifikat Juri ↘',
+  },
+  'Aplikasi Mobile "HortiKita" Bersertifikat HAKI': {
+    href: '#evidence-haki-flutter',
+    label: 'Lihat Sertifikat HAKI ↘',
+  },
+  'Pemateri Workshop Mengenal WordPress & Instalasi CMS': {
+    href: '#evidence-workshop-kampus',
+    label: 'Lihat Sertifikat Pemateri ↘',
+  },
+  'Asisten Dosen Praktek Dasar Pemrograman Web': {
+    href: '#evidence-asisten-dosen',
+    label: 'Lihat Surat Keterangan Asdos ↘',
+  },
+}
 
 export function Education() {
   const reducedMotion = useReducedMotion()
@@ -147,6 +169,16 @@ export function Education() {
                     <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                       {item.description}
                     </p>
+
+                    {contributionEvidenceMap[item.title] && (
+                      <div className="mt-3.5 border-t border-border/20 pt-2.5">
+                        <a
+                          href={contributionEvidenceMap[item.title].href}
+                          className="inline-flex items-center gap-1.5 border border-border bg-background px-2.5 py-1 font-mono text-[11px] font-bold text-foreground transition-all hover:bg-neo-yellow hover:text-black hover:shadow-sm">
+                          <span>{contributionEvidenceMap[item.title].label}</span>
+                        </a>
+                      </div>
+                    )}
                   </motion.article>
                 )
               })}

@@ -47,7 +47,7 @@ export function Faq() {
   const [activeFaq, setActiveFaq] = useState<string | undefined>(faqs[0]?.question)
 
   return (
-    <section id="faq" className="section-shell overflow-hidden bg-background">
+    <section id="faq" className="section-shell overflow-hidden bg-muted">
       <div className="site-container">
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Heading, Subtitle & Direct Inquiry Deck */}

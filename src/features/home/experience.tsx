@@ -264,7 +264,7 @@ export function Experience() {
                                 <img
                                   src={item.photo}
                                   alt={`Dokumentasi ${item.company}`}
-                                  className="h-36 w-full border border-border object-cover sm:h-44"
+                                  className="h-44 w-full border border-border object-cover object-[center_16%] sm:h-56"
                                   loading="lazy"
                                   onError={(e) => {
                                     const parent = (e.target as HTMLElement).parentElement
@@ -295,6 +295,33 @@ export function Experience() {
                           ))}
                         </ul>
                       </div>
+
+                      {item.company.includes('Polres') && (
+                        <div className="mt-3.5 border-t border-border/30 pt-2.5">
+                          <a
+                            href="#evidence-magang-polres"
+                            className="group/link inline-flex items-center gap-1.5 border border-border bg-muted/90 px-2.5 py-1 font-mono text-[11px] font-bold text-foreground transition-all hover:bg-neo-cyan hover:text-black hover:shadow-sm">
+                            <Camera className="size-3 text-neo-cyan group-hover/link:text-black" />
+                            <span>Lihat Arsip Foto Bersama ↘</span>
+                          </a>
+                        </div>
+                      )}
+
+                      {item.company.includes('Pariwisata') && (
+                        <div className="mt-3.5 flex flex-wrap gap-2 border-t border-border/30 pt-2.5">
+                          <a
+                            href="#evidence-dokumentasi-disparbud"
+                            className="group/link inline-flex items-center gap-1.5 border border-border bg-muted/90 px-2.5 py-1 font-mono text-[11px] font-bold text-foreground transition-all hover:bg-neo-yellow hover:text-black hover:shadow-sm">
+                            <Camera className="size-3 text-neo-yellow group-hover/link:text-black" />
+                            <span>Lihat Foto Pelatihan ↘</span>
+                          </a>
+                          <a
+                            href="#evidence-juri-lawatan"
+                            className="group/link inline-flex items-center gap-1.5 border border-border bg-muted/90 px-2.5 py-1 font-mono text-[11px] font-bold text-foreground transition-all hover:bg-neo-cyan hover:text-black hover:shadow-sm">
+                            <span>📜 Sertifikat Juri ↘</span>
+                          </a>
+                        </div>
+                      )}
                     </motion.article>
                   </motion.div>
                 </li>

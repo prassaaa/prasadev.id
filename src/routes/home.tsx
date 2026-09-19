@@ -8,6 +8,7 @@ import { ProjectShowcase } from '@/features/home/project-showcase'
 import { Experience } from '@/features/home/experience'
 import { TechnicalRoots } from '@/features/home/technical-roots'
 import { Education } from '@/features/home/education'
+import { EvidenceShowcase } from '@/features/home/evidence-showcase'
 import { Faq } from '@/features/home/faq'
 import { Contact } from '@/features/home/contact'
 
@@ -26,6 +27,7 @@ export default function Home() {
       <Experience />
       <TechnicalRoots />
       <Education />
+      <EvidenceShowcase />
       <Faq />
       <Contact />
     </>

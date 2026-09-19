@@ -81,6 +81,12 @@ export const site = {
       'Rekam jejak 8 tahun di level sistem berkinerja tinggi: dari kompilasi Linux Kernel Android (pediatutorialku) hingga riset reverse engineering biner dan proteksi memori (nusantarahax).',
   },
   education: { eyebrow: 'PENDIDIKAN & KONTRIBUSI', title: 'Belajar, Berbagi, dan Berorganisasi.' },
+  evidence: {
+    eyebrow: 'BUKTI FISIK & ARSIP DOKUMENTASI',
+    title: 'Arsip Sertifikat Resmi & Dokumentasi Lapangan.',
+    description:
+      'Koleksi sertifikat kepakaran, hak cipta resmi HAKI, serta foto dokumentasi visual kegiatan lapangan yang dapat diverifikasi keasliannya.',
+  },
   faq: { eyebrow: 'PERTANYAAN UMUM', title: 'Sebelum Memulai Diskusi.' },
   contact: {
     eyebrow: 'HUBUNGI SAYA',
@@ -209,10 +215,10 @@ export const experience = [
     title: 'Web Monitoring & IT Intern',
     company: 'Kepolisian Resor (Polres) Kediri Kota',
     logo: '/assets/logos/polres-kediri-kota.svg',
-    photo: '/assets/images/magang-polres.jpg',
+    photo: '/assets/evidence/dokumentasi-magang-polres.jpg',
     accent: 'cyan',
     description:
-      'Melaksanakan praktik kerja lapangan (magang) berfokus pada monitoring dan pemeliharaan website office resmi Polres Kediri Kota. Mengawasi stabilitas server portal informasi publik, ketersediaan layanan digital, serta dokumentasi infrastruktur IT instansi.',
+      'Melaksanakan praktik kerja lapangan (magang) berfokus pada monitoring dan pemeliharaan website resmi Polres Kediri Kota. Mengawasi stabilitas server portal informasi publik, ketersediaan layanan digital, serta dokumentasi infrastruktur IT instansi.',
     tags: ['Monitoring Web', 'Infrastruktur IT', 'Layanan Publik'],
   },
   {
@@ -292,8 +298,8 @@ export const experience = [
     logo: '/assets/logos/kab-kediri.svg',
     accent: 'yellow',
     description:
-      'Mengembangkan dan memelihara website resmi untuk informasi destinasi wisata dan kegiatan kebudayaan (2025). Dipercaya berkelanjutan sebagai pemateri pelatihan digital website bagi jajaran pengelola dinas (2026) serta juri Lomba Lawatan Budaya SMA/SMK se-Kabupaten Kediri (2025).',
-    tags: ['Website Pemkab', 'Pemateri Digital', 'Juri Lawatan Budaya'],
+      'Membangun website resmi Pusakakediri.com (2025) serta dipercaya menjadi pemateri Workshop "Penguatan Peran Juru Pelihara dan Masyarakat dalam Pengembangan Kebudayaan secara Digital" untuk edukasi website internal (2026) dan juri Lomba Lawatan Budaya SMA/SMK se-Kabupaten Kediri (2025).',
+    tags: ['Pusakakediri.com', 'Pemateri Workshop', 'Juri Lawatan Budaya'],
   },
   {
     location: 'Wonorejo, Kabupaten Kediri',
@@ -355,39 +361,41 @@ export const education = {
   gpa: 'IPK 3,52 / 4,00',
   contributions: [
     {
-      title: 'Pemateri Pelatihan Digital Website Disparbud (2026)',
-      category: 'PELATIHAN RESMI DINAS',
+      title: 'Pemateri Workshop Kebudayaan Digital Pusakakediri.com (2026)',
+      category: 'PEMATERI RESMI DINAS',
       period: '2026',
       description:
-        'Dipercaya oleh Dinas Pariwisata dan Kebudayaan Kabupaten Kediri sebagai pemateri teknis operasional, optimasi konten, dan pemeliharaan website resmi bagi jajaran staf pengelola.',
+        'Pemateri Workshop "Penguatan Peran Juru Pelihara dan Masyarakat dalam Pengembangan Kebudayaan secara Digital" oleh Disparbud Kabupaten Kediri untuk mengenalkan dan melatih operasional website Pusakakediri.com secara internal.',
     },
     {
-      title: 'Juri Lomba Lawatan Budaya Kabupaten Kediri (2025)',
-      category: 'DEWAN JURI TINGKAT KABUPATEN',
+      title: 'Juri Lomba Lawatan Budaya SMA/SMK se-Kabupaten Kediri',
+      category: 'DEWAN JURI RESMI PEMKAB',
       period: '2025',
       description:
-        'Ditunjuk resmi sebagai dewan juri evaluasi kompetisi Lawatan Budaya tingkat SMA/SMK se-Kabupaten Kediri yang diselenggarakan oleh Dinas Pariwisata dan Kebudayaan.',
+        'Sertifikat resmi Kepala Dinas (No. 400.6.4.1/899/418.21/2025) sebagai Juri Lomba kegiatan "Lawatan Budaya SMA/SMK se-Kabupaten Kediri Tahun 2025" bertema "Kebangkitan Pemuda Kabupaten Kediri : Dulu, Kini, dan Nanti" di Kompleks Gedung Museum dan Kesenian.',
     },
     {
-      title: 'Aplikasi Flutter Bersertifikat HAKI',
-      category: 'HAK KEKAYAAN INTELEKTUAL',
-      period: '2024',
+      title: 'Aplikasi Mobile "HortiKita" Bersertifikat HAKI',
+      category: 'HAK CIPTA (HAKI) RESMI',
+      period: '2025',
+      verificationUrl:
+        'https://hakcipta.dgip.go.id/legal/c/NTYyYTMyMGIwZTM3NmE5ZTNhOTM4YTEzYzlmNDA1YjM=',
       description:
-        'Mengembangkan aplikasi mobile berbasis Flutter yang memperoleh sertifikat Hak Kekayaan Intelektual resmi.',
+        'Pencipta program komputer aplikasi mobile "HortiKita" (No. Permohonan EC002025088352, No. Pencatatan 000928613) yang resmi terdaftar dan memperoleh pelindungan Hak Cipta dari DJKI Kementerian Hukum Republik Indonesia.',
     },
     {
-      title: 'Asisten Dosen Pemrograman Web',
-      category: 'AKADEMIK & PRAKTIKUM',
-      period: '2023–2024',
-      description:
-        'Membantu penyampaian materi perkuliahan, membimbing praktikum, dan mengevaluasi tugas pemrograman mahasiswa.',
-    },
-    {
-      title: 'Pemateri Workshop Website',
-      category: 'WORKSHOP & KOMUNITAS',
+      title: 'Pemateri Workshop Mengenal WordPress & Instalasi CMS',
+      category: 'SERTIFIKAT PEMATERI RESMI',
       period: '2023',
       description:
-        'Berbagi materi pembuatan website, dasar WordPress, dan penggunaan framework modern untuk mahasiswa serta pelajar umum.',
+        'Sertifikat resmi (No. 11.033/SRT/HIMAPRODI-SI/UNP-Kdr/XII/2023) sebagai Pemateri kegiatan "Workshop Mengenal WordPress: Instalasi CMS untuk Pengembangan WEB" oleh HIMAPRODI SI Universitas Nusantara PGRI Kediri.',
+    },
+    {
+      title: 'Asisten Dosen Praktek Dasar Pemrograman Web',
+      category: 'SURAT KETERANGAN RESMI',
+      period: '2023–2024',
+      description:
+        'Surat Keterangan resmi Dekan FTIK UNP Kediri (No. 0390/FTIK-UN PGRI Kd/C/XII/2023) penugasan sebagai Asisten Dosen mata kuliah Praktek Dasar Pemrograman Web (SIF1408) semester ganjil 2023/2024.',
     },
   ],
   organizations: [
@@ -408,6 +416,82 @@ export const education = {
     },
   ],
 } as const
+export const evidenceItems = [
+  {
+    id: 'evidence-workshop-kampus',
+    type: 'certificate',
+    category: 'SERTIFIKAT PEMATERI',
+    title: 'Sertifikat Pemateri Workshop Mengenal WordPress & CMS',
+    issuer: 'HIMAPRODI SI UNP Kediri · No. 11.033/SRT/2023',
+    year: '2023',
+    image: '/assets/evidence/sertifikat-workshop-kampus.jpg',
+    accent: 'yellow',
+    description:
+      'Sertifikat resmi apresiasi sebagai Pemateri kegiatan Workshop "Mengenal WordPress: Instalasi CMS untuk Pengembangan WEB" tertanggal 17 Desember 2023 oleh HIMAPRODI Sistem Informasi UNP Kediri.',
+  },
+  {
+    id: 'evidence-juri-lawatan',
+    type: 'certificate',
+    category: 'SERTIFIKAT RESMI',
+    title: 'Sertifikat Dewan Juri Lomba Lawatan Budaya SMA/SMK',
+    issuer: 'Pemerintah Kabupaten Kediri · No. 400.6.4.1/899/2025',
+    year: '2025',
+    image: '/assets/evidence/sertifikat-juri-lawatan.jpg',
+    accent: 'cyan',
+    description:
+      'Sertifikat penetapan resmi Kepala Dinas (No. 400.6.4.1/899/418.21/2025) sebagai Juri Lomba dalam kegiatan Lawatan Budaya SMA/SMK se-Kabupaten Kediri Tahun 2025.',
+  },
+  {
+    id: 'evidence-haki-flutter',
+    type: 'certificate',
+    category: 'HAK CIPTA (HAKI)',
+    title: 'Surat Pencatatan Hak Cipta Aplikasi Mobile "HortiKita"',
+    issuer: 'DJKI Kementerian Hukum RI · No. 000928613',
+    year: '2025',
+    image: '/assets/evidence/sertifikat-haki-flutter.jpg',
+    verificationUrl:
+      'https://hakcipta.dgip.go.id/legal/c/NTYyYTMyMGIwZTM3NmE5ZTNhOTM4YTEzYzlmNDA1YjM=',
+    accent: 'lime',
+    description:
+      'Pencatatan resmi Hak Cipta jenis Program Komputer "HortiKita" (Prasetyo Ari Wibowo, Sucipto dkk) dengan nomor pencatatan 000928613 yang terverifikasi dalam database DJKI Kemenkumham RI.',
+  },
+  {
+    id: 'evidence-asisten-dosen',
+    type: 'certificate',
+    category: 'SURAT KETERANGAN RESMI',
+    title: 'Surat Keterangan Asisten Dosen Pemrograman Web',
+    issuer: 'FTIK Universitas Nusantara PGRI Kediri · No. 0390/FTIK/2023',
+    year: '2023',
+    image: '/assets/evidence/sertifikat-asisten-dosen.jpg',
+    accent: 'pink',
+    description:
+      'Surat Keterangan resmi Dekan Fakultas Teknik & Ilmu Komputer UNP Kediri (No. 0390/FTIK-UN PGRI Kd/C/XII/2023) penugasan Asisten Dosen mata kuliah Praktek Dasar Pemrograman Web (SIF1408).',
+  },
+  {
+    id: 'evidence-dokumentasi-disparbud',
+    type: 'documentation',
+    category: 'DOKUMENTASI KEGIATAN',
+    title: 'Foto Bersama Workshop Kebudayaan Digital Pusakakediri.com',
+    issuer: 'Dinas Pariwisata dan Kebudayaan Kabupaten Kediri · 2026',
+    year: '2026',
+    image: '/assets/evidence/dokumentasi-pemateri-disparbud.jpg',
+    accent: 'yellow',
+    description:
+      'Dokumentasi foto bersama peserta Workshop "Penguatan Peran Juru Pelihara dan Masyarakat dalam Pengembangan Kebudayaan secara Digital" untuk pengenalan dan pelatihan teknis website Pusakakediri.com secara internal.',
+  },
+  {
+    id: 'evidence-magang-polres',
+    type: 'documentation',
+    category: 'DOKUMENTASI MAGANG',
+    title: 'Foto Bersama Penyerahan Sertifikat dengan Kepala TIK Polres',
+    issuer: 'Kepolisian Resor (Polres) Kediri Kota · 2025',
+    year: '2025',
+    image: '/assets/evidence/dokumentasi-magang-polres.jpg',
+    accent: 'cyan',
+    description:
+      'Dokumentasi resmi penyerahan sertifikat bersama Kepala Seksi Teknologi Informasi dan Komunikasi (TIK) Polres Kediri Kota atas penyelesaian praktik kerja monitoring website resmi.',
+  },
+] as const
 
 export const faqs = [
   {
