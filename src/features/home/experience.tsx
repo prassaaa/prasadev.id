@@ -79,21 +79,38 @@ export function Experience() {
               {experience.length} MITRA TERVERIFIKASI
             </span>
           </div>
-
-          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5 lg:grid-cols-10">
-            {experience.map((exp) => (
-              <div
-                key={exp.company}
-                title={exp.company}
-                className="group flex h-14 items-center justify-center border-2 border-border bg-white p-2 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-neo">
-                <img
-                  src={exp.logo}
-                  alt={`Logo ${exp.company}`}
-                  className="max-h-full max-w-full object-contain grayscale filter transition-all group-hover:scale-110 group-hover:grayscale-0"
-                  loading="lazy"
-                />
-              </div>
-            ))}
+          {/* Infinite Smooth Looping Marquee */}
+          <div className="marquee-container edge-fade relative overflow-hidden py-1">
+            <div className="marquee-left flex w-max gap-3 sm:gap-4">
+              {/* Set 1 */}
+              {experience.map((exp) => (
+                <div
+                  key={`track1-${exp.company}`}
+                  title={exp.company}
+                  className="group flex h-14 w-36 shrink-0 items-center justify-center border-2 border-border bg-white px-3 py-2 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-neo sm:w-44">
+                  <img
+                    src={exp.logo}
+                    alt={`Logo ${exp.company}`}
+                    className="max-h-full max-w-full object-contain grayscale filter transition-all group-hover:scale-105 group-hover:grayscale-0"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+              {/* Set 2 (for seamless -50% infinite loop) */}
+              {experience.map((exp) => (
+                <div
+                  key={`track2-${exp.company}`}
+                  title={exp.company}
+                  className="group flex h-14 w-36 shrink-0 items-center justify-center border-2 border-border bg-white px-3 py-2 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-neo sm:w-44">
+                  <img
+                    src={exp.logo}
+                    alt={`Logo ${exp.company}`}
+                    className="max-h-full max-w-full object-contain grayscale filter transition-all group-hover:scale-105 group-hover:grayscale-0"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
