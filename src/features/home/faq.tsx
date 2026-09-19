@@ -175,7 +175,7 @@ export function Faq() {
                       </div>
 
                       {/* Interactive Trigger */}
-                      <AccordionTrigger className="flex items-center justify-between gap-4 px-4 py-4 text-left hover:bg-muted/30 sm:px-6 sm:py-5 [&>[data-slot=accordion-trigger-icon]]:hidden">
+                      <AccordionTrigger className="flex items-center justify-between gap-4 px-4 py-4 text-left hover:bg-muted/30 *:data-[slot=accordion-trigger-icon]:hidden sm:px-6 sm:py-5">
                         <span className="font-display text-base leading-snug font-extrabold sm:text-lg md:text-xl">
                           {faq.question}
                         </span>
