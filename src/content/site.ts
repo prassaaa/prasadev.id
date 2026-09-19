@@ -369,7 +369,7 @@ export const education = {
     },
     {
       title: 'Juri Lomba Lawatan Budaya SMA/SMK se-Kabupaten Kediri',
-      category: 'DEWAN JURI RESMI PEMKAB',
+      category: 'JURI RESMI PEMKAB',
       period: '2025',
       description:
         'Sertifikat resmi Kepala Dinas (No. 400.6.4.1/899/418.21/2025) sebagai Juri Lomba kegiatan "Lawatan Budaya SMA/SMK se-Kabupaten Kediri Tahun 2025" bertema "Kebangkitan Pemuda Kabupaten Kediri : Dulu, Kini, dan Nanti" di Kompleks Gedung Museum dan Kesenian.',
@@ -433,7 +433,7 @@ export const evidenceItems = [
     id: 'evidence-juri-lawatan',
     type: 'certificate',
     category: 'SERTIFIKAT RESMI',
-    title: 'Sertifikat Dewan Juri Lomba Lawatan Budaya SMA/SMK',
+    title: 'Sertifikat Juri Lomba Lawatan Budaya SMA/SMK',
     issuer: 'Pemerintah Kabupaten Kediri · No. 400.6.4.1/899/2025',
     year: '2025',
     image: '/assets/evidence/sertifikat-juri-lawatan.jpg',
@@ -470,14 +470,14 @@ export const evidenceItems = [
   {
     id: 'evidence-dokumentasi-disparbud',
     type: 'documentation',
-    category: 'DOKUMENTASI KEGIATAN',
-    title: 'Foto Bersama Workshop Kebudayaan Digital Pusakakediri.com',
+    category: 'DOKUMENTASI PEMATERI',
+    title: 'Dokumentasi Pemateri Kebudayaan Digital Pusakakediri.com',
     issuer: 'Dinas Pariwisata dan Kebudayaan Kabupaten Kediri · 2026',
     year: '2026',
     image: '/assets/evidence/dokumentasi-pemateri-disparbud.jpg',
     accent: 'yellow',
     description:
-      'Dokumentasi foto bersama peserta Workshop "Penguatan Peran Juru Pelihara dan Masyarakat dalam Pengembangan Kebudayaan secara Digital" untuk pengenalan dan pelatihan teknis website Pusakakediri.com secara internal.',
+      'Dokumentasi foto bersama peserta dan jajaran dinas saat menjadi Pemateri Workshop "Penguatan Peran Juru Pelihara dan Masyarakat dalam Pengembangan Kebudayaan secara Digital" untuk pengenalan dan pelatihan teknis website Pusakakediri.com secara internal.',
   },
   {
     id: 'evidence-magang-polres',

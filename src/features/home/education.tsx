@@ -17,7 +17,7 @@ const orgScopes = ['BEM KAMPUS', 'KORWIL 7 (IMSII)', 'HIMPUNAN PRODI']
 const contributionEvidenceMap: Record<string, { href: string; label: string }> = {
   'Pemateri Workshop Kebudayaan Digital Pusakakediri.com (2026)': {
     href: '#evidence-dokumentasi-disparbud',
-    label: 'Lihat Foto Dokumentasi ↘',
+    label: 'Lihat Dokumentasi Pemateri ↘',
   },
   'Juri Lomba Lawatan Budaya SMA/SMK se-Kabupaten Kediri': {
     href: '#evidence-juri-lawatan',

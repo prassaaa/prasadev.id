@@ -313,7 +313,7 @@ export function Experience() {
                             href="#evidence-dokumentasi-disparbud"
                             className="group/link inline-flex items-center gap-1.5 border border-border bg-muted/90 px-2.5 py-1 font-mono text-[11px] font-bold text-foreground transition-all hover:bg-neo-yellow hover:text-black hover:shadow-sm">
                             <Camera className="size-3 text-neo-yellow group-hover/link:text-black" />
-                            <span>Lihat Foto Pelatihan ↘</span>
+                            <span>Dokumentasi Pemateri Disparbud ↘</span>
                           </a>
                           <a
                             href="#evidence-juri-lawatan"
