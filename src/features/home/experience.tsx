@@ -22,6 +22,12 @@ const nodeColors: Record<string, { bg: string; dot: string; shadow: string; badg
     shadow: 'shadow-neo-lime',
     badge: 'bg-neo-cyan text-black',
   },
+  lime: {
+    bg: 'bg-neo-lime text-black',
+    dot: 'bg-neo-lime',
+    shadow: 'shadow-neo',
+    badge: 'bg-neo-lime text-black',
+  },
 }
 
 export function Experience() {
@@ -54,6 +60,41 @@ export function Experience() {
           <p className="font-mono text-xs font-bold tracking-wider text-muted-foreground uppercase">
             Jejak Pengembangan Perangkat Lunak & Sistem Operasional
           </p>
+        </motion.div>
+        {/* Partner & Company Logos Showcase Bar */}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 25 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+          transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-12 border-2 border-border bg-card p-4 shadow-neo sm:p-5">
+          <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2 border-b-2 border-border/30 pb-2.5 font-mono text-xs">
+            <div className="flex items-center gap-2">
+              <span className="size-2 rounded-full bg-neo-lime" aria-hidden="true" />
+              <span className="font-bold tracking-wider text-muted-foreground uppercase">
+                INSTANSI & PERUSAHAAN MITRA
+              </span>
+            </div>
+            <span className="border border-border bg-neo-yellow px-2 py-0.5 font-mono text-[10px] font-black text-black uppercase shadow-sm">
+              {experience.length} MITRA TERVERIFIKASI
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-5 lg:grid-cols-10">
+            {experience.map((exp) => (
+              <div
+                key={exp.company}
+                title={exp.company}
+                className="group flex h-14 items-center justify-center border-2 border-border bg-white p-2 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-neo">
+                <img
+                  src={exp.logo}
+                  alt={`Logo ${exp.company}`}
+                  className="max-h-full max-w-full object-contain grayscale filter transition-all group-hover:scale-110 group-hover:grayscale-0"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Neon Circuit Timeline Container with Scroll Target */}
@@ -167,23 +208,35 @@ export function Experience() {
                         </div>
                       </div>
 
-                      {/* Company & Role */}
-                      <div className="space-y-2">
-                        <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-baseline">
-                          <h3 className="font-display text-lg leading-tight font-extrabold sm:text-xl md:text-2xl">
-                            {item.company}
-                          </h3>
-                          <span
-                            className={`inline-block self-start border border-border px-2.5 py-0.5 font-mono text-[11px] font-black uppercase sm:self-auto sm:text-xs ${color.badge}`}>
-                            {item.title}
-                          </span>
+                      {/* Company Header with Logo & Role */}
+                      <div className="space-y-2.5">
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          {item.logo && (
+                            <div className="flex size-12 shrink-0 items-center justify-center border-2 border-border bg-white p-1.5 shadow-sm sm:size-14">
+                              <img
+                                src={item.logo}
+                                alt={`Logo ${item.company}`}
+                                className="size-full object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-col justify-between gap-1.5 sm:flex-row sm:items-baseline">
+                              <h3 className="font-display text-base leading-tight font-extrabold sm:text-lg md:text-xl">
+                                {item.company}
+                              </h3>
+                              <span
+                                className={`inline-block self-start border border-border px-2 py-0.5 font-mono text-[10px] font-black uppercase sm:self-auto sm:text-[11px] ${color.badge}`}>
+                                {item.title}
+                              </span>
+                            </div>
+                            <p className="mt-1 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                              {item.description}
+                            </p>
+                          </div>
                         </div>
-
-                        <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
-                          {item.description}
-                        </p>
                       </div>
-
                       {/* Deliverable & Stack Tags */}
                       <div className="mt-4 border-t-2 border-border/20 pt-3">
                         <div className="mb-2 flex items-center gap-1.5 font-mono text-[10px] font-bold text-muted-foreground uppercase sm:text-[11px]">

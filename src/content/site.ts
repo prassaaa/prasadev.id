@@ -191,17 +191,39 @@ export const experience = [
   {
     location: 'Kediri',
     title: 'Software Developer',
-    company: 'Rumah Sakit Bhayangkara',
+    company: 'Rumah Sakit Bhayangkara Kediri',
+    logo: '/assets/logos/rs-bhayangkara.png',
     accent: 'yellow',
     description:
       'Mengembangkan SIMRS berbasis web untuk data pasien, rekam medis, dan administrasi. Mengerjakan input data, validasi stok, kontrol transaksi, serta modul sesuai kebutuhan divisi. Mengembangkan aplikasi Android yang dipublikasikan di Google Play Store dan mengintegrasikannya dengan backend API.',
     tags: ['SIMRS', 'Aplikasi Android', 'Integrasi API'],
   },
   {
+    location: 'Kediri',
+    title: 'Web Developer',
+    company: 'Biji Cerita',
+    logo: '/assets/logos/bijicerita.svg',
+    accent: 'pink',
+    description:
+      'Membangun ekosistem sistem F&B lengkap untuk bijicerita.com — mulai dari aplikasi kasir Point of Sale (POS) hingga dashboard analitik manajemen operasional, pesanan, dan kontrol inventaris.',
+    tags: ['Sistem POS', 'F&B & Kasir', 'Dashboard'],
+  },
+  {
+    location: 'Grogol, Kediri',
+    title: 'Web Developer',
+    company: 'SMK Al-Huda Grogol',
+    logo: '/assets/logos/smk-alhuda.png',
+    accent: 'cyan',
+    description:
+      'Mengembangkan sistem informasi sekolah terpadu yang menyatukan basis data akademik, pengelolaan profil siswa, administrasi nilai, dan portal informasi terpusat bagi staf pengajar dan guru.',
+    tags: ['Sistem Sekolah', 'Data Akademik', 'Aplikasi Web'],
+  },
+  {
     location: 'Cikarang Selatan',
     title: 'Website Developer',
     company: 'PT. Trimitra Indoplast Mandiri',
-    accent: 'pink',
+    logo: '/assets/logos/innapack.png',
+    accent: 'lime',
     description:
       'Mengimplementasikan aplikasi full-stack Laravel–React untuk kebutuhan operasional manufaktur. Mengembangkan dashboard analitik dan pelaporan, input data, validasi stok, serta kontrol transaksi dengan pembagian sistem secara modular.',
     tags: ['Laravel', 'React', 'Sistem Operasional'],
@@ -210,16 +232,28 @@ export const experience = [
     location: 'Kabupaten Tangerang',
     title: 'FullStack Developer',
     company: 'Dinas Koperasi dan Usaha Mikro',
-    accent: 'cyan',
+    logo: '/assets/logos/tangerang.svg',
+    accent: 'yellow',
     description:
       'Mengembangkan sistem Koperasi Merah Putih menggunakan Laravel, mencakup manajemen anggota, transaksi simpan pinjam, dan laporan keuangan. Membangun REST API serta aplikasi Flutter untuk akses layanan anggota, termasuk autentikasi dan validasi data.',
     tags: ['Laravel', 'Flutter', 'REST API'],
   },
   {
+    location: 'Kediri',
+    title: 'Web Developer',
+    company: 'PT. Dwi Agung Sentosa',
+    logo: '/assets/logos/dwi-agung.png',
+    accent: 'pink',
+    description:
+      'Membangun website resmi perusahaan kontraktor dan sistem e-katalog produk konstruksi — mencakup galeri proyek terverifikasi, pencarian spesifikasi material bangunan, dan formulir permintaan penawaran harga.',
+    tags: ['Profil Perusahaan', 'E-Katalog', 'Situs Web'],
+  },
+  {
     location: 'Bandung',
     title: 'Website Developer',
     company: 'Yayasan Wahdah Inisiatif Kebaikan',
-    accent: 'yellow',
+    logo: '/assets/logos/inisiatif-kebaikan.png',
+    accent: 'cyan',
     description:
       'Membangun sistem pemesanan dan penjadwalan ambulans beserta API dan antarmuka pengguna serta admin. Mengembangkan sistem kampanye donasi dan mengintegrasikan payment gateway untuk donasi online.',
     tags: ['Pemesanan Ambulans', 'Donasi', 'Payment Gateway'],
@@ -228,7 +262,8 @@ export const experience = [
     location: 'Batam',
     title: 'Website Developer',
     company: 'PT. ASM Tunas Muda',
-    accent: 'pink',
+    logo: '/assets/logos/asm-tunas-muda.png',
+    accent: 'lime',
     description:
       'Mengembangkan website profil perusahaan, aplikasi chatting real-time, sistem inventaris, dan kasir berbasis web. Mengerjakan fungsi pencatatan transaksi, laporan, riwayat percakapan, serta sinkronisasi stok antara kasir dan inventaris.',
     tags: ['Website Profil', 'Chat Real-time', 'Inventaris & Kasir'],
@@ -237,7 +272,8 @@ export const experience = [
     location: 'Kabupaten Kediri',
     title: 'Website Developer',
     company: 'Dinas Pariwisata dan Kebudayaan',
-    accent: 'cyan',
+    logo: '/assets/logos/kab-kediri.svg',
+    accent: 'yellow',
     description:
       'Mengembangkan dan memelihara website resmi untuk informasi destinasi wisata dan kegiatan kebudayaan. Mengerjakan kalender event, galeri multimedia, reservasi tur, dan formulir layanan publik bersama tim desain dan konten.',
     tags: ['Website Pemerintahan', 'Informasi Wisata', 'Layanan Publik'],
@@ -246,13 +282,13 @@ export const experience = [
     location: 'Wonorejo, Kabupaten Kediri',
     title: 'Website Developer',
     company: 'Badan Usaha Milik Desa Wonorejo',
-    accent: 'yellow',
+    logo: '/assets/logos/bumdes-wonorejo.svg',
+    accent: 'pink',
     description:
       'Membangun website BUMDes dengan berita desa, profil usaha, laporan kegiatan, dan kontak layanan. Mengembangkan pengelolaan produk UMKM serta pemesanan sederhana bersama pengurus BUMDes dan perangkat desa.',
     tags: ['BUMDes', 'Produk UMKM', 'Pemesanan'],
   },
 ] as const
-
 export const education = {
   institution: 'Universitas Nusantara PGRI Kediri',
   degree: 'Sarjana Sistem Informasi',
