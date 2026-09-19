@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react'
-import { Briefcase, MapPin } from 'lucide-react'
+import { Briefcase, Camera, MapPin } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { experience, site } from '@/content/site'
 const nodeColors: Record<string, { bg: string; dot: string; shadow: string; badge: string }> = {
@@ -251,6 +251,28 @@ export function Experience() {
                             <p className="mt-1 text-xs leading-relaxed text-muted-foreground sm:text-sm">
                               {item.description}
                             </p>
+
+                            {'photo' in item && Boolean(item.photo) && (
+                              <div className="mt-3 border border-border/40 bg-muted/60 p-2">
+                                <div className="mb-1.5 flex items-center justify-between font-mono text-[10px] font-bold text-muted-foreground">
+                                  <span className="flex items-center gap-1">
+                                    <Camera className="size-3 text-neo-cyan" aria-hidden="true" />
+                                    <span>DOKUMENTASI MAGANG</span>
+                                  </span>
+                                  <span className="font-black text-neo-lime">● TERVERIFIKASI</span>
+                                </div>
+                                <img
+                                  src={item.photo}
+                                  alt={`Dokumentasi ${item.company}`}
+                                  className="h-36 w-full border border-border object-cover sm:h-44"
+                                  loading="lazy"
+                                  onError={(e) => {
+                                    const parent = (e.target as HTMLElement).parentElement
+                                    if (parent) parent.style.display = 'none'
+                                  }}
+                                />
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>

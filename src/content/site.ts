@@ -205,6 +205,17 @@ export const experience = [
     tags: ['SIMRS', 'Aplikasi Android', 'Integrasi API'],
   },
   {
+    location: 'Kota Kediri',
+    title: 'Web Monitoring & IT Intern',
+    company: 'Kepolisian Resor (Polres) Kediri Kota',
+    logo: '/assets/logos/polres-kediri-kota.svg',
+    photo: '/assets/images/magang-polres.jpg',
+    accent: 'cyan',
+    description:
+      'Melaksanakan praktik kerja lapangan (magang) berfokus pada monitoring dan pemeliharaan website office resmi Polres Kediri Kota. Mengawasi stabilitas server portal informasi publik, ketersediaan layanan digital, serta dokumentasi infrastruktur IT instansi.',
+    tags: ['Monitoring Web', 'Infrastruktur IT', 'Layanan Publik'],
+  },
+  {
     location: 'Kediri',
     title: 'Web Developer',
     company: 'Biji Cerita',
