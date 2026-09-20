@@ -160,11 +160,12 @@ export function SplashScreen() {
       className="fixed inset-0 z-9999 select-none overflow-hidden">
       {/* 1. LEFT CURTAIN PANEL */}
       <motion.div
-        className="absolute top-0 bottom-0 left-0 w-[50.5%] bg-[#0a0a0e] z-10"
+        className="absolute top-0 bottom-0 left-0 w-[50.5%] bg-[#0a0a0e] shadow-[25px_0_50px_rgba(0,0,0,0.95)] z-10"
         initial={{ x: 0 }}
         animate={isOpening ? { x: '-100%' } : { x: 0 }}
         transition={{
-          duration: 0.85,
+          delay: isOpening ? 0.22 : 0,
+          duration: 0.95,
           ease: [0.76, 0, 0.24, 1], // Dramatic theater curtain easing
         }}
         onAnimationComplete={handleCurtainAnimationComplete}
@@ -172,11 +173,12 @@ export function SplashScreen() {
 
       {/* 2. RIGHT CURTAIN PANEL */}
       <motion.div
-        className="absolute top-0 right-0 bottom-0 w-[50.5%] bg-[#0a0a0e] z-10"
+        className="absolute top-0 right-0 bottom-0 w-[50.5%] bg-[#0a0a0e] shadow-[-25px_0_50px_rgba(0,0,0,0.95)] z-10"
         initial={{ x: 0 }}
         animate={isOpening ? { x: '100%' } : { x: 0 }}
         transition={{
-          duration: 0.85,
+          delay: isOpening ? 0.22 : 0,
+          duration: 0.95,
           ease: [0.76, 0, 0.24, 1],
         }}
       />
@@ -185,8 +187,8 @@ export function SplashScreen() {
       <motion.div
         className="absolute inset-0 flex flex-col items-center justify-center px-4 z-20 pointer-events-auto"
         initial={{ opacity: 1, scale: 1 }}
-        animate={isOpening ? { opacity: 0, scale: 0.88, y: -20 } : { opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}>
+        animate={isOpening ? { opacity: 0, scale: 0.85, y: -10 } : { opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}>
         <div className="relative w-full max-w-xs sm:max-w-sm border-2 border-border bg-card p-5 shadow-neo-cyan sm:p-6">
           {/* Header Bar */}
           <div className="mb-4 flex items-center justify-between border-b-2 border-border/40 pb-3 font-mono text-xs">
