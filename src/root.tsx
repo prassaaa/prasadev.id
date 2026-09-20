@@ -62,7 +62,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(!sessionStorage.getItem('prasadev_splash_shown')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('splash-active')}}catch(e){}",
+              "try{if(!sessionStorage.getItem('prasadev_intro_seen')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-active')}}catch(e){}",
           }}
         />
         <link
@@ -77,7 +77,7 @@ export function Layout({ children }: { children: ReactNode }) {
           dangerouslySetInnerHTML={{
             __html:
               styles +
-              '\nhtml.splash-active,html.splash-active body{overflow:hidden!important;}html:not(.splash-active) #splash-screen{display:none!important;}',
+              '\nhtml.intro-active,html.intro-active body{overflow:hidden!important;}html:not(.intro-active) #intro-screen{display:none!important;}',
           }}
         />
         <noscript>
