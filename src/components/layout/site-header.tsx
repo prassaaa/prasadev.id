@@ -1,9 +1,11 @@
 import { useRef, useState, useSyncExternalStore } from 'react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { Link, useLocation } from 'react-router'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { site } from '@/content/site'
+import brandSvgUrl from '@/assets/brand.svg'
 
 const navigation = [
   ['Tentang', '/#about'],
@@ -64,7 +66,15 @@ export function SiteHeader({
             <span
               className="flex size-11 shrink-0 items-center justify-center border-2 bg-background p-1 shadow-neo"
               aria-hidden="true">
-              <img src="/icons.svg" alt="" className="size-full object-contain" />
+              <img
+                src={brandSvgUrl}
+                alt=""
+                width={489}
+                height={510}
+                loading="eager"
+                decoding="async"
+                className="size-full object-contain"
+              />
             </span>
             <span className="min-w-0 leading-tight">
               <span className="block font-display text-lg font-extrabold sm:text-xl">
@@ -110,7 +120,7 @@ export function SiteHeader({
         </div>
         <AnimatePresence initial={false}>
           {open && (
-            <motion.nav
+            <m.nav
               key="mobile"
               id="mobile-navigation"
               initial={reducedMotion ? false : { height: 0, opacity: 0 }}
@@ -135,7 +145,7 @@ export function SiteHeader({
                   </Link>
                 </Button>
               </div>
-            </motion.nav>
+            </m.nav>
           )}
         </AnimatePresence>
       </header>

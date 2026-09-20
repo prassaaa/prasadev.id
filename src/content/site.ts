@@ -2,7 +2,7 @@ export const site = {
   brand: 'prasadev',
   url: 'https://prasadev.id',
   ogImage: '/og.png',
-  publicationReady: false,
+  publicationReady: true,
   name: 'Prasetyo Ari Wibowo',
   initials: 'PA',
   role: 'Software Engineer',

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
+import { useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { ChevronDown, Mail, MessageSquare, PhoneCall, Sparkles } from 'lucide-react'
 import {
   Accordion,
@@ -51,9 +52,9 @@ export function Faq() {
       <div className="site-container">
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Heading, Subtitle & Direct Inquiry Deck */}
-          <motion.div
-            initial={reducedMotion ? false : { opacity: 0, x: -35 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+          <m.div
+            initial={false}
+            whileInView={reducedMotion ? undefined : { x: [-35, 0] }}
             viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-6 lg:sticky lg:top-28 lg:col-span-5">
@@ -87,9 +88,9 @@ export function Faq() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <MessageSquare className="size-4 text-neo-yellow" aria-hidden="true" />
-                  <h4 className="font-display text-base font-extrabold sm:text-lg">
+                  <h3 className="font-display text-base font-extrabold sm:text-lg">
                     Pertanyaan Belum Terjawab?
-                  </h4>
+                  </h3>
                 </div>
                 <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
                   Jika Anda memiliki studi kasus atau kebutuhan arsitektur spesifik, kirim pesan
@@ -133,7 +134,7 @@ export function Faq() {
               <span className="border border-border bg-muted/80 px-2 py-0.5">#EstimasiBiaya</span>
               <span className="border border-border bg-muted/80 px-2 py-0.5">#RecruiterInfo</span>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Right Column: Interactive Cyber-Brutalist Q&A Dossiers */}
           <div className="space-y-4 lg:col-span-7">
@@ -148,10 +149,10 @@ export function Faq() {
                 const isOpen = activeFaq === faq.question
 
                 return (
-                  <motion.div
+                  <m.div
                     key={faq.question}
-                    initial={reducedMotion ? false : { opacity: 0, x: 35, y: 15 }}
-                    whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                    initial={false}
+                    whileInView={reducedMotion ? undefined : { x: [35, 0], y: [15, 0] }}
                     viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
                     transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}>
                     <AccordionItem
@@ -206,7 +207,7 @@ export function Faq() {
                         </div>
                       </AccordionContent>
                     </AccordionItem>
-                  </motion.div>
+                  </m.div>
                 )
               })}
             </Accordion>

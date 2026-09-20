@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { ArrowUpRight, Check, ShieldAlert, Sparkles, Terminal } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { site, technicalRoots } from '@/content/site'
@@ -27,9 +28,9 @@ export function TechnicalRoots() {
     <section id="roots" className="section-shell overflow-hidden bg-background">
       <div className="site-container">
         {/* Section Heading */}
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+        <m.div
+          initial={false}
+          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
           viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 max-w-3xl">
@@ -39,7 +40,7 @@ export function TechnicalRoots() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
             {site.roots.description}
           </p>
-        </motion.div>
+        </m.div>
 
         {/* 2-Column High-Contrast Cyber-Terminal Dossiers */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -48,24 +49,15 @@ export function TechnicalRoots() {
             const isLeft = idx === 0
 
             return (
-              <motion.article
+              <m.article
                 key={item.brand}
-                initial={
-                  reducedMotion
-                    ? false
-                    : {
-                        opacity: 0,
-                        x: isLeft ? -40 : 40,
-                        y: 20,
-                      }
-                }
+                initial={false}
                 whileInView={
                   reducedMotion
                     ? undefined
                     : {
-                        opacity: 1,
-                        x: 0,
-                        y: 0,
+                        x: [isLeft ? -40 : 40, 0],
+                        y: [20, 0],
                       }
                 }
                 viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
@@ -200,7 +192,7 @@ export function TechnicalRoots() {
                     <span className="uppercase">HARDCORE SYSTEMS</span>
                   </div>
                 </div>
-              </motion.article>
+              </m.article>
             )
           })}
         </div>

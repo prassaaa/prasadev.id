@@ -12,10 +12,13 @@ import {
   Store,
   Users,
 } from 'lucide-react'
-import { motion, useReducedMotion } from 'motion/react'
+import { useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { SiteImage } from '@/components/site-image'
 import { principles, site } from '@/content/site'
+import pras96Url from '@/assets/pras-96.webp'
+import pras192Url from '@/assets/pras-192.webp'
 const principleIcons = {
   gauge: Gauge,
   boxes: Boxes,
@@ -44,20 +47,20 @@ export function About() {
   return (
     <section id="about" className="section-shell bg-muted">
       <div className="site-container">
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+        <m.div
+          initial={false}
+          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
           viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
           <SectionHeading label={site.about.eyebrow} accent="yellow" className="max-w-3xl">
             {site.about.title}
           </SectionHeading>
-        </motion.div>
+        </m.div>
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12">
           {/* Left Column: Profile & Credentials Bento Card */}
-          <motion.article
-            initial={reducedMotion ? false : { opacity: 0, x: -45, y: 20 }}
-            whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+          <m.article
+            initial={false}
+            whileInView={reducedMotion ? undefined : { x: [-45, 0], y: [20, 0] }}
             viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             whileHover={
@@ -91,9 +94,15 @@ export function About() {
                 <div className="relative shrink-0 border-2 border-border bg-background p-1 shadow-neo">
                   <SiteImage
                     {...site.portrait}
+                    src={pras192Url}
+                    srcSet={`${pras96Url} 96w, ${pras192Url} 192w`}
+                    sizes="(min-width: 640px) 96px, 80px"
+                    width={512}
+                    height={489}
                     natural
                     className="size-20 border border-border object-cover sm:size-24"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute -right-2 -bottom-2 border border-border bg-neo-lime px-1.5 py-0.5 font-mono text-[9px] font-black text-black">
                     Prasadev
@@ -181,7 +190,7 @@ export function About() {
                 })}
               </div>
             </div>
-          </motion.article>
+          </m.article>
 
           {/* Right Column: 4 Core Principles 2x2 Bento Grid */}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7">
@@ -189,10 +198,10 @@ export function About() {
               const Icon = principleIcons[principle.icon as keyof typeof principleIcons]
               const color = accents[principle.accent]
               return (
-                <motion.article
+                <m.article
                   key={principle.number}
-                  initial={reducedMotion ? false : { opacity: 0, x: 45, y: 20 }}
-                  whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                  initial={false}
+                  whileInView={reducedMotion ? undefined : { x: [45, 0], y: [20, 0] }}
                   viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
                   transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={
@@ -228,7 +237,7 @@ export function About() {
                       {principle.detail}
                     </p>
                   </div>
-                </motion.article>
+                </m.article>
               )
             })}
           </div>

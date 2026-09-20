@@ -8,7 +8,8 @@ import {
   Smartphone,
   Terminal,
 } from 'lucide-react'
-import { motion, useReducedMotion } from 'motion/react'
+import { useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { Link } from 'react-router'
 import { Button } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/section-heading'
@@ -165,9 +166,9 @@ export function Services() {
   return (
     <section id="services" className="section-shell bg-background">
       <div className="site-container">
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+        <m.div
+          initial={false}
+          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
           viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -183,7 +184,7 @@ export function Services() {
               <ArrowRight aria-hidden="true" />
             </Link>
           </Button>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
           {services.map((service, index) => {
@@ -191,24 +192,15 @@ export function Services() {
             const Icon = config.icon
             const isLeft = index % 2 === 0
             return (
-              <motion.article
+              <m.article
                 key={service.title}
-                initial={
-                  reducedMotion
-                    ? false
-                    : {
-                        opacity: 0,
-                        x: isLeft ? -35 : 35,
-                        y: 20,
-                      }
-                }
+                initial={false}
                 whileInView={
                   reducedMotion
                     ? undefined
                     : {
-                        opacity: 1,
-                        x: 0,
-                        y: 0,
+                        x: [isLeft ? -35 : 35, 0],
+                        y: [20, 0],
                       }
                 }
                 viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
@@ -263,7 +255,7 @@ export function Services() {
 
                 {/* Inset Service Module */}
                 {config.preview}
-              </motion.article>
+              </m.article>
             )
           })}
         </div>

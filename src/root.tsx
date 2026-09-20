@@ -17,7 +17,8 @@ import { site } from '@/content/site'
 import { MotionProvider } from '@/components/motion-provider'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import { WhatsAppWidget } from '@/components/layout/whatsapp-widget'
-import './index.css'
+import styles from './index.css?inline'
+import spaceGroteskUrl from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url'
 
 const structuredData = JSON.stringify({
   '@context': 'https://schema.org',
@@ -55,6 +56,14 @@ export function Layout({ children }: { children: ReactNode }) {
         {!site.publicationReady && <meta name="robots" content="noindex, nofollow" />}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
+        <link
+          rel="preload"
+          href={spaceGroteskUrl}
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <style dangerouslySetInnerHTML={{ __html: styles }} />
         <Meta />
         <Links />
       </head>
@@ -90,6 +99,7 @@ export function ErrorBoundary() {
       <PageMeta
         title={`${notFound ? 'Halaman tidak ditemukan' : 'Halaman tidak dapat dimuat'} | prasadev`}
         description="Kembali ke beranda prasadev untuk melihat profil dan proyek Prasetyo Ari Wibowo."
+        noindex
       />
       <p className="mb-4 font-mono">{notFound ? '404' : 'Terjadi kesalahan'}</p>
       <h1 className="font-display text-4xl font-extrabold">

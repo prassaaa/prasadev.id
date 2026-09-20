@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
+import { useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import {
   ArrowUpRight,
   Check,
@@ -60,9 +61,9 @@ export function Contact() {
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Heading & Interactive Direct Channels */}
           <div className="space-y-6 lg:col-span-5">
-            <motion.div
-              initial={reducedMotion ? false : { opacity: 0, x: -35 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+            <m.div
+              initial={false}
+              whileInView={reducedMotion ? undefined : { x: [-35, 0] }}
               viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
               <SectionHeading label={site.contact.eyebrow} accent="lime">
@@ -71,14 +72,14 @@ export function Contact() {
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {site.contact.description}
               </p>
-            </motion.div>
+            </m.div>
 
             {/* Direct Channel Cards Deck */}
             <div className="space-y-4">
               {/* 1. WhatsApp Card */}
-              <motion.div
-                initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+              <m.div
+                initial={false}
+                whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
                 viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
                 transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}>
                 <article className="border-2 border-border bg-card p-4 shadow-neo transition-all hover:shadow-neo-lime sm:p-5">
@@ -136,12 +137,12 @@ export function Contact() {
                     </div>
                   </div>
                 </article>
-              </motion.div>
+              </m.div>
 
               {/* 2. Email Card */}
-              <motion.div
-                initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+              <m.div
+                initial={false}
+                whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
                 viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
                 transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}>
                 <article className="border-2 border-border bg-card p-4 shadow-neo transition-all hover:shadow-neo-cyan sm:p-5">
@@ -195,12 +196,12 @@ export function Contact() {
                     </div>
                   </div>
                 </article>
-              </motion.div>
+              </m.div>
 
               {/* 3. Basecamp Location & Timezone Card */}
-              <motion.div
-                initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
-                whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+              <m.div
+                initial={false}
+                whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
                 viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
                 transition={{ duration: 0.45, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}>
                 <article className="border-2 border-border bg-card p-4 shadow-neo transition-all hover:shadow-neo-yellow sm:p-5">
@@ -222,9 +223,9 @@ export function Contact() {
                     </span>
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h4 className="font-display text-base font-extrabold sm:text-lg">
+                        <h3 className="font-display text-base font-extrabold sm:text-lg">
                           {site.location}, Indonesia
-                        </h4>
+                        </h3>
                         <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold text-neo-lime">
                           <Clock className="size-3" aria-hidden="true" />
                           <span>Senin – Sabtu</span>
@@ -236,15 +237,15 @@ export function Contact() {
                     </div>
                   </div>
                 </article>
-              </motion.div>
+              </m.div>
             </div>
           </div>
 
           {/* Right Column: Interactive Consultation Dispatch Blueprint */}
           <div className="min-w-0 lg:col-span-7">
-            <motion.div
-              initial={reducedMotion ? false : { opacity: 0, x: 35 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+            <m.div
+              initial={false}
+              whileInView={reducedMotion ? undefined : { x: [35, 0] }}
               viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="border-2 border-border bg-card p-5 shadow-neo-cyan sm:p-8 md:p-10">
@@ -375,7 +376,7 @@ export function Contact() {
                 </div>
                 <span>SOFTWARE DEVELOPER · KEDIRI, ID</span>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
-import { motion, useReducedMotion } from 'motion/react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { ArrowUpRight, GitCommit, Terminal, Users } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { site } from '@/content/site'
@@ -41,6 +42,18 @@ const levelMap: Record<number, Day['contributionLevel']> = {
   2: 'SECOND_QUARTILE',
   3: 'THIRD_QUARTILE',
   4: 'FOURTH_QUARTILE',
+}
+function isValidContribution(
+  item: unknown,
+): item is { date: string; count: number; level: number } {
+  if (!item || typeof item !== 'object') return false
+  const { date, count, level } = item as Record<string, unknown>
+  if (typeof date !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return false
+  const d = new Date(date)
+  if (Number.isNaN(d.getTime())) return false
+  if (typeof count !== 'number' || !Number.isInteger(count) || count < 0) return false
+  if (typeof level !== 'number' || !Number.isInteger(level) || level < 0 || level > 4) return false
+  return true
 }
 
 function parseApiToWeeks(contributions: { date: string; count: number; level: number }[]): Week[] {
@@ -105,23 +118,31 @@ function formatIndoDate(dateStr: string) {
 
 export function GithubActivity() {
   const reducedMotion = useReducedMotion()
+  const sectionRef = useRef<HTMLElement>(null)
   const [data, setData] = useState<GithubData>(githubData)
   const [isLiveSynced, setIsLiveSynced] = useState(false)
   const [hoveredDay, setHoveredDay] = useState<Day | null>(null)
 
-  // Background Auto-Refresh (Option B): checks latest GitHub contributions silently
   useEffect(() => {
     const controller = new AbortController()
+    let hasTriggered = false
 
-    async function autoSync() {
+    async function syncContributions() {
+      if (hasTriggered) return
+      hasTriggered = true
+
       try {
         const res = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${githubData.username}?y=last&_t=${Date.now()}`,
-          { signal: controller.signal, cache: 'no-store' },
+          `https://github-contributions-api.jogruber.de/v4/${githubData.username}?y=last`,
+          { signal: controller.signal },
         )
         if (!res.ok) return
         const json = await res.json()
-        if (!json.contributions || !Array.isArray(json.contributions)) return
+        if (!json || !Array.isArray(json.contributions)) return
+
+        for (const item of json.contributions) {
+          if (!isValidContribution(item)) return
+        }
 
         const updatedWeeks = parseApiToWeeks(json.contributions)
         if (updatedWeeks.length > 0) {
@@ -141,9 +162,61 @@ export function GithubActivity() {
       }
     }
 
-    autoSync()
-    return () => controller.abort()
+    if (typeof window === 'undefined') return
+
+    if (typeof IntersectionObserver !== 'undefined') {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            observer.disconnect()
+            syncContributions()
+          }
+        },
+        { rootMargin: '300px' },
+      )
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current)
+      }
+      return () => {
+        controller.abort()
+        observer.disconnect()
+      }
+    }
+    if (document.readyState === 'complete') {
+      syncContributions()
+    } else {
+      window.addEventListener('load', syncContributions, { once: true })
+    }
+    return () => {
+      controller.abort()
+      window.removeEventListener('load', syncContributions)
+    }
   }, [])
+
+  const handleGridPointerOver = (e: React.PointerEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement
+    const weekAttr = target.getAttribute('data-week')
+    const dayAttr = target.getAttribute('data-day')
+    if (weekAttr === null || dayAttr === null) return
+    const wIdx = Number.parseInt(weekAttr, 10)
+    const dIdx = Number.parseInt(dayAttr, 10)
+    if (
+      Number.isInteger(wIdx) &&
+      wIdx >= 0 &&
+      wIdx < data.weeks.length &&
+      Number.isInteger(dIdx) &&
+      dIdx >= 0
+    ) {
+      const day = data.weeks[wIdx]?.contributionDays[dIdx]
+      if (day) {
+        setHoveredDay((prev) => (prev?.date === day.date ? prev : day))
+      }
+    }
+  }
+
+  const handleGridPointerLeave = () => {
+    setHoveredDay(null)
+  }
 
   // Compute month positions along the 53 weeks
   const monthLabels = useMemo(() => {
@@ -184,12 +257,12 @@ export function GithubActivity() {
   }, [data.weeks, data.totalContributions])
 
   return (
-    <section id="activity" className="section-shell overflow-hidden bg-background">
+    <section ref={sectionRef} id="activity" className="section-shell overflow-hidden bg-background">
       <div className="site-container">
         {/* Section Heading & Quick Stats Strip */}
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+        <m.div
+          initial={false}
+          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
           viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
@@ -235,12 +308,12 @@ export function GithubActivity() {
               />
             </a>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* 1. Cyber-Brutalist Contribution Calendar Terminal */}
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+        <m.div
+          initial={false}
+          whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
           viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="border-2 border-border bg-card p-4 shadow-neo-cyan sm:p-6 md:p-8">
@@ -252,15 +325,15 @@ export function GithubActivity() {
                 <span className="size-2 rounded-full border border-border bg-neo-yellow" />
                 <span className="size-2 rounded-full border border-border bg-neo-lime" />
               </div>
-              <span className="text-[10px] font-bold tracking-wider text-muted-foreground uppercase sm:text-xs">
+              <h3 className="text-[10px] font-bold tracking-wider text-muted-foreground uppercase sm:text-xs">
                 01 // GITHUB CONTRIBUTION MATRIX · 53 WEEKS
-              </span>
+              </h3>
             </div>
 
             <div className="flex items-center gap-2">
               <span className="flex items-center gap-1.5 border border-border bg-neo-lime px-2 py-0.5 font-mono text-[10px] font-black text-black uppercase shadow-sm">
                 <span className="size-1.5 animate-pulse rounded-full bg-black" />
-                {isLiveSynced ? 'AUTO-SYNC AKTIF (TERBARU)' : 'LIVE SYNC AKTIF'}
+                {isLiveSynced ? 'TERSINKRON' : 'DATA TERSIMPAN'}
               </span>
             </div>
           </div>
@@ -296,21 +369,30 @@ export function GithubActivity() {
                   <span>Sab</span>
                 </div>
 
-                {/* 53 Columns of Weeks */}
-                <div className="flex flex-1 gap-1">
-                  {data.weeks.map((week, wIdx) => (
-                    <div key={wIdx} className="flex flex-1 flex-col gap-1">
-                      {week.contributionDays.map((day) => (
-                        <div
-                          key={day.date}
-                          onMouseEnter={() => setHoveredDay(day)}
-                          onMouseLeave={() => setHoveredDay(null)}
-                          className={`aspect-square w-full cursor-pointer rounded-none border transition-transform hover:z-10 hover:scale-125 ${levelClasses[day.contributionLevel]}`}
-                          title={`${day.contributionCount} kontribusi pada ${day.date}`}
-                        />
-                      ))}
-                    </div>
-                  ))}
+                {/* Single flattened CSS Grid replacing 53 wrapper divs */}
+                <div
+                  className="grid flex-1 gap-1"
+                  style={{
+                    gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
+                    gridTemplateColumns: `repeat(${data.weeks.length}, minmax(0, 1fr))`,
+                  }}
+                  onPointerOver={handleGridPointerOver}
+                  onPointerLeave={handleGridPointerLeave}>
+                  {data.weeks.flatMap((week, wIdx) =>
+                    week.contributionDays.map((day, dayIdx) => (
+                      <div
+                        key={day.date}
+                        data-week={wIdx}
+                        data-day={dayIdx}
+                        style={{
+                          gridColumn: wIdx + 1,
+                          gridRow: (day.weekday ?? dayIdx) + 1,
+                        }}
+                        className={`aspect-square w-full cursor-pointer rounded-none border transition-transform hover:z-10 hover:scale-125 ${levelClasses[day.contributionLevel]}`}
+                        title={`${day.contributionCount} kontribusi pada ${day.date}`}
+                      />
+                    )),
+                  )}
                 </div>
               </div>
 
@@ -353,12 +435,12 @@ export function GithubActivity() {
               <span>Banyak</span>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* 2. Organizations Contributed To (Organisasi yang Pernah Dikomit) */}
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, x: 35, y: 15 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+        <m.div
+          initial={false}
+          whileInView={reducedMotion ? undefined : { x: [35, 0], y: [15, 0] }}
           viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
           transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 border-2 border-border bg-card p-4 shadow-neo sm:p-6">
@@ -366,9 +448,9 @@ export function GithubActivity() {
           <div className="mb-4 flex flex-wrap items-center justify-between gap-2 border-b-2 border-border/30 pb-3">
             <div className="flex items-center gap-2 font-mono text-xs">
               <Users className="size-4 text-neo-cyan" aria-hidden="true" />
-              <span className="font-bold tracking-wider text-muted-foreground uppercase">
+              <h3 className="font-bold tracking-wider text-muted-foreground uppercase">
                 02 // ORGANISASI & TIM TERKAIT
-              </span>
+              </h3>
             </div>
             <span className="border border-border bg-neo-cyan px-2 py-0.5 font-mono text-[10px] font-black text-black uppercase shadow-sm">
               {data.organizations.length} ORGANISASI TERVERIFIKASI
@@ -412,7 +494,7 @@ export function GithubActivity() {
               </a>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'motion/react'
+import { useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { ArrowUpRight, Check } from 'lucide-react'
 import { Link } from 'react-router'
 import { SiteImage } from '@/components/site-image'
@@ -42,7 +43,7 @@ export function ProjectCard({
 
   if (variant === 'dossier') {
     return (
-      <motion.article
+      <m.article
         initial={false}
         whileHover={
           reducedMotion ? undefined : { x: -3, y: -3, boxShadow: `6px 6px 0 ${shadowColor}` }
@@ -147,19 +148,19 @@ export function ProjectCard({
 
               <Button asChild size="default" className="w-full shrink-0 shadow-neo sm:w-auto">
                 <Link to={href}>
-                  Buka Studi Kasus <ArrowUpRight className="size-4" aria-hidden="true" />
+                  Buka Studi Kasus<span className="sr-only">: {project.title}</span> <ArrowUpRight className="size-4" aria-hidden="true" />
                 </Link>
               </Button>
             </div>
           </div>
         </div>
-      </motion.article>
+      </m.article>
     )
   }
 
   // Compact Card Layout (Used in Related Projects)
   return (
-    <motion.article
+    <m.article
       initial={false}
       whileHover={
         reducedMotion ? undefined : { x: -3, y: -3, boxShadow: `6px 6px 0 ${shadowColor}` }
@@ -218,11 +219,11 @@ export function ProjectCard({
 
           <Button asChild variant="outline" className="w-full text-xs shadow-neo">
             <Link to={href}>
-              Detail Proyek <ArrowUpRight className="size-3.5" aria-hidden="true" />
+              Detail Proyek<span className="sr-only">: {project.title}</span> <ArrowUpRight className="size-3.5" aria-hidden="true" />
             </Link>
           </Button>
         </div>
       </div>
-    </motion.article>
+    </m.article>
   )
 }

@@ -17,3 +17,28 @@ ${paths.map((path) => `  <url>\n    <loc>${new URL(path, site.url).href}</loc>\n
 
 writeFileSync(new URL('../public/sitemap.xml', import.meta.url), sitemap)
 console.log(`sitemap.xml: ${paths.length} URL`)
+
+const escapeMd = (text) => text.replace(/[[\]]/g, '\\$&')
+
+const publicPages = [
+  `- [Beranda](${new URL('/', site.url).href})`,
+  ...projects.map((p) => `- [${escapeMd(p.title)}](${new URL(`/proyek/${p.slug}`, site.url).href})`),
+  ...(articles.length
+    ? [
+        `- [Artikel](${new URL('/artikel', site.url).href})`,
+        ...articles.map((a) => `- [${escapeMd(a.title)}](${new URL(`/artikel/${a.slug}`, site.url).href})`),
+      ]
+    : []),
+]
+
+const llms = `# prasadev — Prasetyo Ari Wibowo
+
+> ${site.summary}
+
+## Halaman publik
+
+${publicPages.join('\n')}
+`
+
+writeFileSync(new URL('../public/llms.txt', import.meta.url), llms)
+console.log(`llms.txt: ${publicPages.length} link`)

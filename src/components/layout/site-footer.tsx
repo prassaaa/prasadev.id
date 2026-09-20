@@ -1,7 +1,9 @@
 import { ArrowUpRight, Mail, PhoneCall } from 'lucide-react'
-import { motion, useReducedMotion } from 'motion/react'
+import { useReducedMotion } from 'motion/react'
+import * as m from 'motion/react-m'
 import { Link } from 'react-router'
 import { site } from '@/content/site'
+import brandSvgUrl from '@/assets/brand.svg'
 import { SocialIcon } from '@/components/ui/social-icons'
 
 export function SiteFooter() {
@@ -11,9 +13,9 @@ export function SiteFooter() {
     <footer className="border-t-2 border-border bg-background pt-14 pb-10">
       <div className="site-container">
         {/* Main Grid: Clean & Modern Multi-Column */}
-        <motion.div
-          initial={reducedMotion ? false : { opacity: 0, y: 25 }}
-          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+        <m.div
+          initial={false}
+          whileInView={reducedMotion ? undefined : { y: [25, 0] }}
           viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
@@ -24,7 +26,15 @@ export function SiteFooter() {
               className="inline-flex items-center gap-2.5 font-display text-2xl font-black tracking-tight"
               aria-label={`${site.brand} — kembali ke beranda`}>
               <span className="flex size-9 shrink-0 items-center justify-center border-2 border-border bg-background p-1 shadow-neo">
-                <img src="/icons.svg" alt="" className="size-full object-contain" />
+                <img
+                  src={brandSvgUrl}
+                  alt=""
+                  width={489}
+                  height={510}
+                  loading="lazy"
+                  decoding="async"
+                  className="size-full object-contain"
+                />
               </span>
               <span className="text-foreground">{site.brand}</span>
             </Link>
@@ -123,7 +133,7 @@ export function SiteFooter() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Bottom Bar: Copyright & Location */}
         <div className="flex flex-col items-center justify-between gap-3 border-t border-border/30 pt-6 text-xs text-muted-foreground sm:flex-row">
