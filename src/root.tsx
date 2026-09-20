@@ -19,6 +19,7 @@ import { SmoothScroll } from '@/components/smooth-scroll'
 import { WhatsAppWidget } from '@/components/layout/whatsapp-widget'
 import styles from './index.css?inline'
 import spaceGroteskUrl from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url'
+import syneUrl from '@fontsource-variable/syne/files/syne-latin-wght-normal.woff2?url'
 
 const structuredData = JSON.stringify({
   '@context': 'https://schema.org',
@@ -64,6 +65,7 @@ export function Layout({ children }: { children: ReactNode }) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <link rel="preload" href={syneUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
         <style dangerouslySetInnerHTML={{ __html: styles }} />
         <Meta />
         <Links />

@@ -159,6 +159,8 @@
   .section-shell {
     padding-block: 4rem;
     border-bottom: 2px solid var(--border);
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
   }
   .tag {
     display: inline-block;

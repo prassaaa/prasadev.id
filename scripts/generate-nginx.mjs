@@ -102,9 +102,7 @@ export function generateNginx(customBuildDir) {
   ].join('; ')
   // Collect files in public/ to exclude them from immutable hashing
   const publicFiles = new Set(
-    getAllFiles(publicDir).map((f) =>
-      path.relative(publicDir, f).split(path.sep).join('/'),
-    ),
+    getAllFiles(publicDir).map((f) => path.relative(publicDir, f).split(path.sep).join('/')),
   )
 
   const assetsDir = path.join(clientDir, 'assets')
@@ -188,8 +186,9 @@ add_header X-Content-Type-Options "nosniff" always;
 add_header X-Frame-Options "DENY" always;
 add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 add_header Cross-Origin-Opener-Policy "same-origin" always;
-# Tahap 1: max-age=86400 (1 hari). Setelah 24 jam HTTPS stabil, ganti ke max-age=31536000
-add_header Strict-Transport-Security "max-age=86400" always;
+# HTTPS has been stable; cover the apex and its subdomains for one year.
+# HSTS preload remains intentionally excluded until the domain is submitted and verified.
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 add_header Content-Security-Policy "${csp}" always;
 add_header Content-Security-Policy-Report-Only "require-trusted-types-for 'script'" always;
 add_header Cache-Control $prasadev_cache_control always;
@@ -241,5 +240,7 @@ location / {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const result = generateNginx(process.argv[2])
-  console.log(`Nginx config generated: ${result.hashes.length} script hashes, ${result.hashedUris.length} immutable assets`)
+  console.log(
+    `Nginx config generated: ${result.hashes.length} script hashes, ${result.hashedUris.length} immutable assets`,
+  )
 }

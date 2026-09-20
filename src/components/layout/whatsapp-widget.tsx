@@ -89,27 +89,20 @@ export function WhatsAppWidget() {
         )}
       </AnimatePresence>
       <div className="mt-3 flex items-center justify-end gap-3">
-        <AnimatePresence>
-          {!open && (
-            <m.button
-              key="label"
-              type="button"
-              onClick={() => setOpen(true)}
-              aria-expanded={open}
-              aria-controls="whatsapp-chat"
-              initial={reducedMotion ? false : { opacity: 0, x: 12 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={reducedMotion ? undefined : { opacity: 0, x: 12 }}
-              transition={{ duration: reducedMotion ? 0 : 0.2 }}
-              className="flex cursor-pointer items-center gap-2 border-2 border-border bg-card px-3 py-2 shadow-neo hover:bg-muted">
-              <span aria-hidden="true" className="size-2.5 shrink-0 bg-neo-lime" />
-              <span className="font-mono text-[11px] font-extrabold whitespace-nowrap sm:text-xs">
-                <span className="sm:hidden">Chat di sini</span>
-                <span className="hidden sm:inline">Butuh koordinasi?</span>
-              </span>
-            </m.button>
-          )}
-        </AnimatePresence>
+        {!open && (
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-expanded={open}
+            aria-controls="whatsapp-chat"
+            className="flex cursor-pointer items-center gap-2 border-2 border-border bg-card px-3 py-2 shadow-neo hover:bg-muted">
+            <span aria-hidden="true" className="size-2.5 shrink-0 bg-neo-lime" />
+            <span className="font-mono text-[11px] font-extrabold whitespace-nowrap sm:text-xs">
+              <span className="sm:hidden">Chat di sini</span>
+              <span className="hidden sm:inline">Butuh koordinasi?</span>
+            </span>
+          </button>
+        )}
         <m.button
           ref={toggleRef}
           type="button"

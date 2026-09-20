@@ -84,14 +84,6 @@ function parseApiToWeeks(contributions: { date: string; count: number; level: nu
   return weeks
 }
 
-const levelClasses: Record<Day['contributionLevel'], string> = {
-  NONE: 'bg-muted/70 border-border/20',
-  FIRST_QUARTILE: 'bg-neo-lime/30 border-border/40',
-  SECOND_QUARTILE: 'bg-neo-lime/55 border-border/60',
-  THIRD_QUARTILE: 'bg-neo-lime/80 border-border',
-  FOURTH_QUARTILE: 'bg-neo-lime border-border shadow-[0_0_8px_rgba(74,222,128,0.5)]',
-}
-
 const monthNames = [
   'Jan',
   'Feb',
@@ -119,6 +111,7 @@ function formatIndoDate(dateStr: string) {
 export function GithubActivity() {
   const reducedMotion = useReducedMotion()
   const sectionRef = useRef<HTMLElement>(null)
+  const heatmapRef = useRef<HTMLCanvasElement>(null)
   const [data, setData] = useState<GithubData>(githubData)
   const [isLiveSynced, setIsLiveSynced] = useState(false)
   const [hoveredDay, setHoveredDay] = useState<Day | null>(null)
@@ -193,27 +186,6 @@ export function GithubActivity() {
     }
   }, [])
 
-  const handleGridPointerOver = (e: React.PointerEvent<HTMLDivElement>) => {
-    const target = e.target as HTMLElement
-    const weekAttr = target.getAttribute('data-week')
-    const dayAttr = target.getAttribute('data-day')
-    if (weekAttr === null || dayAttr === null) return
-    const wIdx = Number.parseInt(weekAttr, 10)
-    const dIdx = Number.parseInt(dayAttr, 10)
-    if (
-      Number.isInteger(wIdx) &&
-      wIdx >= 0 &&
-      wIdx < data.weeks.length &&
-      Number.isInteger(dIdx) &&
-      dIdx >= 0
-    ) {
-      const day = data.weeks[wIdx]?.contributionDays[dIdx]
-      if (day) {
-        setHoveredDay((prev) => (prev?.date === day.date ? prev : day))
-      }
-    }
-  }
-
   const handleGridPointerLeave = () => {
     setHoveredDay(null)
   }
@@ -255,6 +227,70 @@ export function GithubActivity() {
       total: data.totalContributions,
     }
   }, [data.weeks, data.totalContributions])
+
+  useEffect(() => {
+    const canvas = heatmapRef.current
+    if (!canvas) return
+    const context = canvas.getContext('2d')
+    if (!context) return
+
+    const styles = getComputedStyle(document.documentElement)
+    const foreground = styles.getPropertyValue('--foreground').trim()
+    const muted = styles.getPropertyValue('--muted').trim()
+    const colors = [muted, '#4ade804d', '#4ade808c', '#4ade80cc', '#4ade80']
+    const levels: Record<Day['contributionLevel'], number> = {
+      NONE: 0,
+      FIRST_QUARTILE: 1,
+      SECOND_QUARTILE: 2,
+      THIRD_QUARTILE: 3,
+      FOURTH_QUARTILE: 4,
+    }
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    const width = canvas.clientWidth
+    const height = canvas.clientHeight
+    canvas.width = Math.round(width * dpr)
+    canvas.height = Math.round(height * dpr)
+    context.scale(dpr, dpr)
+    context.clearRect(0, 0, width, height)
+    const cellWidth = width / data.weeks.length
+    const cellHeight = height / 7
+
+    data.weeks.forEach((week, weekIndex) => {
+      week.contributionDays.forEach((day, dayIndex) => {
+        const row = day.weekday ?? dayIndex
+        const gap = 1.5
+        context.fillStyle = colors[levels[day.contributionLevel]]
+        context.strokeStyle = foreground
+        context.globalAlpha = day.contributionLevel === 'NONE' ? 0.35 : 0.8
+        context.fillRect(
+          weekIndex * cellWidth + gap / 2,
+          row * cellHeight + gap / 2,
+          Math.max(1, cellWidth - gap),
+          Math.max(1, cellHeight - gap),
+        )
+        context.strokeRect(
+          weekIndex * cellWidth + gap / 2,
+          row * cellHeight + gap / 2,
+          Math.max(1, cellWidth - gap),
+          Math.max(1, cellHeight - gap),
+        )
+      })
+    })
+    context.globalAlpha = 1
+  }, [data.weeks])
+
+  const inspectHeatmap = (event: React.PointerEvent<HTMLCanvasElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const weekIndex = Math.min(
+      data.weeks.length - 1,
+      Math.max(0, Math.floor(((event.clientX - rect.left) / rect.width) * data.weeks.length)),
+    )
+    const row = Math.min(6, Math.max(0, Math.floor(((event.clientY - rect.top) / rect.height) * 7)))
+    const day = data.weeks[weekIndex]?.contributionDays.find(
+      (candidate, dayIndex) => (candidate.weekday ?? dayIndex) === row,
+    )
+    setHoveredDay(day ?? null)
+  }
 
   return (
     <section ref={sectionRef} id="activity" className="section-shell overflow-hidden bg-background">
@@ -369,31 +405,16 @@ export function GithubActivity() {
                   <span>Sab</span>
                 </div>
 
-                {/* Single flattened CSS Grid replacing 53 wrapper divs */}
-                <div
-                  className="grid flex-1 gap-1"
-                  style={{
-                    gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
-                    gridTemplateColumns: `repeat(${data.weeks.length}, minmax(0, 1fr))`,
-                  }}
-                  onPointerOver={handleGridPointerOver}
-                  onPointerLeave={handleGridPointerLeave}>
-                  {data.weeks.flatMap((week, wIdx) =>
-                    week.contributionDays.map((day, dayIdx) => (
-                      <div
-                        key={day.date}
-                        data-week={wIdx}
-                        data-day={dayIdx}
-                        style={{
-                          gridColumn: wIdx + 1,
-                          gridRow: (day.weekday ?? dayIdx) + 1,
-                        }}
-                        className={`aspect-square w-full cursor-pointer rounded-none border transition-transform hover:z-10 hover:scale-125 ${levelClasses[day.contributionLevel]}`}
-                        title={`${day.contributionCount} kontribusi pada ${day.date}`}
-                      />
-                    )),
-                  )}
-                </div>
+                <canvas
+                  ref={heatmapRef}
+                  width={742}
+                  height={98}
+                  className="h-[98px] flex-1 cursor-crosshair"
+                  role="img"
+                  aria-label={`Kalender kontribusi GitHub selama ${data.weeks.length} minggu: ${stats.total.toLocaleString('id-ID')} kontribusi pada ${stats.activeDays} hari aktif.`}
+                  onPointerMove={inspectHeatmap}
+                  onPointerLeave={handleGridPointerLeave}
+                />
               </div>
 
               {/* Mobile Swipe Hint */}
