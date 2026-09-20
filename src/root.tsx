@@ -59,6 +59,12 @@ export function Layout({ children }: { children: ReactNode }) {
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(!sessionStorage.getItem('prasadev_splash_shown')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('splash-active')}}catch(e){}",
+          }}
+        />
         <link
           rel="preload"
           href={spaceGroteskUrl}
@@ -67,7 +73,13 @@ export function Layout({ children }: { children: ReactNode }) {
           crossOrigin="anonymous"
         />
         <link rel="preload" href={syneUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
-        <style dangerouslySetInnerHTML={{ __html: styles }} />
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              styles +
+              '\nhtml.splash-active,html.splash-active body{overflow:hidden!important;}html:not(.splash-active) #splash-screen{display:none!important;}',
+          }}
+        />
         <noscript>
           <style
             dangerouslySetInnerHTML={{
