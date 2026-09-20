@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import { ArrowUpRight, GitCommit, Terminal, Users } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { site } from '@/content/site'
@@ -296,10 +295,10 @@ export function GithubActivity() {
     <section ref={sectionRef} id="activity" className="section-shell overflow-hidden bg-background">
       <div className="site-container">
         {/* Section Heading & Quick Stats Strip */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
@@ -344,13 +343,13 @@ export function GithubActivity() {
               />
             </a>
           </div>
-        </m.div>
+        </motion.div>
 
         {/* 1. Cyber-Brutalist Contribution Calendar Terminal */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
-          viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="border-2 border-border bg-card p-4 shadow-neo-cyan sm:p-6 md:p-8">
           {/* Terminal Window Header Bar */}
@@ -456,13 +455,13 @@ export function GithubActivity() {
               <span>Banyak</span>
             </div>
           </div>
-        </m.div>
+        </motion.div>
 
         {/* 2. Organizations Contributed To (Organisasi yang Pernah Dikomit) */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { x: [35, 0], y: [15, 0] }}
-          viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, x: 35, y: 15 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+          viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8 border-2 border-border bg-card p-4 shadow-neo sm:p-6">
           {/* Sub Header */}
@@ -515,7 +514,7 @@ export function GithubActivity() {
               </a>
             ))}
           </div>
-        </m.div>
+        </motion.div>
       </div>
     </section>
   )

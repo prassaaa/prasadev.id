@@ -1,11 +1,11 @@
 import {
   cubicBezier,
+  motion,
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
   useTransform,
 } from 'motion/react'
-import * as m from 'motion/react-m'
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { WordsPullUp } from '@/components/ui/words-pull-up'
@@ -91,7 +91,7 @@ export function Hero() {
       <link rel="preload" as="image" href={heroPosterWebp} />
       <div className="sticky top-0 h-dvh w-full overflow-hidden rounded-2xl md:rounded-4xl">
         {!hasVideoError ? (
-          <m.video
+          <motion.video
             ref={videoRef}
             poster={heroPosterWebp}
             src={videoSource ?? undefined}
@@ -108,7 +108,7 @@ export function Hero() {
           />
         ) : (
           !hasPosterError && (
-            <m.img
+            <motion.img
               src={heroPosterWebp}
               alt=""
               width={1280}
@@ -122,12 +122,12 @@ export function Hero() {
         )}
         <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay" />
         <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/60" />
-        <m.div
+        <motion.div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 bg-muted"
           style={{ opacity: reducedMotion ? 0 : backdropOpacity }}
         />
-        <m.div
+        <motion.div
           ref={contentRef}
           style={{
             scale: reducedMotion ? 1 : contentScale,
@@ -154,7 +154,7 @@ export function Hero() {
               </a>
             </div>
           </div>
-        </m.div>
+        </motion.div>
       </div>
     </section>
   )

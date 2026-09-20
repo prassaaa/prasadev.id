@@ -1,6 +1,5 @@
 import { useRef } from 'react'
-import { useReducedMotion, useScroll, useSpring } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion, useScroll, useSpring } from 'motion/react'
 import { Briefcase, Camera, MapPin } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { experience, site } from '@/content/site'
@@ -49,10 +48,10 @@ export function Experience() {
   return (
     <section id="experience" className="section-shell overflow-hidden bg-muted">
       <div className="site-container">
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 max-w-3xl">
           <SectionHeading label={site.experience.eyebrow} accent="purple">
@@ -61,12 +60,12 @@ export function Experience() {
           <p className="font-mono text-xs font-bold tracking-wider text-muted-foreground uppercase">
             Jejak Pengembangan Perangkat Lunak & Sistem Operasional
           </p>
-        </m.div>
+        </motion.div>
         {/* Partner & Company Logos Showcase Bar */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [25, 0] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 25 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="mb-12 border-2 border-border bg-card p-4 shadow-neo sm:p-5">
           <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2 border-b-2 border-border/30 pb-2.5 font-mono text-xs">
@@ -113,7 +112,7 @@ export function Experience() {
               ))}
             </div>
           </div>
-        </m.div>
+        </motion.div>
 
         {/* Neon Circuit Timeline Container with Scroll Target */}
         <div ref={containerRef} className="relative pl-7 sm:pl-10 md:pl-0">
@@ -125,7 +124,7 @@ export function Experience() {
 
           {/* Active Glowing Neon Beam that extends down on scroll */}
           {!reducedMotion && (
-            <m.div
+            <motion.div
               style={{ scaleY, originY: 0 }}
               className="absolute top-6 bottom-6 left-3 w-1 -translate-x-px bg-linear-to-b from-neo-lime via-neo-cyan to-neo-pink shadow-[0_0_12px_#00f0ff] sm:left-4 md:left-1/2 md:-translate-x-1/2"
               aria-hidden="true"
@@ -141,10 +140,10 @@ export function Experience() {
               return (
                 <li key={item.company} className="relative">
                   {/* Circuit Chrono Node on the Timeline (Centered on desktop, Left on mobile) */}
-                  <m.div
-                    initial={false}
-                    whileInView={reducedMotion ? undefined : { scale: [0, 1] }}
-                    viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+                  <motion.div
+                    initial={reducedMotion ? false : { scale: 0 }}
+                    whileInView={reducedMotion ? undefined : { scale: 1 }}
+                    viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
                     transition={{ duration: 0.35, ease: 'backOut', delay: 0.05 }}
                     className="absolute top-5 -left-7 z-10 flex items-center justify-center sm:-left-10 md:top-6 md:left-1/2 md:-translate-x-1/2"
                     aria-hidden="true">
@@ -160,24 +159,32 @@ export function Experience() {
                         <span className={`size-2.5 rounded-full sm:size-3 ${color.dot}`} />
                       </div>
                     )}
-                  </m.div>
+                  </motion.div>
 
                   {/* Alternating Experience Dossier Card */}
-                  <m.div
-                    initial={false}
+                  <motion.div
+                    initial={
+                      reducedMotion
+                        ? false
+                        : {
+                            opacity: 0,
+                            x: isEven ? -45 : 45,
+                          }
+                    }
                     whileInView={
                       reducedMotion
                         ? undefined
                         : {
-                            x: [isEven ? -45 : 45, 0],
+                            opacity: 1,
+                            x: 0,
                           }
                     }
-                    viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                    viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     className={`w-full md:w-[calc(50%-2.25rem)] ${
                       isEven ? 'md:mr-auto' : 'md:ml-auto'
                     }`}>
-                    <m.article
+                    <motion.article
                       initial={false}
                       whileHover={
                         reducedMotion
@@ -293,8 +300,8 @@ export function Experience() {
                           </a>
                         </div>
                       )}
-                    </m.article>
-                  </m.div>
+                    </motion.article>
+                  </motion.div>
                 </li>
               )
             })}

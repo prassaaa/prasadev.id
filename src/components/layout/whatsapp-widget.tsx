@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { AnimatePresence, useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { ArrowUpRight, X } from 'lucide-react'
 import { site } from '@/content/site'
 
@@ -33,7 +32,7 @@ export function WhatsAppWidget() {
     <div className="fixed right-4 bottom-4 z-90 sm:right-6 sm:bottom-6">
       <AnimatePresence>
         {open && (
-          <m.div
+          <motion.div
             id="whatsapp-chat"
             role="dialog"
             aria-label="Chat WhatsApp prasadev"
@@ -85,7 +84,7 @@ export function WhatsAppWidget() {
                 <ArrowUpRight className="size-4" aria-hidden="true" />
               </a>
             </div>
-          </m.div>
+          </motion.div>
         )}
       </AnimatePresence>
       <div className="mt-3 flex items-center justify-end gap-3">
@@ -103,7 +102,7 @@ export function WhatsAppWidget() {
             </span>
           </button>
         )}
-        <m.button
+        <motion.button
           ref={toggleRef}
           type="button"
           aria-label={open ? 'Tutup chat WhatsApp' : 'Buka chat WhatsApp'}
@@ -117,14 +116,14 @@ export function WhatsAppWidget() {
             {whatsappIcon}
           </span>
           {!reducedMotion && !open && (
-            <m.span
+            <motion.span
               aria-hidden="true"
               className="absolute inset-0 border-2 border-neo-lime"
               animate={{ opacity: [0.9, 0], scale: [1, 1.4] }}
               transition={{ duration: 1.8, repeat: Infinity, ease: 'easeOut' }}
             />
           )}
-        </m.button>
+        </motion.button>
       </div>
     </div>
   )

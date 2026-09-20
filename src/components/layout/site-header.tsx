@@ -1,6 +1,5 @@
 import { useRef, useState, useSyncExternalStore } from 'react'
-import { AnimatePresence, useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { Link, useLocation } from 'react-router'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -120,7 +119,7 @@ export function SiteHeader({
         </div>
         <AnimatePresence initial={false}>
           {open && (
-            <m.nav
+            <motion.nav
               key="mobile"
               id="mobile-navigation"
               initial={reducedMotion ? false : { height: 0, opacity: 0 }}
@@ -145,7 +144,7 @@ export function SiteHeader({
                   </Link>
                 </Button>
               </div>
-            </m.nav>
+            </motion.nav>
           )}
         </AnimatePresence>
       </header>

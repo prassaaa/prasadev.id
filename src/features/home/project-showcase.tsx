@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { AnimatePresence, useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { Button } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { projects, type Project } from '@/content/projects'
@@ -31,10 +30,10 @@ export function ProjectShowcase() {
     <section id="portfolio" className="section-shell bg-muted">
       <div className="site-container">
         {/* Section Header & Cyber Filter Controls */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading label={site.portfolio.eyebrow} accent="lime" className="mb-0 max-w-lg">
@@ -78,13 +77,13 @@ export function ProjectShowcase() {
               )
             })}
           </div>
-        </m.div>
+        </motion.div>
 
         {/* Status Strip */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [20, 0] }}
-          viewport={{ once: false, amount: 0.3, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
           className="mb-8 flex items-center justify-between border-b-2 border-border/30 pb-3 font-mono text-xs text-muted-foreground">
           <div className="flex items-center gap-2">
@@ -94,7 +93,7 @@ export function ProjectShowcase() {
           <span className="hidden text-[11px] font-bold tracking-wider text-muted-foreground uppercase sm:inline">
             LARAVEL · REACT · FLUTTER · ANDROID
           </span>
-        </m.div>
+        </motion.div>
 
         <p className="sr-only" role="status">
           {visibleProjects.length} proyek ditampilkan
@@ -106,7 +105,7 @@ export function ProjectShowcase() {
           className="relative space-y-12 pb-12 sm:space-y-16 lg:space-y-20 lg:pb-20">
           <AnimatePresence initial={false}>
             {visibleProjects.map((project, index) => (
-              <m.div
+              <motion.div
                 key={project.slug}
                 layout={!reducedMotion}
                 initial={false}
@@ -119,7 +118,7 @@ export function ProjectShowcase() {
                   zIndex: index + 1,
                 }}>
                 <ProjectCard project={project} variant="dossier" index={index} />
-              </m.div>
+              </motion.div>
             ))}
           </AnimatePresence>
         </div>

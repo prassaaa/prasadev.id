@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import {
   ArrowUpRight,
   Check,
@@ -61,10 +60,10 @@ export function Contact() {
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Heading & Interactive Direct Channels */}
           <div className="space-y-6 lg:col-span-5">
-            <m.div
-              initial={false}
-              whileInView={reducedMotion ? undefined : { x: [-35, 0] }}
-              viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, x: -35 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
               <SectionHeading label={site.contact.eyebrow} accent="lime">
                 {site.contact.title}
@@ -72,15 +71,15 @@ export function Contact() {
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {site.contact.description}
               </p>
-            </m.div>
+            </motion.div>
 
             {/* Direct Channel Cards Deck */}
             <div className="space-y-4">
               {/* 1. WhatsApp Card */}
-              <m.div
-                initial={false}
-                whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
-                viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+              <motion.div
+                initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                 transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}>
                 <article className="border-2 border-border bg-card p-4 shadow-neo transition-all hover:shadow-neo-lime sm:p-5">
                   <div className="mb-3 flex items-center justify-between border-b border-border/30 pb-2.5 font-mono text-xs">
@@ -137,13 +136,13 @@ export function Contact() {
                     </div>
                   </div>
                 </article>
-              </m.div>
+              </motion.div>
 
               {/* 2. Email Card */}
-              <m.div
-                initial={false}
-                whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
-                viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+              <motion.div
+                initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                 transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}>
                 <article className="border-2 border-border bg-card p-4 shadow-neo transition-all hover:shadow-neo-cyan sm:p-5">
                   <div className="mb-3 flex items-center justify-between border-b border-border/30 pb-2.5 font-mono text-xs">
@@ -196,13 +195,13 @@ export function Contact() {
                     </div>
                   </div>
                 </article>
-              </m.div>
+              </motion.div>
 
               {/* 3. Basecamp Location & Timezone Card */}
-              <m.div
-                initial={false}
-                whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
-                viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+              <motion.div
+                initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
+                whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                 transition={{ duration: 0.45, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}>
                 <article className="border-2 border-border bg-card p-4 shadow-neo transition-all hover:shadow-neo-yellow sm:p-5">
                   <div className="mb-3 flex items-center justify-between border-b border-border/30 pb-2.5 font-mono text-xs">
@@ -237,16 +236,16 @@ export function Contact() {
                     </div>
                   </div>
                 </article>
-              </m.div>
+              </motion.div>
             </div>
           </div>
 
           {/* Right Column: Interactive Consultation Dispatch Blueprint */}
           <div className="min-w-0 lg:col-span-7">
-            <m.div
-              initial={false}
-              whileInView={reducedMotion ? undefined : { x: [35, 0] }}
-              viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, x: 35 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="border-2 border-border bg-card p-5 shadow-neo-cyan sm:p-8 md:p-10">
               {/* Window Header Bar */}
@@ -376,7 +375,7 @@ export function Contact() {
                 </div>
                 <span>SOFTWARE DEVELOPER · KEDIRI, ID</span>
               </div>
-            </m.div>
+            </motion.div>
           </div>
         </div>
       </div>

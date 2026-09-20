@@ -1,5 +1,4 @@
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import { ArrowUpRight, Check, ShieldAlert, Sparkles, Terminal } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { site, technicalRoots } from '@/content/site'
@@ -28,10 +27,10 @@ export function TechnicalRoots() {
     <section id="roots" className="section-shell overflow-hidden bg-background">
       <div className="site-container">
         {/* Section Heading */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 max-w-3xl">
           <SectionHeading label={site.roots.eyebrow} accent="pink">
@@ -40,7 +39,7 @@ export function TechnicalRoots() {
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
             {site.roots.description}
           </p>
-        </m.div>
+        </motion.div>
 
         {/* 2-Column High-Contrast Cyber-Terminal Dossiers */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
@@ -49,18 +48,27 @@ export function TechnicalRoots() {
             const isLeft = idx === 0
 
             return (
-              <m.article
+              <motion.article
                 key={item.brand}
-                initial={false}
+                initial={
+                  reducedMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        x: isLeft ? -40 : 40,
+                        y: 20,
+                      }
+                }
                 whileInView={
                   reducedMotion
                     ? undefined
                     : {
-                        x: [isLeft ? -40 : 40, 0],
-                        y: [20, 0],
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
                       }
                 }
-                viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                 transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={reducedMotion ? undefined : { y: -3, transition: { duration: 0.15 } }}
                 className={`flex flex-col justify-between border-2 border-border bg-card p-5 sm:p-7 md:p-8 ${style.shadow} transition-all`}>
@@ -192,7 +200,7 @@ export function TechnicalRoots() {
                     <span className="uppercase">HARDCORE SYSTEMS</span>
                   </div>
                 </div>
-              </m.article>
+              </motion.article>
             )
           })}
         </div>

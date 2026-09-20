@@ -67,6 +67,14 @@ export function Layout({ children }: { children: ReactNode }) {
         />
         <link rel="preload" href={syneUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
         <style dangerouslySetInnerHTML={{ __html: styles }} />
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                '[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;transform:none!important;}',
+            }}
+          />
+        </noscript>
         <Meta />
         <Links />
       </head>

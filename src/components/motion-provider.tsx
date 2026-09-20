@@ -1,14 +1,6 @@
 import type { ReactNode } from 'react'
-import { LazyMotion, MotionConfig } from 'motion/react'
-
-const loadFeatures = () => import('./motion-features').then((m) => m.default)
+import { MotionConfig } from 'motion/react'
 
 export function MotionProvider({ children }: { children: ReactNode }) {
-  return (
-    <MotionConfig reducedMotion="user">
-      <LazyMotion features={loadFeatures} strict>
-        {children}
-      </LazyMotion>
-    </MotionConfig>
-  )
+  return <MotionConfig reducedMotion="user">{children}</MotionConfig>
 }

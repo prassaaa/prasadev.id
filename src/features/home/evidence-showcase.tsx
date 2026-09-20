@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import { Award, Camera, Check, ExternalLink, FileCheck, Maximize2, Sparkles, X } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { evidenceItems, site } from '@/content/site'
@@ -86,10 +85,10 @@ export function EvidenceShowcase() {
     <section id="evidence" className="section-shell overflow-hidden bg-background">
       <div className="site-container">
         {/* Section Heading & Filter Bar */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
@@ -136,7 +135,7 @@ export function EvidenceShowcase() {
               )
             })}
           </div>
-        </m.div>
+        </motion.div>
 
         {/* 6-Card Evidence Gallery Grid */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -145,19 +144,28 @@ export function EvidenceShowcase() {
             const isHighlighted = highlightedId === item.id
 
             return (
-              <m.article
+              <motion.article
                 key={item.id}
                 id={item.id}
-                initial={false}
+                initial={
+                  reducedMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        y: 30,
+                        scale: 0.98,
+                      }
+                }
                 whileInView={
                   reducedMotion
                     ? undefined
                     : {
-                        y: [30, 0],
-                        scale: [0.98, 1],
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
                       }
                 }
-                viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                 transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className={`group relative flex flex-col justify-between border-2 bg-card p-4 transition-all duration-300 sm:p-5 ${style.shadow} ${
                   isHighlighted ? 'border-neo-yellow ring-4 ring-neo-yellow/40' : 'border-border'
@@ -244,7 +252,7 @@ export function EvidenceShowcase() {
                     <Maximize2 className="size-3" aria-hidden="true" />
                   </button>
                 </div>
-              </m.article>
+              </motion.article>
             )
           })}
         </div>

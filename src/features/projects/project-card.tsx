@@ -1,5 +1,4 @@
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import { ArrowUpRight, Check } from 'lucide-react'
 import { Link } from 'react-router'
 import { SiteImage } from '@/components/site-image'
@@ -43,7 +42,7 @@ export function ProjectCard({
 
   if (variant === 'dossier') {
     return (
-      <m.article
+      <motion.article
         initial={false}
         whileHover={
           reducedMotion ? undefined : { x: -3, y: -3, boxShadow: `6px 6px 0 ${shadowColor}` }
@@ -154,13 +153,13 @@ export function ProjectCard({
             </div>
           </div>
         </div>
-      </m.article>
+      </motion.article>
     )
   }
 
   // Compact Card Layout (Used in Related Projects)
   return (
-    <m.article
+    <motion.article
       initial={false}
       whileHover={
         reducedMotion ? undefined : { x: -3, y: -3, boxShadow: `6px 6px 0 ${shadowColor}` }
@@ -224,6 +223,6 @@ export function ProjectCard({
           </Button>
         </div>
       </div>
-    </m.article>
+    </motion.article>
   )
 }

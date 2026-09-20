@@ -8,8 +8,7 @@ import {
   Smartphone,
   Terminal,
 } from 'lucide-react'
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router'
 import { Button } from '@/components/ui/button'
 import { SectionHeading } from '@/components/ui/section-heading'
@@ -166,10 +165,10 @@ export function Services() {
   return (
     <section id="services" className="section-shell bg-background">
       <div className="site-container">
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <SectionHeading label={site.services.eyebrow} accent="cyan" className="mb-0 max-w-2xl">
@@ -184,7 +183,7 @@ export function Services() {
               <ArrowRight aria-hidden="true" />
             </Link>
           </Button>
-        </m.div>
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12">
           {services.map((service, index) => {
@@ -192,18 +191,27 @@ export function Services() {
             const Icon = config.icon
             const isLeft = index % 2 === 0
             return (
-              <m.article
+              <motion.article
                 key={service.title}
-                initial={false}
+                initial={
+                  reducedMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        x: isLeft ? -35 : 35,
+                        y: 20,
+                      }
+                }
                 whileInView={
                   reducedMotion
                     ? undefined
                     : {
-                        x: [isLeft ? -35 : 35, 0],
-                        y: [20, 0],
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
                       }
                 }
-                viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                 transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={
                   reducedMotion ? undefined : { x: -3, y: -3, transition: { duration: 0.15 } }
@@ -255,7 +263,7 @@ export function Services() {
 
                 {/* Inset Service Module */}
                 {config.preview}
-              </m.article>
+              </motion.article>
             )
           })}
         </div>

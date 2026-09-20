@@ -1,5 +1,4 @@
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import { Award, Users } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { SiteImage } from '@/components/site-image'
@@ -46,10 +45,10 @@ export function Education() {
     <section id="education" className="section-shell overflow-hidden bg-muted">
       <div className="site-container">
         {/* Section Header */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10 max-w-3xl">
           <SectionHeading label={site.education.eyebrow} accent="cyan">
@@ -58,13 +57,13 @@ export function Education() {
           <p className="font-mono text-xs font-bold tracking-wider text-muted-foreground uppercase">
             Pendidikan Formal, Kontribusi Akademik, dan Jejak Organisasi
           </p>
-        </m.div>
+        </motion.div>
 
         {/* 1. Academic Diploma & Degree Showcase */}
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [40, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 40, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           whileHover={reducedMotion ? undefined : { x: -3, y: -3, transition: { duration: 0.15 } }}
           className="relative mb-10 border-2 border-border bg-card p-6 shadow-neo-cyan sm:p-8">
@@ -124,33 +123,33 @@ export function Education() {
               </p>
             </div>
           </div>
-        </m.div>
+        </motion.div>
 
         {/* 2. Split Showcase: Kontribusi Teknis (Kiri) & Rekam Jejak Organisasi (Kanan) */}
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
           {/* Kiri (6 cols): Kontribusi Akademik & HAKI */}
           <div className="space-y-4 lg:col-span-6">
-            <m.div
-              initial={false}
-              whileInView={reducedMotion ? undefined : { x: [-20, 0] }}
-              viewport={{ once: false, amount: 0.3, margin: '200px 0px 0px 0px' }}
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, x: -20 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3, margin: '100px 0px 0px 0px' }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-2.5 border-b-2 border-border/40 pb-3">
               <Award className="size-5 text-neo-yellow" aria-hidden="true" />
               <h3 className="font-display text-xl font-bold sm:text-2xl">
                 Kontribusi, Pelatihan & Kepakaran
               </h3>
-            </m.div>
+            </motion.div>
 
             <div className="space-y-4">
               {education.contributions.map((item, idx) => {
                 const style = contributionStyles[idx % contributionStyles.length]
                 return (
-                  <m.article
+                  <motion.article
                     key={item.title}
-                    initial={false}
-                    whileInView={reducedMotion ? undefined : { x: [-35, 0], y: [15, 0] }}
-                    viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                    initial={reducedMotion ? false : { opacity: 0, x: -35, y: 15 }}
+                    whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                     transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                     whileHover={
                       reducedMotion ? undefined : { x: 4, y: -2, transition: { duration: 0.15 } }
@@ -185,7 +184,7 @@ export function Education() {
                         </a>
                       </div>
                     )}
-                  </m.article>
+                  </motion.article>
                 )
               })}
             </div>
@@ -193,22 +192,22 @@ export function Education() {
 
           {/* Kanan (6 cols): Pengalaman Organisasi & Kepemimpinan */}
           <div className="space-y-4 lg:col-span-6">
-            <m.div
-              initial={false}
-              whileInView={reducedMotion ? undefined : { x: [20, 0] }}
-              viewport={{ once: false, amount: 0.3, margin: '200px 0px 0px 0px' }}
+            <motion.div
+              initial={reducedMotion ? false : { opacity: 0, x: 20 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3, margin: '100px 0px 0px 0px' }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-2.5 border-b-2 border-border/40 pb-3">
               <Users className="size-5 text-neo-cyan" aria-hidden="true" />
               <h3 className="font-display text-xl font-bold sm:text-2xl">Pengalaman Organisasi</h3>
-            </m.div>
+            </motion.div>
             <div className="space-y-4">
               {education.organizations.map((item, idx) => (
-                <m.article
+                <motion.article
                   key={item.name}
-                  initial={false}
-                  whileInView={reducedMotion ? undefined : { x: [35, 0], y: [15, 0] }}
-                  viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                  initial={reducedMotion ? false : { opacity: 0, x: 35, y: 15 }}
+                  whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                   transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={
                     reducedMotion ? undefined : { x: -4, y: -2, transition: { duration: 0.15 } }
@@ -225,7 +224,7 @@ export function Education() {
                     {item.role}
                   </h4>
                   <p className="mt-1 font-mono text-xs text-muted-foreground">{item.name}</p>
-                </m.article>
+                </motion.article>
               ))}
             </div>
           </div>

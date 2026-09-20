@@ -12,8 +12,7 @@ import {
   Store,
   Users,
 } from 'lucide-react'
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import { SectionHeading } from '@/components/ui/section-heading'
 import { SiteImage } from '@/components/site-image'
 import { principles, site } from '@/content/site'
@@ -47,21 +46,21 @@ export function About() {
   return (
     <section id="about" className="section-shell bg-muted">
       <div className="site-container">
-        <m.div
-          initial={false}
-          whileInView={reducedMotion ? undefined : { y: [35, 0], scale: [0.98, 1] }}
-          viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+        <motion.div
+          initial={reducedMotion ? false : { opacity: 0, y: 35, scale: 0.98 }}
+          whileInView={reducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
           <SectionHeading label={site.about.eyebrow} accent="yellow" className="max-w-3xl">
             {site.about.title}
           </SectionHeading>
-        </m.div>
+        </motion.div>
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-12">
           {/* Left Column: Profile & Credentials Bento Card */}
-          <m.article
-            initial={false}
-            whileInView={reducedMotion ? undefined : { x: [-45, 0], y: [20, 0] }}
-            viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+          <motion.article
+            initial={reducedMotion ? false : { opacity: 0, x: -45, y: 20 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             whileHover={
               reducedMotion ? undefined : { x: -3, y: -3, transition: { duration: 0.15 } }
@@ -190,7 +189,7 @@ export function About() {
                 })}
               </div>
             </div>
-          </m.article>
+          </motion.article>
 
           {/* Right Column: 4 Core Principles 2x2 Bento Grid */}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7">
@@ -198,11 +197,11 @@ export function About() {
               const Icon = principleIcons[principle.icon as keyof typeof principleIcons]
               const color = accents[principle.accent]
               return (
-                <m.article
+                <motion.article
                   key={principle.number}
-                  initial={false}
-                  whileInView={reducedMotion ? undefined : { x: [45, 0], y: [20, 0] }}
-                  viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                  initial={reducedMotion ? false : { opacity: 0, x: 45, y: 20 }}
+                  whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                   transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={
                     reducedMotion ? undefined : { x: 3, y: -3, transition: { duration: 0.15 } }
@@ -237,7 +236,7 @@ export function About() {
                       {principle.detail}
                     </p>
                   </div>
-                </m.article>
+                </motion.article>
               )
             })}
           </div>

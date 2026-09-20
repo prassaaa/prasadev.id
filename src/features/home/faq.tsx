@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { useReducedMotion } from 'motion/react'
-import * as m from 'motion/react-m'
+import { motion, useReducedMotion } from 'motion/react'
 import { ChevronDown, Mail, MessageSquare, PhoneCall, Sparkles } from 'lucide-react'
 import {
   Accordion,
@@ -52,10 +51,10 @@ export function Faq() {
       <div className="site-container">
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Heading, Subtitle & Direct Inquiry Deck */}
-          <m.div
-            initial={false}
-            whileInView={reducedMotion ? undefined : { x: [-35, 0] }}
-            viewport={{ once: false, amount: 0.2, margin: '200px 0px 0px 0px' }}
+          <motion.div
+            initial={reducedMotion ? false : { opacity: 0, x: -35 }}
+            whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2, margin: '100px 0px 0px 0px' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-6 lg:sticky lg:top-28 lg:col-span-5">
             <div>
@@ -134,7 +133,7 @@ export function Faq() {
               <span className="border border-border bg-muted/80 px-2 py-0.5">#EstimasiBiaya</span>
               <span className="border border-border bg-muted/80 px-2 py-0.5">#RecruiterInfo</span>
             </div>
-          </m.div>
+          </motion.div>
 
           {/* Right Column: Interactive Cyber-Brutalist Q&A Dossiers */}
           <div className="space-y-4 lg:col-span-7">
@@ -149,11 +148,11 @@ export function Faq() {
                 const isOpen = activeFaq === faq.question
 
                 return (
-                  <m.div
+                  <motion.div
                     key={faq.question}
-                    initial={false}
-                    whileInView={reducedMotion ? undefined : { x: [35, 0], y: [15, 0] }}
-                    viewport={{ once: false, amount: 0.15, margin: '200px 0px 0px 0px' }}
+                    initial={reducedMotion ? false : { opacity: 0, x: 35, y: 15 }}
+                    whileInView={reducedMotion ? undefined : { opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true, amount: 0.15, margin: '100px 0px 0px 0px' }}
                     transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}>
                     <AccordionItem
                       value={faq.question}
@@ -207,7 +206,7 @@ export function Faq() {
                         </div>
                       </AccordionContent>
                     </AccordionItem>
-                  </m.div>
+                  </motion.div>
                 )
               })}
             </Accordion>
