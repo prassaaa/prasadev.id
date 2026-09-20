@@ -43,11 +43,6 @@ export function SplashScreen() {
   const triggerCurtainOpen = useCallback(() => {
     if (phase !== 'playing') return
     setPhase('opening')
-    try {
-      sessionStorage.setItem(STORAGE_KEY, 'true')
-    } catch {
-      // Storage restricted
-    }
   }, [phase])
 
   // Timer & progress bar loop
@@ -92,6 +87,11 @@ export function SplashScreen() {
   // Final cleanup when curtain finishes opening
   const handleCurtainAnimationComplete = () => {
     if (phase === 'opening') {
+      try {
+        sessionStorage.setItem(STORAGE_KEY, 'true')
+      } catch {
+        // Storage restricted
+      }
       document.body.style.overflow = ''
       document.documentElement.classList.remove('intro-active')
       setPhase('done')
