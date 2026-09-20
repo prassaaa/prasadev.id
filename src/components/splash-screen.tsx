@@ -103,9 +103,9 @@ export function SplashScreen() {
     return (
       <div id="intro-screen" aria-hidden="true" className="fixed inset-0 z-9999 select-none">
         {/* Left Curtain */}
-        <div className="absolute top-0 bottom-0 left-0 w-1/2 bg-[#0a0a0e] border-r-2 border-neo-lime shadow-[0_0_25px_rgba(74,222,128,0.4)]" />
+        <div className="absolute top-0 bottom-0 left-0 w-[50.5%] bg-[#0a0a0e]" />
         {/* Right Curtain */}
-        <div className="absolute top-0 right-0 bottom-0 w-1/2 bg-[#0a0a0e] border-l-2 border-neo-lime shadow-[0_0_25px_rgba(74,222,128,0.4)]" />
+        <div className="absolute top-0 right-0 bottom-0 w-[50.5%] bg-[#0a0a0e]" />
 
         {/* Center Stage Box */}
         <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
@@ -160,7 +160,7 @@ export function SplashScreen() {
       className="fixed inset-0 z-9999 select-none overflow-hidden">
       {/* 1. LEFT CURTAIN PANEL */}
       <motion.div
-        className="absolute top-0 bottom-0 left-0 w-1/2 bg-[#0a0a0e] border-r-2 border-neo-lime shadow-[0_0_35px_rgba(74,222,128,0.5)] z-10"
+        className="absolute top-0 bottom-0 left-0 w-[50.5%] bg-[#0a0a0e] z-10"
         initial={{ x: 0 }}
         animate={isOpening ? { x: '-100%' } : { x: 0 }}
         transition={{
@@ -172,7 +172,7 @@ export function SplashScreen() {
 
       {/* 2. RIGHT CURTAIN PANEL */}
       <motion.div
-        className="absolute top-0 right-0 bottom-0 w-1/2 bg-[#0a0a0e] border-l-2 border-neo-lime shadow-[0_0_35px_rgba(74,222,128,0.5)] z-10"
+        className="absolute top-0 right-0 bottom-0 w-[50.5%] bg-[#0a0a0e] z-10"
         initial={{ x: 0 }}
         animate={isOpening ? { x: '100%' } : { x: 0 }}
         transition={{
