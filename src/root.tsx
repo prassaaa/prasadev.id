@@ -61,8 +61,9 @@ export function Layout({ children }: { children: ReactNode }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: structuredData }} />
         <script
           dangerouslySetInnerHTML={{
-            __html:
-              "try{if(!sessionStorage.getItem('prasadev_intro_seen')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-active')}}catch(e){}",
+            __html: import.meta.env.DEV
+              ? "try{if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-active')}}catch(e){}"
+              : "try{if(!sessionStorage.getItem('prasadev_intro_seen')&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('intro-active')}}catch(e){}",
           }}
         />
         <link
