@@ -17,6 +17,7 @@ import { site } from '@/content/site'
 import { MotionProvider } from '@/components/motion-provider'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import { WhatsAppWidget } from '@/components/layout/whatsapp-widget'
+import { SplashScreen } from '@/components/splash-screen'
 import styles from './index.css?inline'
 import spaceGroteskUrl from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url'
 import syneUrl from '@fontsource-variable/syne/files/syne-latin-wght-normal.woff2?url'
@@ -80,6 +81,7 @@ export function Layout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <MotionProvider>
+          <SplashScreen />
           <SmoothScroll />
           <SiteHeader
             theme={theme}
